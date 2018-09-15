@@ -1,4 +1,4 @@
-# Bronson Magnan - https://twitter.com/CIT_Bronson - This will download the Adobe Stuff
+# Bronson (c) 2018 This will download the Adobe Stuff
 
 $ftp = "ftp://ftp.adobe.com/pub/adobe/reader/win/AcrobatDC/"
 
@@ -31,12 +31,6 @@ foreach ($line in $DirByLine ) {
 # Sort the folders by newest first, and select the first 1, and remove the newline whitespace at the end.
 $currentfolder = ($folders | sort -Descending | select -First 1).trim()
 
-# Make sure we can write to this folder.
-Set-Location "$($env:USERPROFILE)\downloads"
-
-# Speed up the download - but I do like knowing what the progress is /cry
-$ProgressPreference = 'SilentlyContinue'
-
 # PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
 # Example 1: Start-Process "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru
 # Example 2 Powershell: Start-Process powershell.exe -ExecutionPolicy bypass -file $Destination
@@ -60,9 +54,7 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = '/sAll /msi /norestart /quiet ALLUSERS=1 EULA_ACCEPT=YES'
-$url = "ftp://ftp.adobe.com/pub/adobe/reader/win/AcrobatDC/1801120058/AcroRdrDC1801120058_en_US.exe"
-
-# Latest Version can be found here: ftp://ftp.adobe.com/pub/adobe/reader/win/AcrobatDC/
+$ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS
 
