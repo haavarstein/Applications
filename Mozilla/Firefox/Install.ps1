@@ -1,7 +1,7 @@
 # Get Lastest FireFox URL by Bronson Magnan
 function get-LatestFirefoxURL {
 [cmdletbinding()]
-[outputtype([String])]
+[outputtype([String[]])]
 param(
     [ValidateSet("bn-BD","bn-IN","en-CA","en-GB","en-ZA","es-AR","es-CL","es-ES","es-MX")][string]$culture = "en-US",
     [ValidateSet("win32","win64")][string]$architecture="win64"
@@ -10,19 +10,18 @@ param(
 $FFReleaseNoticeURL = "https://www.mozilla.org/en-US/firefox/releases/"
 $FFLatestVersion = ((wget -uri $FFReleaseNoticeURL | % content).split() | Select-String -Pattern 'data-latest-firefox="*"').tostring().split('"')[1]
 $VersionURL = "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$($FFLatestVersion)/$($architecture)/$($culture)/Firefox%20Setup%20$($FFLatestVersion).exe"
-Write-Output $VersionURL
+
+$Export = @($FFLatestVersion, $VersionURL)
+Write-Output $Export
+
 }
 
 # PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
-
 # Example 1: Start-Process "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru
-
 # Example 2 Powershell: Start-Process powershell.exe -ExecutionPolicy bypass -file $Destination
-
 # Example 3 EXE (Always use ' '):
 # $UnattendedArgs='/qn'
 # (Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
-
 # Example 4 MSI (Always use " "):
 # $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 # (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
@@ -30,13 +29,11 @@ Write-Output $VersionURL
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
-$FFReleaseNoticeURL = "https://www.mozilla.org/en-US/firefox/releases/"
-$FFLatestVersion = ((wget -uri $FFReleaseNoticeURL | % content).split() | Select-String -Pattern 'data-latest-firefox="*"').tostring().split('"')[1]
-$url = get-LatestFirefoxURL
+$FirefoxData = get-LatestFirefoxURL
 
 $Vendor = "Mozilla"
 $Product = "FireFox"
-$Version = "$FFLatestVersion"
+$Version = $FirefoxData[0]
 $PackageName = "Firefox"
 $InstallerType = "exe"
 $Source = "$PackageName" + "." + "$InstallerType"
@@ -44,6 +41,8 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = '/SILENT MaintenanceService=false'
+$url = $FirefoxData[1]
+
 $ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS
@@ -68,9 +67,6 @@ Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 
 Write-Verbose "Customization" -Verbose
 sc.exe config MozillaMaintenance start= disabled
-cd..
-cd Config
-copy-item -Path * -Destination "C:\Program Files\Mozilla Firefox" -Recurse -Force
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
