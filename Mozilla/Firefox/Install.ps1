@@ -63,6 +63,7 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = '/SILENT MaintenanceService=false'
+$url = "$(get-LatestFirefoxESRURL)"
 $ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS
