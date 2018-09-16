@@ -1,20 +1,44 @@
 # Get Lastest FireFox URL by Bronson Magnan
-function get-LatestFirefoxURL {
+function get-LatestFirefoxESRURL {
 [cmdletbinding()]
-[outputtype([String[]])]
+[outputtype([String])]
 param(
     [ValidateSet("bn-BD","bn-IN","en-CA","en-GB","en-ZA","es-AR","es-CL","es-ES","es-MX")][string]$culture = "en-US",
     [ValidateSet("win32","win64")][string]$architecture="win64"
+
 )
 
-$FFReleaseNoticeURL = "https://www.mozilla.org/en-US/firefox/releases/"
-$FFLatestVersion = ((wget -uri $FFReleaseNoticeURL | % content).split() | Select-String -Pattern 'data-latest-firefox="*"').tostring().split('"')[1]
-$VersionURL = "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$($FFLatestVersion)/$($architecture)/$($culture)/Firefox%20Setup%20$($FFLatestVersion).exe"
+# JSON that provide details on Firefox versions
+$uriSource = "https://product-details.mozilla.org/1.0/firefox_versions.json"
 
-$Export = @($FFLatestVersion, $VersionURL)
-Write-Output $Export
+# Read the JSON and convert to a PowerShell object
+$firefoxVersions = (Invoke-WebRequest -uri $uriSource).Content | ConvertFrom-Json
 
+$VersionURL = "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$($firefoxVersions.FIREFOX_ESR)/$($architecture)/$($culture)/Firefox%20Setup%20$($FFLatestVersion).exe"
+Write-Output $VersionURL
 }
+
+function get-LatestFirefoxESRVersion {
+[cmdletbinding()]
+[outputtype([String])]
+param(
+    [ValidateSet("bn-BD","bn-IN","en-CA","en-GB","en-ZA","es-AR","es-CL","es-ES","es-MX")][string]$culture = "en-US",
+    [ValidateSet("win32","win64")][string]$architecture="win64"
+
+)
+
+# JSON that provide details on Firefox versions
+$uriSource = "https://product-details.mozilla.org/1.0/firefox_versions.json"
+
+# Read the JSON and convert to a PowerShell object
+$firefoxVersions = (Invoke-WebRequest -uri $uriSource).Content | ConvertFrom-Json
+
+$Version = [Version]$firefoxVersions.FIREFOX_ESR.replace("esr","")
+Write-Output $Version
+}
+
+get-LatestFirefoxESRURL
+get-LatestFirefoxESRVersion
 
 # PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
 # Example 1: Start-Process "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru
@@ -29,11 +53,9 @@ Write-Output $Export
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
-$FirefoxData = get-LatestFirefoxURL
-
 $Vendor = "Mozilla"
 $Product = "FireFox"
-$Version = $FirefoxData[0]
+$Version = "$(get-LatestFirefoxESRVersion)"
 $PackageName = "Firefox"
 $InstallerType = "exe"
 $Source = "$PackageName" + "." + "$InstallerType"
@@ -41,8 +63,6 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = '/SILENT MaintenanceService=false'
-$url = $FirefoxData[1]
-
 $ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS
