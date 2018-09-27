@@ -27,6 +27,13 @@ $UnattendedArgs = '/configure RDSH.xml'
 $UnattendedArgs2 = '/download RDSH.xml'
 
 Start-Transcript $LogPS
+ 
+if( -Not (Test-Path -Path $Version ) )
+{
+    New-Item -ItemType directory -Path $Version
+    Copy-item .\RDSH.xml -Destination $Version -Force
+    Copy-item .\Setup.exe -Destination $Version -Force
+}
 
 CD $Version
 
