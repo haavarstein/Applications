@@ -1,0 +1,3 @@
+The Office Deployment Tool (ODT) is a command-line tool that you can use to download and deploy Click-to-Run versions of Office, such as Office 365 ProPlus, to your client computers.
+
+https://www.microsoft.com/en-us/download/details.aspx?id=49117
