@@ -1,5 +1,5 @@
 <Configuration>
-    <Add OfficeClientEdition="32">
+    <Add OfficeClientEdition="32" Channel="Monthly">
         <Product ID="O365ProPlusRetail">
             <Language ID="en-us"/>
             <ExcludeApp ID="OneNote"/>
@@ -7,7 +7,7 @@
 	    <ExcludeApp ID="InfoPath"/>
         </Product>
     </Add>
-    <Updates Enabled="FALSE" AutoUpgrade="TRUE"/>
+    <Updates Enabled="TRUE" Channel="Monthly"/>
     <Property Name="FORCEAPPSHUTDOWN" Value="TRUE"/>
     <Display AcceptEULA="TRUE" Level="None" />
     <Logging Level="Standard" Path="%temp%" />
