@@ -16,7 +16,6 @@ Function Get-PaintDotNetURl {
     Write-Output $finalurl
 }
 
-
 function Get-PaintDotNetVersion {
     [cmdletbinding()]
     [outputType([Version])]
