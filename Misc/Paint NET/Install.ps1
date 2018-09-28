@@ -8,13 +8,13 @@ Function Get-PaintDotNetURl {
     $multiline = $raw.content.split("`n").trim()
     $justtags = $multiline.replace("<","#$%^<").split("#$%^")
     $pattern = "paint\.net\S*(\d+\.)+\d\S*\.(zip|exe)"
-    #https://www.dotpdn.com/files/paint.net.4.1.1.install.zip
     $relativehtml = ($justtags | Select-String -Pattern $pattern | Select-Object -First 1).tostring().trim()
     $relativeURL = $relativehtml.replace('<a href="','').replace('">','')
     $dotdotreplacement = "https://www.dotpdn.com"
     $finalurl = $relativeURL.replace("..",$dotdotreplacement)
     Write-Output $finalurl
 }
+
 
 function Get-PaintDotNetVersion {
     [cmdletbinding()]
@@ -60,6 +60,7 @@ if ( -Not (Test-Path -Path $Version ) ) {
     [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
     Invoke-WebRequest -Uri $url -OutFile "$PackageName.zip"
     Expand-Archive -Path "$PackageName.zip" -DestinationPath .
+    Remove-Item "$PackageName.zip"  -Force
     Get-ChildItem *.exe | Rename-Item -NewName $Source
   }
         Else {
