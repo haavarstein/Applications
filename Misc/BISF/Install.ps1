@@ -18,15 +18,15 @@ $StartDTM = (Get-Date)
 
 $Vendor = "Misc"
 $Product = "BISF"
-$PackageName = "setup-BIS-F-6.1.0-BETA_build02.105"
-$Version = "6.1.0.01.100"
+$PackageName = "setup-BIS-F-6.1.0_build01.101"
+$Version = "6.1.0.01.101"
 $InstallerType = "exe"
-$Source = "$PackageName" + "." + "$InstallerType"
+$Source = "$PackageName" + "." + "zip"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = "/VERYSILENT /log:$LogApp /norestart /noicons"
-$url = "https://eucweb.com/download/733/"
+$url = "http://loginmarketing.blob.core.windows.net/public/tools/setup-BIS-F-6.1.0_build01.101.exe.zip"
 $ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS
@@ -41,6 +41,8 @@ CD $Version
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source)) {
     Invoke-WebRequest -Uri $url -OutFile $Source
+    Expand-Archive -Path $Source -DestinationPath .\
+    Remove-Item -Path $Source
          }
         Else {
             Write-Verbose "File exists. Skipping Download." -Verbose
@@ -53,7 +55,6 @@ Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 Write-Verbose "Customization" -Verbose
 CD ..
 Copy-Item -Path .\Tools\* -Destination $env:SystemRoot\System32 -Recurse -Force
-Copy-item -Path .\*.cmd -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)" -Recurse -Force
 Copy-Item BISF.reg -Destination C:\Windows\Temp\BISF.reg -Recurse
 cmd.exe /c "regedit /s C:\Windows\Temp\BISF.reg"
 
