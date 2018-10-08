@@ -53,7 +53,7 @@ If (!(Test-Path -Path $Source)) {
     Remove-Item -Path $SourceXML
     Write-Verbose "Downloading Citrix Optimizer" -Verbose
     Invoke-WebRequest -Uri $ctx -OutFile $SourceCTX
-    Expand-Archive -Path $SourceCTX -DestinationPath .\Tools\
+    Expand-Archive -Path $SourceCTX -DestinationPath .\"Citrix Optimizer"\
     Remove-Item -Path $SourceCTX
          }
         Else {
@@ -64,7 +64,7 @@ Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Customization" -Verbose
-Copy-Item -Path .\Tools\* -Destination $env:SystemRoot\System32 -Recurse -Force
+Copy-Item -Path .\"Citrix Optimizer"\* -Destination "C:\Program Files (x86)\Citrix Optimizer\" -Recurse -Force
 Copy-item -Path .\*.xml -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)" -Recurse -Force
 
 Write-Verbose "Stop logging" -Verbose
