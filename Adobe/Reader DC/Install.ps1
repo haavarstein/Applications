@@ -75,7 +75,7 @@ Else {
 }
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
-(Start-Process "$filename" $UnattendedArgs -Wait -Passthru).ExitCode
+(Start-Process "$Source" $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Customization" -Verbose
 Unregister-ScheduledTask -TaskName "Adobe Acrobat Update Task" -Confirm:$false
