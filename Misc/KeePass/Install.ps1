@@ -74,7 +74,7 @@ $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$url = "https://ufpr.dl.sourceforge.net/project/keepass/KeePass%202.x/" + "$Version" + "/KeePass-" +"$Version" + "-Setup.exe"
+$url = "https://ufpr.dl.sourceforge.net/project/keepass/KeePass%202.x/$Version/KeePass-$Version-Setup.exe"
 $UnattendedArgs = '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-'
 $ProgressPreference = 'SilentlyContinue'
 
