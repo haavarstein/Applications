@@ -41,6 +41,7 @@ $currentfolder = ($folders | sort -Descending | select -First 1).trim()
 # $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 # (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
+Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
@@ -58,8 +59,8 @@ $UnattendedArgs1 = "/i $Source ALLUSERS=1 /qn /liewa ${env:SystemRoot}\Temp\$Sou
 $UnattendedArgs2 = "/i $SourceFont ALLUSERS=1 /qn /liewa ${env:SystemRoot}\Temp\$SourceFont.log"
 $UnattendedArgs3 = "/i $SourceDic ALLUSERS=1 /qn /liewa ${env:SystemRoot}\Temp\$SourceDic.log"
 
-$ProgressPreference = 'SilentlyContinue'
-$URL = "ftp://ftp.adobe.com/pub/adobe/reader/win/AcrobatDC/1500720033/AcroRdrDC1500720033_de_DE.msi"
+#$ProgressPreference = 'SilentlyContinue'
+$URL = "ftp://ftp.adobe.com/pub/adobe/reader/win/AcrobatDC/1500720033/AcroRdrDC1500720033_nb_NO.msi"
 $URLFont = "ftp://ftp.adobe.com/pub/adobe/reader/win/AcrobatDC/misc/FontPack1900820071_XtdAlf_Lang_DC.msi"
 $URLDic = "ftp://ftp.adobe.com/pub/adobe/reader/win/AcrobatDC/misc/AcroRdrSD1900820071_all_DC.msi"
 $URLADM = "ftp://ftp.adobe.com/pub/adobe/reader/win/AcrobatDC/misc/ReaderADMTemplate.zip"
@@ -81,7 +82,11 @@ If (!(Test-Path -Path $Source)) {
 
     $MSP = "$($ftp)$($currentfolder)`/AcroRdrDCUpd$($currentfolder).msp"
     $filename = ($MSP.split("/"))[-1]
-    Invoke-WebRequest -UseBasicParsing -Uri $msp -OutFile $filename
+    $path = Get-Location
+    $output = "$path\$filename"
+    (New-Object System.Net.WebClient).DownloadFile($MSP, $output)
+
+    #Invoke-WebRequest -uri "$msp" -OutFile $filename
          }
         Else {
             Write-Verbose "Files exists. Skipping Download." -Verbose
