@@ -84,9 +84,7 @@ If (!(Test-Path -Path $Source)) {
     $filename = ($MSP.split("/"))[-1]
     $path = Get-Location
     $output = "$path\$filename"
-    (New-Object System.Net.WebClient).DownloadFile($MSP, $output)
-
-    #Invoke-WebRequest -uri "$msp" -OutFile $filename
+    Invoke-WebRequest -uri $msp -OutFile $filename
          }
         Else {
             Write-Verbose "Files exists. Skipping Download." -Verbose
@@ -96,7 +94,7 @@ Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs1 -Wait -Passthru).ExitCode
 
 Write-Verbose "Patching $Vendor $Product with $Currentfolder" -Verbose
-$UnattendedArgs4 = "/p $filename /qn /liewa ${env:SystemRoot}\Temp\$filename.log"
+$UnattendedArgs4 = "/p $filename /norestart /qn /liewa ${env:SystemRoot}\Temp\$filename.log"
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs4 -Wait -Passthru).ExitCode
 
 Write-Verbose "Starting Installation of $Vendor $Product Extended Asian Language Font Pack" -Verbose
