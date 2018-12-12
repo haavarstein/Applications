@@ -84,7 +84,7 @@ If (!(Test-Path -Path $Source)) {
     $filename = ($MSP.split("/"))[-1]
     $path = Get-Location
     $output = "$path\$filename"
-    Invoke-WebRequest -uri $msp -OutFile $filename
+    Invoke-WebRequest -UseBasicParsing -uri $msp -OutFile $filename
          }
         Else {
             Write-Verbose "Files exists. Skipping Download." -Verbose
