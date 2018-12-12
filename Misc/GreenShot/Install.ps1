@@ -3,7 +3,7 @@ function Get-GreenShotURL {
     [cmdletbinding()]
     [outputtype([string])]
     $GreenshotURL="http://getgreenshot.org/downloads/"
-    $raw = (wget -Uri $GreenshotURL).content
+    $raw = (wget -UseBasicParsing -Uri $GreenshotURL).content
     #we are looking for the github download
     $pattern = "https:\/\/github\.com.+\.exe"
     #split into lines, then split into tags, #$%^ is arbitrary
@@ -79,8 +79,8 @@ If (!(Test-Path -Path $Source)) {
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 if (Get-Process 'Greenshot' -ea SilentlyContinue) {Stop-Process -processname Greenshot}
-.\GreenShot.exe /VERYSILENT
-Start-Sleep -s 10
+.\GreenShot.exe /VERYSILENT /SUPPRESSMESSAGEBOXES /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS /NORESTART
+Start-Sleep -s 60
 get-process iexplore | stop-process
 
 Write-Verbose "Customization" -Verbose
