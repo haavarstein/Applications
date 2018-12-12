@@ -79,7 +79,7 @@ If (!(Test-Path -Path $Source)) {
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 if (Get-Process 'Greenshot' -ea SilentlyContinue) {Stop-Process -processname Greenshot}
-.\GreenShot.exe /VERYSILENT /SUPPRESSMESSAGEBOXES /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS /NORESTART
+.\GreenShot.exe /VERYSILENT /NORESTART
 Start-Sleep -s 60
 get-process iexplore | stop-process
 
