@@ -85,6 +85,7 @@ $ExtPack = "vbox-extpack"
 $Version = "$(Get-VirtualBoxVersion)"
 $dir = "https://download.virtualbox.org/virtualbox/$Version/"
 $extpackfile = (wget -Uri $dir -UseBasicParsing).links.href | Select-String -Pattern "$Version.$ExtPack"
+$extpackurl = "$dir" + "$extpackfile"
 Invoke-WebRequest -UseBasicParsing -Uri $extpackurl -OutFile $extpackfile
 Set-Alias vboxmanage "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe"
 "y" | vboxmanage extpack install --replace $extpackfile
