@@ -98,7 +98,7 @@ CD $Version
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source)) {
     Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source
-    Invoke-WebRequest -UseBasicParsing -Uri $extpackurl -OutFile "VB-ExtPack.vbox-extpack"
+    Invoke-WebRequest -UseBasicParsing -Uri $extpackurl -OutFile $extpackfile
 
          }
         Else {
@@ -108,7 +108,9 @@ If (!(Test-Path -Path $Source)) {
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
 
-Write-Verbose "Customization" -Verbose
+Write-Verbose "Starting Installation of $Vendor $Product $Version Extension Pack" -Verbose
+Set-Alias vboxmanage "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe"
+"y" | vboxmanage extpack install --replace $extpackfile
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
