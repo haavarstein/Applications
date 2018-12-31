@@ -82,7 +82,6 @@ Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version Extension Pack" -Verbose
 $ExtPack = "vbox-extpack"
-$Version = "$(Get-VirtualBoxVersion)"
 $dir = "https://download.virtualbox.org/virtualbox/$Version/"
 $extpackfile = (wget -Uri $dir -UseBasicParsing).links.href | Select-String -Pattern "$Version.$ExtPack"
 $extpackurl = "$dir" + "$extpackfile"
