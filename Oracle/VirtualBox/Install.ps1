@@ -58,7 +58,6 @@ $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = '--silent'
 $url = "$(Get-VirtualBoxUri)"
-$extpackurl = "$(Get-VirtualBoxExtPackUri)"
 $ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS
