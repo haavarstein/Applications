@@ -70,7 +70,7 @@ CD $Version
 
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source)) {
-    Invoke-WebRequest -Uri $url -OutFile $Source1
+    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source
          }
         Else {
             Write-Verbose "File exists. Skipping Download." -Verbose
