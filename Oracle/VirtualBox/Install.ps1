@@ -43,32 +43,7 @@ Write-Output $url
 
 }
 
-Function Get-VirtualBoxExtPackUri {
-    <#
-        .SYNOPSIS
-            Gets the latest VirtualBox Extension Pack download URI
-        .DESCRIPTION
-            Gets the latest agent VirtualBox Extension Pack download URI
-        .NOTES
-            Author: Trond Eirik Haavarstein
-            Twitter: @xenappblog
-        .LINK
-            https://github.com/aaronparker/Get.Software
-#>
-
-$ExtPack = "vbox-extpack"
-$Version = "$(Get-VirtualBoxVersion)"
-$dir = "https://download.virtualbox.org/virtualbox/$Version/"
-$extpackfile = (wget -Uri $dir -UseBasicParsing).links.href | Select-String -Pattern "$Version.$ExtPack"
-
-$urlextpack = "$dir" + "$extpackfile"
-
-Write-Output $urlextpack
-
-}
-
-
-
+Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
@@ -98,8 +73,6 @@ CD $Version
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source)) {
     Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source
-    Invoke-WebRequest -UseBasicParsing -Uri $extpackurl -OutFile $extpackfile
-
          }
         Else {
             Write-Verbose "File exists. Skipping Download." -Verbose
@@ -109,6 +82,11 @@ Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version Extension Pack" -Verbose
+$ExtPack = "vbox-extpack"
+$Version = "$(Get-VirtualBoxVersion)"
+$dir = "https://download.virtualbox.org/virtualbox/$Version/"
+$extpackfile = (wget -Uri $dir -UseBasicParsing).links.href | Select-String -Pattern "$Version.$ExtPack"
+Invoke-WebRequest -UseBasicParsing -Uri $extpackurl -OutFile $extpackfile
 Set-Alias vboxmanage "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe"
 "y" | vboxmanage extpack install --replace $extpackfile
 
