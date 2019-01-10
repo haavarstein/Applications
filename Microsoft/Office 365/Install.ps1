@@ -1,3 +1,29 @@
+function Get-ODTUri {
+    <#
+        .NOTES
+            Author: Bronson Magnan
+            Twitter: @cit_bronson
+            Modified by: Marco Hofmann
+            Twitter: @xenadmin
+    #>
+    [CmdletBinding()]
+    [OutputType([string])]
+    param ()
+
+    $url = "https://www.microsoft.com/en-us/download/confirmation.aspx?id=49117"
+    try {
+        $response = Invoke-WebRequest -UseBasicParsing -Uri $url -ErrorAction SilentlyContinue
+    }
+    catch {
+        Throw "Failed to connect to ODT: $url with error $_."
+        Break
+    }
+    finally {
+        $ODTUri = $response.links | Where-Object {$_.outerHTML -like "*click here to download manually*"}
+        Write-Output $ODTUri.href
+    }
+}
+
 # PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
 
 # Example 1: Start-Process "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru
@@ -18,21 +44,29 @@ $StartDTM = (Get-Date)
 $Vendor = "Microsoft"
 $Product = "Office 365 x32"
 $PackageName = "setup"
-$Version = "16.0.10810.33603"
 $InstallerType = "exe"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = '/configure RDSH.xml'
 $UnattendedArgs2 = '/download RDSH.xml'
+$URL = $(Get-ODTUri)
+$ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS
+
+Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile .\officedeploymenttool.exe
+$Version = (Get-Command .\officedeploymenttool.exe).FileVersionInfo.FileVersion
+
  
 if( -Not (Test-Path -Path $Version ) )
 {
     New-Item -ItemType directory -Path $Version
     Copy-item .\RDSH.xml -Destination $Version -Force
-    Copy-item .\Setup.exe -Destination $Version -Force
+    $Dir = Get-Location
+    $Path = "$Dir" + "\$Version"
+    .\officedeploymenttool.exe /quiet /extract:.\$Version
+    start-sleep -s 5
 }
 
 CD $Version
