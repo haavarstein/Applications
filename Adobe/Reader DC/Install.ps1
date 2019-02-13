@@ -41,6 +41,7 @@ $currentfolder = ($folders | sort -Descending | select -First 1).trim()
 # $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 # (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
+Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
@@ -49,7 +50,6 @@ $Product = "Reader DC"
 $PackageName = "AcroRdrDC"
 $Version = "$currentfolder"
 $InstallerType = "exe"
-$Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
@@ -62,20 +62,22 @@ if ( -Not (Test-Path -Path $Version ) ) {
     New-Item -ItemType directory -Path $Version
 }
 
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
+$EXEDownload = "$($ftp)$($currentfolder)`/AcroRdrDC$($currentfolder)_en_US.exe"
+$filename = ($EXEDownload.split("/"))[-1]
+
 CD $Version
 
-Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
-If (!(Test-Path -Path $Source)) {
-    $EXEDownload = "$($ftp)$($currentfolder)`/AcroRdrDC$($currentfolder)_en_US.exe"
-    $filename = ($EXEDownload.split("/"))[-1]
-    wget -uri $EXEDownload -outfile .\$filename
+If (!(Test-Path -Path $filename)) {
+    Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
+    invoke-webrequest -UseBasicParsing -uri $EXEDownload -outfile .\$filename
 }
 Else {
     Write-Verbose "File exists. Skipping Download." -Verbose
 }
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
-(Start-Process "$Source" $UnattendedArgs -Wait -Passthru).ExitCode
+(Start-Process "$filename" $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Customization" -Verbose
 Unregister-ScheduledTask -TaskName "Adobe Acrobat Update Task" -Confirm:$false
