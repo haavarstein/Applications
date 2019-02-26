@@ -69,9 +69,9 @@ If (!(Test-Connection -ComputerName www.google.com -Count 1 -quiet)) {
     }
 
 if (!$Version) {
-    $Version | Out-File -FilePath ".\Version.txt" -Force
-else {
     $Version = Get-Content -Path ".\Version.txt"
+else {
+    $Version | Out-File -FilePath ".\Version.txt" -Force
     }
 }
 
