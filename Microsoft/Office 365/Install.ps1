@@ -25,15 +25,11 @@ function Get-ODTUri {
 }
 
 # PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
-
 # Example 1: Start-Process "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru
-
 # Example 2 Powershell: Start-Process powershell.exe -ExecutionPolicy bypass -file $Destination
-
 # Example 3 EXE (Always use ' '):
 # $UnattendedArgs='/qn'
 # (Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
-
 # Example 4 MSI (Always use " "):
 # $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 # (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
@@ -64,17 +60,18 @@ If (!(Test-Connection -ComputerName www.google.com -Count 1 -quiet)) {
     Else {
     Write-Verbose "Internet Connection is Up" -Verbose
     }
- 
-if (!$Version) {
-    $Version = Get-Content -Path ".\Version.txt"
-Else {
-    $Version | Out-File -FilePath ".\Version.txt" -Force
-    }
-}
 
+Write-Verbose "Downloading Latest Version of Office 365 Deployment Tool (ODT)" -Verbose
 Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile .\officedeploymenttool.exe
 $Version = (Get-Command .\officedeploymenttool.exe).FileVersionInfo.FileVersion
 
+Write-Verbose "Writing Version Number to File" -Verbose
+if (!$Version) {
+    $Version = Get-Content -Path ".\Version.txt"
+    }
+    Else {
+    $Version | Out-File -FilePath ".\Version.txt" -Force
+    }
 
 if( -Not (Test-Path -Path $Version ) )
 {
