@@ -68,12 +68,13 @@ If (!(Test-Connection -ComputerName www.google.com -Count 1 -quiet)) {
     Write-Verbose "Internet Connection is Up" -Verbose
     }
 
+Write-Verbose "Writing Version Number to File" -Verbose
 if (!$Version) {
     $Version = Get-Content -Path ".\Version.txt"
-else {
+    }
+    Else {
     $Version | Out-File -FilePath ".\Version.txt" -Force
     }
-}
 
 if( -Not (Test-Path -Path $Version ) )
 {
