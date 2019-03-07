@@ -99,9 +99,7 @@ Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 
 Write-Verbose "Customization" -Verbose
 Unregister-ScheduledTask -TaskName "Adobe Acrobat Update Task" -Confirm:$false
-cmd.exe /c "reg add "HKLM\SOFTWARE\Policies\Adobe\Acrobat Reader\DC\FeatureLockDown\cWelcomeScreen" /f /v bShowWelcomeScreen /t REG_DWORD /d 0"
-cmd.exe /c "reg add "HKLM\SOFTWARE\Policies\Adobe\Acrobat Reader\DC\FeatureLockDown" /f /v bUsageMeasurement /t REG_DWORD /d 0"
-sc.exe config AdobeARMservice start= disabled
+Set-Service AdobeARMservice -StartupType Disabled
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
