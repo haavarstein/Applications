@@ -38,6 +38,7 @@ function Get-ODTUri {
 # $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 # (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
+Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
@@ -53,26 +54,43 @@ $UnattendedArgs2 = '/download RDSH.xml'
 $URL = $(Get-ODTUri)
 $ProgressPreference = 'SilentlyContinue'
 
-Start-Transcript $LogPS
+Start-Transcript $LogPS | Out-Null
+
+Write-Verbose "Checking Internet Connection" -Verbose
+ 
+If (!(Test-Connection -ComputerName www.google.com -Count 1 -quiet)) {
+    Write-Verbose "Internet Connection is Down" -Verbose
+    }
+    Else {
+    Write-Verbose "Internet Connection is Up" -Verbose
+    }
+ 
+if (!$Version) {
+    $Version = Get-Content -Path ".\Version.txt"
+Else {
+    $Version | Out-File -FilePath ".\Version.txt" -Force
+    }
+}
 
 Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile .\officedeploymenttool.exe
 $Version = (Get-Command .\officedeploymenttool.exe).FileVersionInfo.FileVersion
 
- 
+
 if( -Not (Test-Path -Path $Version ) )
 {
-    New-Item -ItemType directory -Path $Version
+    New-Item -ItemType directory -Path $Version | Out-Null
     Copy-item .\RDSH.xml -Destination $Version -Force
     $Dir = Get-Location
     $Path = "$Dir" + "\$Version"
     .\officedeploymenttool.exe /quiet /extract:.\$Version
+    $Version | Out-File -FilePath ".\Version.txt" -Force
     start-sleep -s 5
 }
 
 CD $Version
 
-Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $PSScriptRoot\$Version\Office\Data\v32.cab)) {
+    Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
     (Start-Process "Setup.exe" -ArgumentList $unattendedArgs2 -Wait -Passthru).ExitCode
          }
         Else {
@@ -88,4 +106,4 @@ Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
 Write-Verbose "Elapsed Time: $(($EndDTM-$StartDTM).TotalSeconds) Seconds" -Verbose
 Write-Verbose "Elapsed Time: $(($EndDTM-$StartDTM).TotalMinutes) Minutes" -Verbose
-Stop-Transcript
+Stop-Transcript | Out-Null
