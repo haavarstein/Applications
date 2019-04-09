@@ -24,16 +24,17 @@ $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$UnattendedArgs='setup.exe -silent -nowait -responseFile "C:\Windows\Temp\silent.rsp"'
+#$UnattendedArgs='setup.exe -ignorePrereq -nowait -nowelcome -force -waitforcompletion -silent -responseFile "C:\Windows\Temp\silent.rsp"'
 
 Start-Transcript $LogPS | Out-Null
 
 Copy-Item Silent.rsp -Destination "C:\Windows\Temp\silent.rsp"
+xcopy 11gR2 C:\Oracle /e /y /s /q /i
 
-CD $Version
+CD C:\Oracle
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
-(Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
+cmd /c "setup.exe -ignorePrereq -nowait -nowelcome -force -waitforcompletion -silent -responseFile C:\Windows\Temp\silent.rsp"
 
 Write-Verbose "Customization" -Verbose
 
