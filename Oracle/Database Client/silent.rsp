@@ -1,0 +1,144 @@
+###############################################################################
+## Copyright(c) Oracle Corporation 1998,2008. All rights reserved.           ##
+##                                                                           ##
+## Specify values for the variables listed below to customize                ##
+## your installation.                                                        ##
+##                                                                           ##
+## Each variable is associated with a comment. The comment                   ##
+## can help to populate the variables with the appropriate                   ##
+## values.							             ##
+##                                                                           ##
+###############################################################################
+
+#-------------------------------------------------------------------------------
+# Do not change the following system generated value. 
+#-------------------------------------------------------------------------------
+oracle.install.responseFileVersion=http://www.oracle.com/2007/install/rspfmt_clientinstall_response_schema_v11_2_0
+
+#-------------------------------------------------------------------------------
+# This variable holds the hostname of the system as set by the user. 
+# It can be used to force the installation to use an alternative   
+# hostname rather than using the first hostname found on the system
+# (e.g., for systems with multiple hostnames and network interfaces).
+ORACLE_HOSTNAME=000.000.000.000
+#-------------------------------------------------------------------------------
+# Unix group to be set for the inventory directory.  
+UNIX_GROUP_NAME=
+#-------------------------------------------------------------------------------
+# Inventory location.
+INVENTORY_LOCATION=C:\Program Files (x86)\Oracle\Inventory
+#-------------------------------------------------------------------------------
+# Specify the languages in which the components will be installed.             
+#
+# en   : English                  ja   : Japanese                  
+# fr   : French                   ko   : Korean                    
+# ar   : Arabic                   es   : Latin American Spanish    
+# bn   : Bengali                  lv   : Latvian                   
+# pt_BR: Brazilian Portuguese     lt   : Lithuanian                
+# bg   : Bulgarian                ms   : Malay                     
+# fr_CA: Canadian French          es_MX: Mexican Spanish           
+# ca   : Catalan                  no   : Norwegian                 
+# hr   : Croatian                 pl   : Polish                    
+# cs   : Czech                    pt   : Portuguese                
+# da   : Danish                   ro   : Romanian                  
+# nl   : Dutch                    ru   : Russian                   
+# ar_EG: Egyptian                 zh_CN: Simplified Chinese        
+# en_GB: English (Great Britain)  sk   : Slovak                    
+# et   : Estonian                 sl   : Slovenian                 
+# fi   : Finnish                  es_ES: Spanish                   
+# de   : German                   sv   : Swedish                   
+# el   : Greek                    th   : Thai                      
+# iw   : Hebrew                   zh_TW: Traditional Chinese       
+# hu   : Hungarian                tr   : Turkish                   
+# is   : Icelandic                uk   : Ukrainian                 
+# in   : Indonesian               vi   : Vietnamese                
+# it   : Italian                                                   
+#
+# Example : SELECTED_LANGUAGES=en,fr,ja
+SELECTED_LANGUAGES=en
+#-------------------------------------------------------------------------------
+# Complete path of the Oracle Home  
+ORACLE_HOME=C:\Oracle\product\11.2.0\client_1
+#-------------------------------------------------------------------------------
+# Complete path of the Oracle Base. 
+ORACLE_BASE=C:\Oracle
+#------------------------------------------------------------------------------
+#Name       : INSTALL_TYPE
+#Datatype   : String
+#Description: Installation type of the component.
+#
+#             The following choices are available. The value should contain
+#             only one of these choices.
+#             InstantClient : InstantClient
+#             Administrator : Administrator
+#             Runtime       : Runtime
+#             Custom        : Custom
+#
+#Example    : INSTALL_TYPE = "Administrator"
+#------------------------------------------------------------------------------
+oracle.install.client.installType=Administrator
+#-------------------------------------------------------------------------------
+# Name       : oracle.install.client.customComponents
+# Datatype   : StringList
+#
+# This property is considered only if INSTALL_TYPE is set to "Custom"
+#
+# Description: List of Client Components you would like to install
+#
+#   The following choices are available. You may specify any
+#   combination of these choices.  The components you choose should
+#   be specified in the form "internal-component-name:version"
+#   Below is a list of components you may specify to install.
+#
+# oracle.sqlj:11.2.0.1.0 -- "Oracle SQLJ"
+# oracle.rdbms.util:11.2.0.1.0 -- "Oracle Database Utilities"
+# oracle.javavm.client:11.2.0.1.0 -- "Oracle Java Client"
+# oracle.sqlplus:11.2.0.1.0 -- "SQL*Plus"
+# oracle.dbjava.jdbc:11.2.0.1.0 -- "Oracle JDBC/THIN Interfaces"
+# oracle.ldap.client:11.2.0.1.0 -- "Oracle Internet Directory Client"
+# oracle.rdbms.oci:11.2.0.1.0 -- "Oracle Call Interface (OCI)"
+# oracle.precomp:11.2.0.1.0 -- "Oracle Programmer"
+# oracle.xdk:11.2.0.1.0 -- "Oracle XML Development Kit"
+# oracle.network.aso:11.2.0.1.0 -- "Oracle Advanced Security"
+# oracle.assistants.oemlt:11.2.0.1.0 -- "Enterprise Manager Minimal Integration"
+# oracle.oraolap.mgmt:11.2.0.1.0 -- "OLAP Analytic Workspace Manager and Worksheet"
+# oracle.network.client:11.2.0.1.0 -- "Oracle Net"
+# oracle.ordim.client:11.2.0.1.0 -- "Oracle Multimedia Client Option"
+# oracle.ons:11.2.0.0.0 -- "Oracle Notification Service"
+# oracle.odbc:11.2.0.1.0 -- "Oracle ODBC Driver"
+# oracle.has.client:11.2.0.1.0 -- "Oracle Clusterware High Availability API"
+# oracle.dbdev:11.2.0.1.0 -- "Oracle SQL Developer"
+# oracle.rdbms.scheduler:11.2.0.1.0 -- "Oracle Scheduler Agent"
+#
+# Example    : oracle.install.client.customComponents="oracle.precomp:11.2.0.1.0","oracle.ons:11.2.0.0.0","oracle.oraolap.mgmt:11.2.0.1.0","oracle.rdbms.scheduler:11.2.0.1.0"
+#-------------------------------------------------------------------------------
+oracle.install.client.customComponents="oracle.sqlj:11.2.0.1.0","oracle.rdbms.util:11.2.0.1.0","oracle.javavm.client:11.2.0.1.0","oracle.sqlplus:11.2.0.1.0","oracle.dbjava.jdbc:11.2.0.1.0","oracle.ldap.client:11.2.0.1.0","oracle.rdbms.oci:11.2.0.1.0","oracle.precomp:11.2.0.1.0","oracle.xdk:11.2.0.1.0","oracle.network.aso:11.2.0.1.0","oracle.assistants.oemlt:11.2.0.1.0","oracle.oraolap.mgmt:11.2.0.1.0","oracle.network.client:11.2.0.1.0","oracle.network.cman:11.2.0.1.0","oracle.network.listener:11.2.0.1.0","oracle.ordim.client:11.2.0.1.0","oracle.ons:11.2.0.0.0","oracle.odbc:11.2.0.1.0","oracle.has.client:11.2.0.1.0","oracle.dbdev:11.2.0.1.0","oracle.rdbms.scheduler:11.2.0.1.0"
+#-------------------------------------------------------------------------------
+#Name       : MTS_PORT
+#Datatype   : int 
+#Description: Port number to be used for by the Oracle MTS Recovery Service to listen
+#		  for requests. This needs to be entered in case oracle.ntoramts is 
+#	        selected in the list of custom components in custom install
+#
+#
+#Example    : MTS_PORT = 2030
+#------------------------------------------------------------------------------
+oracle.install.client.oramtsPortNumber=49152
+
+#------------------------------------------------------------------------------
+# Host name to be used for by the Oracle Scheduler Agent.
+# This needs to be entered in case oracle.rdbms.scheduler is selected in the
+# list of custom components during custom install
+#
+# Example    : oracle.install.client.schedulerAgentHostName = acme.domain.com
+#------------------------------------------------------------------------------
+oracle.install.client.schedulerAgentHostName=
+
+#------------------------------------------------------------------------------
+# Port number to be used for by the Oracle Scheduler Agent.
+# This needs to be entered in case oracle.rdbms.scheduler is selected in the
+# list of custom components during custom install
+#
+# Example: oracle.install.client.schedulerAgentPortNumber = 1500
+#------------------------------------------------------------------------------
+oracle.install.client.schedulerAgentPortNumber=
