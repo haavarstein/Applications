@@ -12,6 +12,7 @@ $ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS
 
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
 Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile "${env:SystemRoot}\Temp\$Product.$InstallerType"
 Expand-Archive -Path "${env:SystemRoot}\Temp\$Product.$InstallerType" -DestinationPath "${env:SystemRoot}\System32"
 
