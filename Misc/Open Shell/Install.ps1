@@ -34,10 +34,10 @@ $Version = $Version = $latestVersion.Trim(".windows.1 , v")
 $InstallerType = "exe"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
-$LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
+$LogApp = "${env:SystemRoot}" + "\Temp\OpenShell.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $url = $releases.browser_download_url | Select-Object -first 1
-$UnattendedArgs = "/i $Source ALLUSERS=1 /qn /liewa $LogApp"
+$UnattendedArgs = "/i ""$Source"" ALLUSERS=1 /qn"
 
 Start-Transcript $LogPS | Out-Null
 
@@ -58,6 +58,7 @@ If (!(Test-Path -Path $Source)) {
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 .\OpenShellSetup.exe extract64
+Start-Sleep -s 3
 $Source = Get-ChildItem *.msi
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
