@@ -1,7 +1,6 @@
 # Get latest version and download latest Open Shell release via GitHub API
 
 # GitHub API to query repository
-$repo = "git-for-windows/git"
 $releases = "https://api.github.com/repos/Open-Shell/Open-Shell-Menu/releases/latest"
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -37,7 +36,8 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\OpenShell.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $url = $releases.browser_download_url | Select-Object -first 1
-$UnattendedArgs = "/i ""$Source"" ALLUSERS=1 /qn"
+$ProgressPreference = 'SilentlyContinue'
+$UnattendedArgs = "/i OpenShell.msi ALLUSERS=1 /qn /liewa $LogApp"
 
 Start-Transcript $LogPS | Out-Null
 
@@ -59,7 +59,8 @@ If (!(Test-Path -Path $Source)) {
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 .\OpenShellSetup.exe extract64
 Start-Sleep -s 3
-$Source = Get-ChildItem *.msi
+$File = Get-ChildItem *.msi
+Rename-Item $File "OpenShell.msi"
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Customization" -Verbose
