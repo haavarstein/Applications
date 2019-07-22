@@ -30,7 +30,7 @@ function Get-CurrentControlUpAgentURL {
         [string]$architecture = "x64"
     )
     $version = Get-CurrentControlUpAgentVersion
-    $DownloadURL = "https://downloads.controlup.com/agent/$($version.tostring())/ControlUpAgent-$($netversion)-$($architecture).msi"
+    $DownloadURL = "https://downloads.controlup.com/agent/$($version.tostring())/ControlUpAgent-$($netversion)-$($architecture)-$($version).msi"
     Write-Output $DownloadURL
 }
 
@@ -54,7 +54,7 @@ $StartDTM = (Get-Date)
 $Vendor = "SmartX"
 $Product = "ControlUp Agent x64"
 $Version = "$(Get-CurrentControlUpAgentVersion)"
-$PackageName = "ControlUpAgent-net45-x64"
+$PackageName = "ControlUpAgent-net45-x64-7.3.1.2"
 $InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
@@ -63,6 +63,7 @@ $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageNa
 $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 $url = "$(Get-CurrentControlUpAgentURL)"
 $ProgressPreference = 'SilentlyContinue'
+$ServiceName = "cuagent"
 
 Start-Transcript $LogPS
 
@@ -76,6 +77,28 @@ if ( -Not (Test-Path -Path $Version ) ) {
             Write-Verbose "File exists. Skipping Download." -Verbose
             CD $Version
          }
+
+
+Write-Verbose "Checking if $Vendor $Product Service is Running" -Verbose
+
+If (Get-Service $serviceName -ErrorAction SilentlyContinue) {
+
+    If ((Get-Service $serviceName).Status -eq 'Running') {
+
+        Set-Service -Name cuagent -StartupType Disabled -Status Stopped 
+        Write-Verbose "Stopping and Disabling $serviceName" -Verbose
+
+    } Else {
+
+        Write-Verbose "$serviceName found, but it is not running" -Verbose
+
+    }
+
+} Else {
+
+    Write-Verbose "$serviceName not found" -Verbose
+
+}
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
