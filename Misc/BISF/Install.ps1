@@ -18,17 +18,17 @@ $StartDTM = (Get-Date)
 
 $Vendor = "Misc"
 $Product = "BISF"
-$PackageName = "setup-BIS-F-6.1.0_build01.101"
-$Version = "6.1.0.01.101"
+$PackageName = "setup-BIS-F"
+$Version = "6.1.0.01.105"
 $InstallerType = "exe"
-$Source = "$PackageName" + "." + "zip"
+$Source = "$PackageName" + "." + "exe"
 $SourceXML = "$PackageName" + "." + "zip"
 $SourceCTX = "CitrixOptimizer.zip"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = "/VERYSILENT /log:$LogApp /norestart /noicons"
-$url = "http://loginmarketing.blob.core.windows.net/public/tools/setup-BIS-F-6.1.0_build01.101.exe.zip"
+$url = "https://github.com/EUCweb/BIS-F/releases/download/6.1.1.01.105/setup-BIS-F-6.1.1_build01.105.exe"
 $xml = "https://eucweb.com/download/765/"
 $ctx = "http://xenapptraining.s3.amazonaws.com/Hydration/CitrixOptimizer.zip"
 $ProgressPreference = 'SilentlyContinue'
@@ -37,15 +37,14 @@ Start-Transcript $LogPS
 
 if( -Not (Test-Path -Path $Version ) )
 {
-    New-Item -ItemType directory -Path $Version
+    New-Item -ItemType directory -Path $Version | Out-Null
 }
 
 CD $Version
 
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source)) {
-    Invoke-WebRequest -Uri $url -OutFile $Source
-    Expand-Archive -Path $Source -DestinationPath .\
+    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source
     Remove-Item -Path $Source
     Write-Verbose "Downloading $Vendor $Product Reference Configuration" -Verbose
     Invoke-WebRequest -Uri $xml -OutFile $SourceXML
