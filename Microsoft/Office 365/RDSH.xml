@@ -1,16 +1,17 @@
-<Configuration>
-    <Add OfficeClientEdition="32" Channel="Monthly">
-        <Product ID="O365ProPlusRetail">
-            <Language ID="en-us"/>
-            <ExcludeApp ID="OneNote"/>
-            <ExcludeApp ID="Groove"/>
-	    <ExcludeApp ID="InfoPath"/>
-        </Product>
-    </Add>
-    <Updates Enabled="TRUE" Channel="Monthly"/>
-    <Property Name="FORCEAPPSHUTDOWN" Value="TRUE"/>
-    <Display AcceptEULA="TRUE" Level="None" />
-    <Logging Level="Standard" Path="%temp%" />
-    <Property Name="SharedComputerLicensing" Value="1" />
-    <!--Silent install of 32-Bit Office 365 ProPlus with Updates and Logging enabled-->
+<Configuration ID="0a8cb0dd-c6c7-408f-8ae8-2348f6595787">
+  <Add OfficeClientEdition="32" Channel="Monthly" ForceUpgrade="TRUE">
+    <Product ID="O365ProPlusRetail">
+      <Language ID="en-us" />
+      <ExcludeApp ID="Groove" />
+      <ExcludeApp ID="Lync" />
+      <ExcludeApp ID="OneDrive" />
+	  <ExcludeApp ID="Teams"/>
+    </Product>
+  </Add>
+  <Property Name="SharedComputerLicensing" Value="1" />
+  <Property Name="PinIconsToTaskbar" Value="TRUE" />
+  <Property Name="SCLCacheOverride" Value="0" />
+  <Updates Enabled="TRUE" />
+  <Display Level="None" AcceptEULA="TRUE" />
+  <Logging Level="Standard" Path="%temp%" />
 </Configuration>
