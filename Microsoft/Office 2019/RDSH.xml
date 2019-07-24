@@ -1,0 +1,26 @@
+<Configuration>
+
+  <Add OfficeClientEdition="64" Channel="PerpetualVL2019">
+    <Product ID="ProPlus2019Volume">
+      <Language ID="en-us" />
+	  <ExcludeApp ID="Groove" />
+      <ExcludeApp ID="Lync" />
+      <ExcludeApp ID="OneDrive" />
+	  <ExcludeApp ID="Teams"/>
+    </Product>
+    <!-- <Product ID="VisioPro2019Volume">
+      <Language ID="en-us" />
+    </Product>
+    <Product ID="ProjectPro2019Volume">
+      <Language ID="en-us" />
+    </Product> -->
+  </Add>
+
+  <!--  <RemoveMSI All="True" /> -->
+
+  <Display Level="None" AcceptEULA="TRUE" />
+
+  <!--  <Property Name="AUTOACTIVATE" Value="1" />  -->
+  <!--  <Product ID="ProPlus2019Volume"  PIDKEY="#####-#####-#####-#####-#####" > -->
+
+</Configuration>
