@@ -12,7 +12,7 @@ Function Get-VMWareToolsVersion {
     $pattern = "[0-9]+\.[0-9]+\.[0-9]+\-[0-9]+\-x86_64"
 
     #get the raw page content
-    $pageContent=(wget -Uri $vmwareTools).content
+    $pageContent=(wget -UseBasicParsing -Uri $vmwareTools).content
 
     #change one big string into many strings, then find only the line with the version number
     $interestingLine = ($pageContent.split("`n") | Select-string -Pattern $pattern).tostring().trim()
@@ -42,7 +42,7 @@ Function Get-VMWareToolsUri {
     $pattern = "[0-9]+\.[0-9]+\.[0-9]+\-[0-9]+\-x86_64"
 
     #get the raw page content
-    $pageContent=(wget -Uri $vmwareTools).content
+    $pageContent=(wget -UseBasicParsing -Uri $vmwareTools).content
 
     #change one big string into many strings, then find only the line with the version number
     $interestingLine = ($pageContent.split("`n") | Select-string -Pattern $pattern).tostring().trim()
@@ -92,7 +92,7 @@ CD $Version
 
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source)) {
-    Invoke-WebRequest -Uri $url -OutFile $Source
+    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source
          }
         Else {
             Write-Verbose "File exists. Skipping Download." -Verbose
