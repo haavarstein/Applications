@@ -1,0 +1,40 @@
+## FROM RAS Server ##
+
+Import-Module PSAdmin
+Set-NetFirewallProfile -Profile Domain -Enabled False
+$Server = "pras-01.ctxlab.local"
+$User = "administrator@ctxlab.local"
+$Pwd = "P@ssw0rd"
+$Password = ConvertTo-SecureString $Pwd -AsPlainText -Force
+$Email = "xxx@gmail.com"
+$EmailPwd = "P@ssw0rd"
+$EmailPassword = ConvertTo-SecureString $EmailPwd -AsPlainText -Force
+New-RASSession -Username $User -Password $Password -Server $Server
+$RDS1 = New-RDS -Server "ws16rdsh-01.ctxlab.local"
+$RDS2 = New-RDS -Server "ws16rdsh-02.ctxlab.local"
+$RDSList = Get-RDS
+New-RDSGroup -Name "Windows 2016 RDS" -RDSObject $RDSList
+Set-RDSDefaultSettings -MaxSessions 100 -EnableAppMonitoring $true
+New-PubRDSDesktop -Name "Desktop"
+Set-RASTurboSettings -Enable $False
+Set-2FA -Provider GAuthTOTP
+Invoke-LicenseActivate -email $Email -Password $EmailPassword
+Invoke-Apply
+
+## FROM RDS WORKER ##
+
+Import-Module PSAdmin
+$Server = "ras-01.ctxlab.local"
+$User = "administrator@ctxlab.local"
+$Pwd = "P@ssw0rd"
+$Password = ConvertTo-SecureString $Pwd -AsPlainText -Force
+New-RASSession -Username $User -Password $Password -Server $Server
+New-PubRDSApp -Name "Word 2016" -Target "C:\Program Files (x86)\Microsoft Office\root\Office16\WINWORD.EXE" -Icon "C:\Program Files (x86)\Microsoft Office\root\Office16\WINWORD.EXE" -IconIndex 0
+New-PubRDSApp -Name "Excel 2016" -Target "C:\Program Files (x86)\Microsoft Office\root\Office16\EXCEL.EXE" -Icon "C:\Program Files (x86)\Microsoft Office\root\Office16\EXCEL.EXE" -IconIndex 0
+New-PubRDSApp -Name "PowerPoint 2016" -Target "C:\Program Files (x86)\Microsoft Office\root\Office16\POWERPNT.EXE" -Icon "C:\Program Files (x86)\Microsoft Office\root\Office16\POWERPNT.EXE" -IconIndex 0
+New-PubRDSApp -Name "Outlook 2016" -Target "C:\Program Files (x86)\Microsoft Office\root\Office16\OUTLOOK.EXE" -Icon "C:\Program Files (x86)\Microsoft Office\root\Office16\OUTLOOK.EXE" -IconIndex 0
+New-PubRDSApp -Name "Google Chrome" -Target "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" -Icon "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" -IconIndex 0
+New-PubRDSApp -Name "FireFox" -Target "C:\Program Files\Mozilla Firefox\firefox.exe" -Icon "C:\Program Files\Mozilla Firefox\firefox.exe" -IconIndex 0
+New-PubRDSApp -Name "Acrobat Reader DC" -Target "C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe" -Icon "C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe" -IconIndex 0
+Invoke-Apply
+
