@@ -38,6 +38,7 @@ $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $url = $releases.browser_download_url | Select-Object -first 1
 $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
+$ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS | Out-Null
 
