@@ -47,59 +47,60 @@ $StartDTM = (Get-Date)
 
 $Vendor = "Adobe"
 $Product = "Reader DC"
-$PackageName = "AcroRdrDC"
+$PackageName = "AcroRead"
 $Version = "$currentfolder"
-$InstallerType = "exe"
+$InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$UnattendedArgs = '/sAll /msi /norestart /quiet ALLUSERS=1 EULA_ACCEPT=YES'
+$UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
+$BaseVersion = "1901220036"
+$Baseurl = "ftp://ftp.adobe.com/pub/adobe/reader/win/AcrobatDC/1901220036/AcroRdrDC1901220036_en_US.exe"
 $ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS | Out-Null
 
-Write-Verbose "Checking Internet Connection" -Verbose
+if( -Not (Test-Path -Path $BaseVersion ) )
+{
+    New-Item -ItemType directory -Path $BaseVersion | Out-Null
+    CD $BaseVersion
+    Write-Verbose "Downloading $Vendor $Product Base $BaseVersion" -Verbose
+    Invoke-WebRequest -UseBasicParsing -Uri $baseurl -OutFile AcroRdrDC.exe
+    .\AcroRdrDC.exe -sfx_o -sfx_o"C:\Temp\Adobe\1" -sfx_ne
+    Start-Sleep -s 60
+    Copy-Item -Path C:\Temp\Adobe\1\* -Destination .
+    CD..
+}
 
-If (!(Test-Connection -ComputerName www.google.com -Count 1 -quiet)) {
-    Write-Verbose "Internet Connection is Down" -Verbose
-    }
-    Else {
-    Write-Verbose "Internet Connection is Up" -Verbose
-    }
-
-Write-Verbose "Writing Version Number to File" -Verbose
-if (!$Version) {
-    $Version = Get-Content -Path ".\Version.txt"
-    }
-    Else {
-    $Version | Out-File -FilePath ".\Version.txt" -Force
-    }
-
+CD $BaseVersion
+Write-Verbose "Starting Installation of $Vendor $Product Base $Version" -Verbose
+(Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
+CD..
+ 
 if( -Not (Test-Path -Path $Version ) )
 {
     New-Item -ItemType directory -Path $Version | Out-Null
     $Version | Out-File -FilePath ".\Version.txt" -Force
 }
-
+ 
 CD $Version
-
-If (!(Test-Path -Path $Source)) {
-    Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
-    $EXEDownload = "$($ftp)$($currentfolder)`/AcroRdrDC$($currentfolder)_en_US.exe"
-    $filename = ($EXEDownload.split("/"))[-1]
-    wget -uri $EXEDownload -outfile $Source
+ 
+If (!(Test-Path -Path AcroRdrDCUpd$($Version).msp)) {
+    Write-Verbose "Downloading $Vendor $Product MSP Patch $Version" -Verbose
+    $MSPDownload = "$($ftp)$($currentfolder)`/AcroRdrDCUpd$($currentfolder).msp"
+    $filename = ($MSPDownload.split("/"))[-1]
+    wget -uri $MSPDownload -outfile $filename
 }
 Else {
     Write-Verbose "File Exists. Skipping Download." -Verbose
 }
 
-Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
-(Start-Process "$Source" $UnattendedArgs -Wait -Passthru).ExitCode
-
-Write-Verbose "Customization" -Verbose
-Unregister-ScheduledTask -TaskName "Adobe Acrobat Update Task" -Confirm:$false
-Set-Service AdobeARMservice -StartupType Disabled
+Write-Verbose "Patching $Vendor $Product with $Version" -Verbose
+$MSPDownload = "$($ftp)$($currentfolder)`/AcroRdrDCUpd$($currentfolder).msp"
+$filename = ($MSPDownload.split("/"))[-1]
+$UnattendedArgs = "/p $filename /norestart /qn /liewa ${env:SystemRoot}\Temp\$filename.log"
+(Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
