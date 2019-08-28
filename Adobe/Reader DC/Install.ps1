@@ -74,7 +74,7 @@ if( -Not (Test-Path -Path $BaseVersion ) )
 }
 
 CD $BaseVersion
-Write-Verbose "Starting Installation of $Vendor $Product Base $Version" -Verbose
+Write-Verbose "Starting Installation of $Vendor $Product Base $BaseVersion" -Verbose
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 CD..
  
