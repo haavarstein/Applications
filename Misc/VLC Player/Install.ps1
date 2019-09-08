@@ -1,30 +1,3 @@
-Function Get-VideoLanVlcPlayer {
-    <#
-        .SYNOPSIS
-            Get the current version and download URL for VideoLAN VLC Media Player.
-        .NOTES
-            Site: https://stealthpuppy.com
-            Author: Aaron Parker
-            Twitter: @stealthpuppy
-        
-        .LINK
-            https://github.com/aaronparker/Get.Software
-        .EXAMPLE
-            Get-VideoLanVlcPlayer
-            Description:
-            Returns the current version and download URLs for VLC Media Player on Windows (x86, x64) and macOS.
-    #>
-    [CmdletBinding()]
-    Param()
-
-    # Get VLC Player versions and URLs from private functions
-    $Win32 = Get-VlcPlayerUpdateWin -Platform Win32
-    $Win64 = Get-VlcPlayerUpdateWin -Platform Win64
-    
-    # Return output object to the pipeline
-    Write-Output $Win32, $Win64, $macOS
-}
-
 Function Get-VlcPlayerUpdateWin {
     <#
         .SYNOPSIS
@@ -78,7 +51,7 @@ $StartDTM = (Get-Date)
 $Vendor = "Misc"
 $Product = "VLC Player"
 $PackageName = "VLCPlayer"
-$Latest = Get-VlcPlayerUpdateWin -Platform Win64
+$Latest = Get-VlcPlayerUpdateWin
 $Version = $latest.Version
 $InstallerType = "exe"
 $Source = "$PackageName" + "." + "$InstallerType"
@@ -86,7 +59,7 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = "/S"
-$url = $latest.uri
+$url = "https://ftp.fau.de/videolan/vlc/$($Version)/win64/vlc-$($Version)-win64.exe"
 $ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS | Out-Null
@@ -100,7 +73,7 @@ CD $Version
 
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source)) {
-    Invoke-WebRequest -Uri $url -OutFile $Source
+    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source
          }
         Else {
             Write-Verbose "File exists. Skipping Download." -Verbose
