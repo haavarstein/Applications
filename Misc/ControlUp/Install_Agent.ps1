@@ -52,9 +52,9 @@ Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
 $Vendor = "SmartX"
-$Product = "ControlUp Agent x64"
+$Product = "ControlUp Agent"
 $Version = "$(Get-CurrentControlUpAgentVersion)"
-$PackageName = "ControlUpAgent-net45-x64"
+$PackageName = "CUPAgent"
 $InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
@@ -67,7 +67,7 @@ $ServiceName = "cuagent"
 
 Start-Transcript $LogPS
 
-if ( -Not (Test-Path -Path $Version ) ) {
+if ( -Not (Test-Path -Path $Version\$Source ) ) {
     New-Item -ItemType directory -Path $Version
     CD $Version
     [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
