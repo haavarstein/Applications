@@ -38,8 +38,8 @@ If (!(Test-Path -Path $Source)) {
     Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source
     Expand-Archive -Path $Source -DestinationPath .
     Remove-Item -Path $Source
-    New-Item -ItemType directory -Path "C:\Program Files (x86)\Policy Analyzer"
-    Copy-Item -Path *.* -Destination "C:\Program Files (x86)\Policy Analyzer"
+    New-Item -ItemType directory -Path "C:\Program Files (x86)\Microsoft Policy Analyzer"
+    Copy-Item -Path *.* -Destination "C:\Program Files (x86)\Microsoft Policy Analyzer"
          }
         Else {
             Write-Verbose "File exists. Skipping Download." -Verbose
@@ -48,6 +48,8 @@ If (!(Test-Path -Path $Source)) {
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 
 Write-Verbose "Customization" -Verbose
+CD..
+Copy-Item "*.lnk" -Destination "C:\Users\Public\Desktop"
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
