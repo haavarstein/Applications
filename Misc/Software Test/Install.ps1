@@ -38,7 +38,9 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
-$url = "https://api.github.com/repos/EUCweb/SoftwareTest/zipball/$Version"
+$url1 = "https://api.github.com/repos/EUCweb/SoftwareTest/zipball/$Version"
+$url2 = "https://github.com/extent-framework/extentreports-dotnet-cli/tree/master/dist"
+
 $ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS | Out-Null
@@ -52,9 +54,9 @@ CD $Version
 
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source)) {
-    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source
+    Invoke-WebRequest -UseBasicParsing -Uri $url1 -OutFile $Source
+    Invoke-WebRequest -UseBasicParsing -Uri $url2 -OutFile extend.exe
     Expand-Archive -Path $Source -DestinationPath .
-    #Remove-Item -Path $Source
     Copy-Item -Path EUCweb*\* -Destination .
     Remove-Item -Path EUCweb-SoftwareTest* -Force -Recurse
          }
