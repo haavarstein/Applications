@@ -54,9 +54,9 @@ Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source)) {
     Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source
     Expand-Archive -Path $Source -DestinationPath .
-    Remove-Item -Path $Source
+    #Remove-Item -Path $Source
     Copy-Item -Path EUCweb*\* -Destination .
-    Remove-Item -Path EUCweb* -Force -Recurse
+    Remove-Item -Path EUCweb-SoftwareTest* -Force -Recurse
          }
         Else {
             Write-Verbose "File exists. Skipping Download." -Verbose
