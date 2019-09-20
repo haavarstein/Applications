@@ -1,4 +1,4 @@
-# Get latest version and download latest ShareX release via GitHub API
+# Get latest version and download latest SoftwareTest release via GitHub API
 
 # GitHub API to query repository
 $repo = "EUCWeb/SoftwareTest"
