@@ -56,8 +56,9 @@ Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source)) {
     Invoke-WebRequest -UseBasicParsing -Uri $url1 -OutFile $Source
     Invoke-WebRequest -UseBasicParsing -Uri $url2 -OutFile extend.exe
+
     Expand-Archive -Path $Source -DestinationPath .
-    Copy-Item -Path EUCweb*\* -Destination .
+    Move-Item EUCWeb*\* .\
     Remove-Item -Path EUCweb-SoftwareTest* -Force -Recurse
          }
         Else {
@@ -66,7 +67,7 @@ If (!(Test-Path -Path $Source)) {
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 New-Item -ItemType directory -Path "C:\Program Files\Software Test" | Out-Null
-Copy-Item -Path * -Destination "C:\Program Files\Software Test"
+Copy-Item -Path .\* -Destination "C:\Program Files\Software Test\" -Recurse -Force
 
 Write-Verbose "Customization" -Verbose
 
