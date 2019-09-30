@@ -18,14 +18,14 @@ $StartDTM = (Get-Date)
 $Vendor = "Nutanix"
 $Product = "MCS Plugin"
 $Version = "2.3.0.0"
-$PackageName = "Nutanix"
+$PackageName = "NutanixAHV_Citrix_Plugin"
 $InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $MST = "Nutanix.mst"
 $UnattendedArgs = "/i $PackageName.$InstallerType TRANSFORMS=$MST ALLUSERS=1 /qn /liewa $LogApp"
-$url = "http://download.nutanix.com/utils/09082017/NutanixAHV-MCS-XD7_9.msi"
+$url = "http://download.nutanix.com/firmware/citrix/2.3.0.0-latest/NutanixAHV_Citrix_Plugin.msi"
 
 Start-Transcript $LogPS
 
@@ -50,8 +50,6 @@ Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Customization" -Verbose
-Add-PSSnapin Citrix*
-Get-HypHypervisorPlugin
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
