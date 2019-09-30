@@ -17,8 +17,8 @@ $StartDTM = (Get-Date)
 
 $Vendor = "Nutanix"
 $Product = "MCS Plugin"
-$Version = "1.1.2.0"
-$PackageName = "NutanixAHV-MCS-XD7_9"
+$Version = "2.3.0.0"
+$PackageName = "Nutanix"
 $InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
@@ -32,14 +32,15 @@ Start-Transcript $LogPS
 if( -Not (Test-Path -Path $Version ) )
 {
     New-Item -ItemType directory -Path $Version
-}
+    Copy-Item -Path $MST -Destination $Version -Force
 
+}
 
 CD $Version
 
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source)) {
-    Invoke-WebRequest -Uri $url -OutFile $Source
+    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source
          }
         Else {
             Write-Verbose "File exists. Skipping Download." -Verbose
