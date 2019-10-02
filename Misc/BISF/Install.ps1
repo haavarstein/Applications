@@ -85,6 +85,10 @@ Write-Verbose "Customization" -Verbose
 New-Item -ItemType directory -Path "C:\Program Files (x86)\Citrix Optimizer\" | Out-Null
 Copy-Item -Path .\CitrixOptimizer\* -Destination "C:\Program Files (x86)\Citrix Optimizer\" -Recurse -Force
 Copy-item -Path .\*.xml -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)" -Recurse -Force
+CD..
+Copy-Item -Path .\Tools\* -Destination $env:SystemRoot\System32 -Recurse -Force
+Copy-Item BISF.reg -Destination C:\Windows\Temp\BISF.reg -Recurse
+cmd.exe /c "regedit /s C:\Windows\Temp\BISF.reg"
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
