@@ -1,3 +1,27 @@
+Function Get-MasterPackagerVersion {
+    
+    <#
+        .NOTES
+            Author: Trond Eirik Haavarstein
+            Twitter: @xenappblog
+    #>
+    
+    
+    $url = "https://www.masterpackager.com/uploads/file_archive/version.txt"
+
+    try {
+        $temp = New-TemporaryFile
+        Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $temp -ErrorAction SilentlyContinue
+        $file = get-content $temp
+        $f1 = $file.trimstart("uberAgent-")
+        $Version = $f1.TrimEnd(".zip")
+        Write-Output $Version
+    }
+    catch {
+        Throw "Failed to connect to URL: $url with error $_."
+    }
+}
+
 # PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
 # Example 1: Start-Process "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru
 # Example 2 Powershell: Start-Process powershell.exe -ExecutionPolicy bypass -file $Destination
@@ -14,7 +38,7 @@ $StartDTM = (Get-Date)
 $Vendor = "Misc"
 $Product = "Master Packager"
 $PackageName = "Master_Packager_Std"
-$Version = "19.6.1.0"
+$Version = "$(Get-MasterPackagerVersion)"
 $InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
