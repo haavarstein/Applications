@@ -21,7 +21,9 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = '/silent /forceinstall /AutoUpdateCheck=disabled /noreboot'
-$url = ""
+$download = Invoke-WebRequest -UseBasicParsing -Uri ("https://www.citrix.com/downloads/workspace-app/windows/workspace-app-for-windows-latest.html") -SessionVariable websession
+$href = $download.Links|Where-Object {$_.rel -like "*CitrixWorkspaceApp.exe*"}
+$url = "https:" + $href.rel
 $ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS
