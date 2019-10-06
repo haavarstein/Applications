@@ -42,21 +42,22 @@ $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$url = "$(Get-NotepadPpUri -Architecture x64)"
+$url = "$(get-NPPCurrentDownloadURL -Architecture x64)"
+$ProgressPreference = 'SilentlyContinue'
 $UnattendedArgs = '/S'
 
 Start-Transcript $LogPS
 
 if( -Not (Test-Path -Path $Version ) )
-{
-    New-Item -ItemType directory -Path $Version
+{ 
+    New-Item -ItemType directory -Path $Version | Out-Null
 }
 
 CD $Version
 
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source)) {
-    Invoke-WebRequest -Uri $url -OutFile $Source
+    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source
          }
         Else {
             Write-Verbose "File exists. Skipping Download." -Verbose
