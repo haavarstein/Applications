@@ -1,67 +1,24 @@
-# https://github.com/BronsonMagnan/SoftwareUpdate/blob/master/NotePadPlusPlus.ps1
-
-Function Get-NotepadPpVersion {
-    <#
-        .NOTES
-            Author: Bronson Magnan
-            Twitter: @cit_bronson
-            Update: Aaron Parker
-            Updated to use -UseBasicParsing and support PowerShell Core
-    #>
-    [CmdletBinding()]
-    [OutputType([version])]
-    Param()
-
-    try {
-        $url = "https://notepad-plus-plus.org/download/"
-        $content = Invoke-WebRequest -Uri $url -UseBasicParsing -ErrorAction SilentlyContinue
-    }
-    catch {
-        Throw "Unable to read Notepad++ URL with error $_."
-    }
-    finally {
-
-        # Match a version number string in the <title> tag
-        If ($content.Content -match "<title>(?<title>.*)</title>") {
-
-            # Match for x.x.x and x.x version string used by Notepad++
-            If ($Matches[0] -match "\d+\.\d+\.\d+") {
-                $version = [Version]::new($Matches[0])
-                Write-Output $version
-            }
-            ElseIf ($Matches[0] -match "\d+\.\d+") {
-                $version = [Version]::new($Matches[0])
-                Write-Output $version
-            }
-            Else {
-                Throw "Unable to find Notepad++ version."
-            }
-        }
-    }
+function get-NPPCurrentVersion {
+    [cmdletbinding()]
+    [outputtype([version])]
+    $Url = "https://notepad-plus-plus.org/downloads/"
+    $Content = Invoke-WebRequest -Uri $url
+    $Matches = ($content.allelements | ? tagName -eq 'a').innerText -match "Current Version \d+\.\d+\.\d+"
+    $ver = [version]::new($Matches[0].TrimStart("Current Version "))
+    Write-Output $ver
 }
 
-Function Get-NotepadPpUri {
-    <#
-        .NOTES
-            Author: Bronson Magnan
-            Twitter: @cit_bronson
-    #>
-    [CmdletBinding()]
-    [OutputType([string])]
-    Param (
-        [ValidateSet('x86','x64')]
-        [string] $Architecture = "x64"
+function get-NPPCurrentDownloadURL {
+    [cmdletbinding()]
+    [outputtype([string])]
+    param (
+        [validateSet("x86","x64")][string]$Architecture = "x64"
     )
-
-    $version = Get-NotepadPpVersion
-    If ("x86" -eq $Architecture) { $archcode = "" } Else { $archcode = ".x64" }
-    
-    $url = "https://notepad-plus-plus.org/repository/$($version.major).x/$version/npp.$($version).Installer$($archcode).exe"
+    $version = get-NPPCurrentVersion
+    if ("x86" -eq $Architecture) { $archcode = "" } else { $archcode = ".x64" }
+    $url = "http://download.notepad-plus-plus.org/repository/$($version.major).x/$version/npp.$($version).Installer$($archcode).exe"
     Write-Output $url
 }
-
-#Example get-NPPCurrentDownloadURL -Architecture x64
-#Example wget -uri (get-NPPCurrentDownloadURL) -OutFile .\npp.exe
 
 # PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
 # Example 1: Start-Process "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru
@@ -79,7 +36,7 @@ $StartDTM = (Get-Date)
 $Vendor = "Misc"
 $Product = "NotePadPlusPlus"
 $PackageName = "NotePadPlusPlus_x64"
-$Version = "$(Get-NotepadPpVersion)"
+$Version = "$(get-NPPCurrentVersion)"
 $InstallerType = "exe"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
