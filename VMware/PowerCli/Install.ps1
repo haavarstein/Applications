@@ -1,17 +1,14 @@
 # PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
-
 # Example 1: Start-Process "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru
-
 # Example 2 Powershell: Start-Process powershell.exe -ExecutionPolicy bypass -file $Destination
-
 # Example 3 EXE (Always use ' '):
 # $UnattendedArgs='/qn'
 # (Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
-
 # Example 4 MSI (Always use " "):
 # $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 # (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
+Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $startDTM = (Get-Date)
 
@@ -22,12 +19,9 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product PS Wrapper.log"
 Start-Transcript $LogPS
 
 Write-Verbose "Starting Installation of $Vendor $Product" -Verbose 
-Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
-Install-Module -Name VMware.PowerCLI -AllowClobber
-
-Write-Verbose "Get Installed $Vendor $Product Modules" -Verbose
-Get-Module -ListAvailable -Name VMware*
+if (!(Get-Module -ListAvailable -Name VMware.PowerCLI)) {Install-Module -Name VMware.PowerCLI -AllowClobber}
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
