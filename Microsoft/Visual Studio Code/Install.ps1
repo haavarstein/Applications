@@ -12,7 +12,9 @@ Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
-if( -Not (Get-Module -ListAvailable -Name Evergreen ) ) {Install-Module Evergreen -Force | Import-Module Evergreen}
+Write-Verbose "Installing Modules" -Verbose
+if(!("C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force}
+if(!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
  
 $Vendor = "Microsoft"
 $Product = "Visual Studio Code"
@@ -30,7 +32,7 @@ $ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS | Out-Null
  
-If (!(Test-Path -Path $Version ) ) {New-Item -ItemType directory -Path $Version | Out-Null}
+If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null}
  
 CD $Version
  
