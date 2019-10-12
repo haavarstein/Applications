@@ -1,44 +1,3 @@
-function get-LatestFirefoxESRURL {
-[cmdletbinding()]
-[outputtype([String])]
-param(
-    [ValidateSet("bn-BD","bn-IN","en-CA","en-GB","en-ZA","es-AR","es-CL","es-ES","es-MX")][string]$culture = "en-US",
-    [ValidateSet("win32","win64")][string]$architecture="win64"
-
-)
-
-# JSON that provide details on Firefox versions
-$uriSource = "https://product-details.mozilla.org/1.0/firefox_versions.json"
-
-# Read the JSON and convert to a PowerShell object
-$firefoxVersions = (Invoke-WebRequest -uri $uriSource).Content | ConvertFrom-Json
-
-$VersionURL = "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$($firefoxVersions.FIREFOX_ESR)/$($architecture)/$($culture)/Firefox%20Setup%20$($firefoxVersions.FIREFOX_ESR).exe"
-Write-Output $VersionURL
-}
-
-function get-LatestFirefoxESRVersion {
-[cmdletbinding()]
-[outputtype([String])]
-param(
-    [ValidateSet("bn-BD","bn-IN","en-CA","en-GB","en-ZA","es-AR","es-CL","es-ES","es-MX")][string]$culture = "en-US",
-    [ValidateSet("win32","win64")][string]$architecture="win64"
-
-)
-
-# JSON that provide details on Firefox versions
-$uriSource = "https://product-details.mozilla.org/1.0/firefox_versions.json"
-
-# Read the JSON and convert to a PowerShell object
-$firefoxVersions = (Invoke-WebRequest -uri $uriSource).Content | ConvertFrom-Json
-
-$Version = [Version]$firefoxVersions.FIREFOX_ESR.replace("esr","")
-Write-Output $Version
-}
-
-get-LatestFirefoxESRURL
-get-LatestFirefoxESRVersion
-
 # PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
 # Example 1: Start-Process "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru
 # Example 2 Powershell: Start-Process powershell.exe -ExecutionPolicy bypass -file $Destination
@@ -49,12 +8,19 @@ get-LatestFirefoxESRVersion
 # $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 # (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
+Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
+Write-Verbose "Installing Modules" -Verbose
+if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
+if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
+
 $Vendor = "Mozilla"
 $Product = "FireFox"
-$Version = "$(get-LatestFirefoxESRVersion)"
+$Evergreen = Get-MozillaFirefox -Platform win64
+$Version = $Evergreen.Version
+$URL = $Evergreen.uri
 $PackageName = "Firefox"
 $InstallerType = "exe"
 $Source = "$PackageName" + "." + "$InstallerType"
@@ -62,31 +28,21 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = '/SILENT MaintenanceService=false'
-$url = "$(get-LatestFirefoxESRURL)"
 $ProgressPreference = 'SilentlyContinue'
 
-Start-Transcript $LogPS
-
-if( -Not (Test-Path -Path $Version ) )
-{
-    New-Item -ItemType directory -Path $Version
-}
-
+Start-Transcript $LogPS | Out-Null
+ 
+If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null}
+ 
 CD $Version
-
+ 
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
-If (!(Test-Path -Path $Source)) {
-    Invoke-WebRequest -Uri $url -OutFile $Source
-         }
-        Else {
-            Write-Verbose "File exists. Skipping Download." -Verbose
-         }
-
+If (!(Test-Path -Path $Source)) {Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source}
+        
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Customization" -Verbose
-sc.exe config MozillaMaintenance start= disabled
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
