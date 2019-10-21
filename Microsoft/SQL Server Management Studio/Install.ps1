@@ -1,82 +1,3 @@
-Function Get-MicrosoftSsmsVersion {
-    <#
-        .NOTES
-            Author: Bronson Magnan
-            Twitter: @cit_bronson
-    #>
-    [CmdletBinding()]
-    [OutputType([Version])]
-    param(
-        [ValidateSet("GAFull","GAUpdate","Preview")]
-        [string] $Release = "GAFull"
-    )
-
-    $url = "https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017"
-    
-    try {
-        $response = Invoke-WebRequest -UseBasicParsing -Uri $url -ErrorAction SilentlyContinue
-    }
-    catch {
-        Throw "Failed to connect to SMSS: $url with error $_."
-        Break
-    }
-    finally {
-        $interestingLinks = $response.links  | Where-Object {$_.outerHTML -like "*Download SQL Server Management Studio*"}
-        switch ($Release) { 
-            "GAFull" {
-                $thislink = $interestingLinks | Where-Object {$_.outerHTML -notlike "*preview*" -and $_.outerHTML -notlike "*upgrade*"}
-            };
-            "GAUpdate" {
-                $thislink = $interestingLinks | Where-Object {$_.outerHTML -like "*upgrade*"}
-            };
-            "Preview" {
-                $thislink = $interestingLinks | Where-Object {$_.outerHTML -like "*preview*"}
-            };
-        }
-        $thislink.outerHTML -match "(\d+\.)+\d+" | Out-Null
-        Write-Output ([version]::new($matches[0]))
-    }
-}
-
-Function Get-MicrosoftSsmsUri {
-    <#
-        .NOTES
-            Author: Bronson Magnan
-            Twitter: @cit_bronson
-    #>
-    [CmdletBinding()]
-    [Outputtype([string])]
-    param(
-        [ValidateSet("GAFull","GAUpdate","Preview")]
-        [string] $Release = "GAFull"
-    )
-
-    $url = "https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017"
-    try {
-        $response = Invoke-WebRequest -UseBasicParsing -Uri $url -ErrorAction SilentlyContinue
-    }
-    catch {
-        Throw "Failed to connect to SSMS: $url with error $_."
-        Break
-    }
-    finally {
-        $interestingLinks = $response.links  | Where-Object {$_.outerHTML -like "*Download SQL Server Management Studio*"}
-        switch ($Release) { 
-            "GAFull" {
-                $thislink = $interestingLinks | Where-Object {$_.outerHTML -notlike "*preview*" -and $_.outerHTML -notlike "*upgrade*"}
-            };
-            "GAUpdate" {
-                $thislink = $interestingLinks | Where-Object {$_.outerHTML -like "*upgrade*"}
-            };
-            "Preview" {
-                $thislink = $interestingLinks | Where-Object {$_.outerHTML -like "*preview*"}
-            };
-        }
-
-        Write-Output $thislink.href 
-    }
-}
-
 # PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
 # Example 1: Start-Process "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru
 # Example 2 Powershell: Start-Process powershell.exe -ExecutionPolicy bypass -file $Destination
@@ -91,9 +12,15 @@ Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
+Write-Verbose "Installing Modules" -Verbose
+if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
+Install-Module Evergreen -Force
+
 $Vendor = "Microsoft"
 $Product = "SQL Server Management Studio"
-$Version = "$(Get-MicrosoftSsmsVersion)"
+$Evergreen = Get-MicrosoftSsms
+$Version = $Evergreen.Version
+$URL = $Evergreen.uri
 $PackageName = "SSMS-Setup-ENU"
 $InstallerType = "exe"
 $Source = "$PackageName" + "." + "$InstallerType"
@@ -101,26 +28,17 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs='/q'
-$url = "$(Get-MicrosoftSsmsUri)"
 $ProgressPreference = 'SilentlyContinue'
 
-Start-Transcript $LogPS
-
-if( -Not (Test-Path -Path $Version ) )
-{
-    New-Item -ItemType directory -Path $Version
-}
-
+Start-Transcript $LogPS | Out-Null
+ 
+If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null}
+ 
 CD $Version
-
+ 
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
-If (!(Test-Path -Path $Source)) {
-    Invoke-WebRequest -Uri $url -OutFile $Source
-         }
-        Else {
-            Write-Verbose "File exists. Skipping Download." -Verbose
-         }
-
+If (!(Test-Path -Path $Source)) {Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source}
+        
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
 
