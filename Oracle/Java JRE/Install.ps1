@@ -1,6 +1,3 @@
-# https://www.reddit.com/r/PowerShell/comments/4fgbv4/powershell_function_to_get_latest_java_release/
-# All Credits to gangstanthony
-
 # PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
 # Example 1: Start-Process "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru
 # Example 2 Powershell: Start-Process powershell.exe -ExecutionPolicy bypass -file $Destination
@@ -11,40 +8,38 @@
 # $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 # (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
+Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
+
+Write-Verbose "Installing Modules" -Verbose
+if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
+if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
+Install-Module Evergreen -Force
 
 $Vendor = "Oracle"
 $Product = "Java SE Runtime Environment"
 $PackageName = "JRE_x64"
-$Page = Invoke-WebRequest http://java.com/en/download/windows_offline.jsp
-$Version = $page.RawContent -split "`n" | ? {$_ -match 'recommend'} | select -f 1 | % {$_ -replace '^[^v]+| \(.*$'}
+$Evergreen = Get-Java8 | Where-Object {$_.Architecture -eq "x64"}
+$Version = $Evergreen.Version
+$URL = $Evergreen.uri
 $InstallerType = "exe"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$url = $page.links.href | ? {$_ -match '^http.*download'} | select -f 1
 $ProgressPreference = 'SilentlyContinue'
 $UnattendedArgs = '/s REBOOT=0 SPONSORS=0 AUTO_UPDATE=0'
 
-Start-Transcript $LogPS
-
-if( -Not (Test-Path -Path $Version ) )
-{
-    New-Item -ItemType directory -Path $Version
-}
-
+Start-Transcript $LogPS | Out-Null
+ 
+If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null}
+ 
 CD $Version
-
+ 
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
-If (!(Test-Path -Path $Source)) {
-    Invoke-WebRequest -Uri $url -OutFile $Source
-         }
-        Else {
-            Write-Verbose "File exists. Skipping Download." -Verbose
-         }
-
+If (!(Test-Path -Path $Source)) {Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source}
+        
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
 
