@@ -22,22 +22,39 @@ Function Get-IrfanView {
         $Version = $m -replace "Version"
         $File = $Version -replace "\.",""
         $x32 = "http://download.betanews.com/download/967963863-1/iview$($File)_setup.exe"
+        $x32plugin = "http://download.betanews.com/download/1099412658-1/iview$($File)_plugins_setup.exe"
         $x64 = "http://download.betanews.com/download/967963863-1/iview$($File)_x64_setup.exe"
-
+        $x64plugin = "http://download.betanews.com/download/1099412658-1/iview$($File)_plugins_x64_setup.exe"
+        
         $PSObjectx32 = [PSCustomObject] @{
         Version      = $Version
         Architecture = "x86"
         URI          = $x32
         }
-        
+                      
         $PSObjectx64 = [PSCustomObject] @{
         Version      = $Version
         Architecture = "x64"
         URI          = $x64
         }
 
+        $PSObjectx32plugin = [PSCustomObject] @{
+        Version            = $Version
+        Architecture       = "x86 Plugin"
+        URI                = $x32plugin
+        }
+
+        $PSObjectx64plugin = [PSCustomObject] @{
+        Version            = $Version
+        Architecture       = "x64 Plugin"
+        URI                = $x64plugin
+        }
+
         Write-Output -InputObject $PSObjectx32
         Write-Output -InputObject $PSObjectx64
+        Write-Output -InputObject $PSObjectx32plugin
+        Write-Output -InputObject $PSObjectx64plugin
+
     }
  }
 
