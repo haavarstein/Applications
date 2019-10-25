@@ -21,7 +21,7 @@ Update-Module Evergreen
 $Vendor = "Google"
 $Product = "Chrome Enterprise"
 $PackageName = "googlechromestandaloneenterprise64"
-$Evergreen = Get-GoogleChrome | Where-Object {$_.Platform -eq "win64"}
+$Evergreen = Get-GoogleChrome -Platform win64
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $InstallerType = "msi"
@@ -40,7 +40,6 @@ CD $Version
  
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source)) {Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source}
-
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
