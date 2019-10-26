@@ -28,7 +28,9 @@
 	<VMware>
 		<VCenter>vcsa.ctxlab.local</VCenter>
 		<VCUser>administrator@vsphere.local</VCUser>
-		<VCPwd>P@ssw0rd</VCPwd>
+		<VCPwd></VCPwd>
+		<PasswordFile>\\dc-01.ctxlab.local\xa\Credentials\VCSA.txt</PasswordFile>
+		<KeyFile>\\dc-01.ctxlab.local\xa\Credentials\VCSA.key</KeyFile>
 		<VMDiskType>Thin</VMDiskType>
 		<VMDS>ESXi-01-NVMe</VMDS>
 		<VMCluster>Fortaleza</VMCluster>
