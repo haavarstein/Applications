@@ -1,4 +1,20 @@
 <Settings>
+	<Mail>
+		<To>eric@xenappblog.com</To>
+		<From>eric@xenapptraining.com</From>
+		<SMTP>email-smtp.us-east-1.amazonaws.com</SMTP>
+		<PasswordFile>\\dc-01.ctxlab.local\xa\Credentials\AmazonSES.txt</PasswordFile>
+		<KeyFile>\\dc-01.ctxlab.local\xa\Credentials\AmazonSES.key</KeyFile>
+		<API></API>
+	</Mail>
+	<MDT>
+		<Server>MDT-01</Server>
+		<SQLServer>MDT-01</SQLServer>
+		<SQLDatabase>MDT</SQLDatabase>
+		<SQLInstance>SQLEXPRESS</SQLInstance>
+		<ProductionFolder>C:\MDTProduction</ProductionFolder>
+		<BuildFolder>C:\MDTBuildLab</BuildFolder>
+	</MDT>
 	<Citrix>
 		<Version>1909</Version>
 		<XDC01>XADC-01.CTXLAB.LOCAL</XDC01>
@@ -46,7 +62,9 @@
 	<Nutanix>
 		<CVM>nutanix.ctxlab.local</CVM>
 		<User>powershell</User>
-		<Pwd>P@ssw0rd2019</Pwd>
+		<Pwd></Pwd>
+		<PasswordFile>\\dc-01.ctxlab.local\xa\Credentials\Nutanix.txt</PasswordFile>
+		<KeyFile>\\dc-01.ctxlab.local\xa\Credentials\Nutanix.key</KeyFile>
 		<NetName>5bb43271-e655-4f07-8f41-4c8455df3d11</NetName>
 		<NetUUID>5bb43271-e655-4f07-8f41-4c8455df3d11</NetUUID>
 		<Container>SelfServiceContainer</Container>
