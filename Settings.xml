@@ -12,8 +12,8 @@
 		<SQLServer>MDT-01</SQLServer>
 		<SQLDatabase>MDT</SQLDatabase>
 		<SQLInstance>SQLEXPRESS</SQLInstance>
-		<ProductionFolder>C:\MDTProduction</ProductionFolder>
-		<BuildFolder>C:\MDTBuildLab</BuildFolder>
+		<ProductionShare>\\mdt-01.ctxlab.local\mdtproduction$</ProductionShare>
+		<BuildShare>\\mdt-01.ctxlab.local\mdtbuildlab$</BuildShare>
 	</MDT>
 	<Citrix>
 		<Version>1909</Version>
