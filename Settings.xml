@@ -10,7 +10,8 @@
 	<MDT>
 		<Server>MDT-01</Server>
 		<SQLServer>MDT-01</SQLServer>
-		<SQLDatabase>MDT</SQLDatabase>
+		<SQLProdDatabase>Production</SQLProdDatabase>
+		<SQLBuildDatabase>Build</SQLBuildDatabase>
 		<SQLInstance>SQLEXPRESS</SQLInstance>
 		<ProductionShare>\\mdt-01.ctxlab.local\mdtproduction$</ProductionShare>
 		<BuildShare>\\mdt-01.ctxlab.local\mdtbuildlab$</BuildShare>
