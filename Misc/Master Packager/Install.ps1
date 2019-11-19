@@ -45,7 +45,7 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
-$url = "https://www.masterpackager.com/installer/public/standard/Master_Packager_Std_$($Version).msi"
+$url = "https://www.masterpackager.com/installer/public/standard/Master_Packager_Std_$($Version).0.msi"
 $ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS
