@@ -14,6 +14,8 @@ Get-WindowsFeature -Name $Feature | Install-WindowsFeature
 Write-Verbose "Get $Product Features" -Verbose
 Get-WindowsFeature $Feature
 
+Set-Service -Name WSearch -StartupType Automatic
+
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
 Write-Verbose "Elapsed Time: $(($EndDTM-$StartDTM).TotalSeconds) Seconds" -Verbose
