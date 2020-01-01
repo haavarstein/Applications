@@ -11,10 +11,8 @@ Start-Transcript $LogPS
 Write-Verbose "Install $Product Features" -Verbose
 Get-WindowsFeature -Name $Feature | Install-WindowsFeature
 
-Write-Verbose "Get $Product Features" -Verbose
-Get-WindowsFeature $Feature
-
-Set-Service -Name WSearch -StartupType Automatic
+Write-Verbose "Start $Product Service" -Verbose
+Start-Service -Name "WSearch"
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
