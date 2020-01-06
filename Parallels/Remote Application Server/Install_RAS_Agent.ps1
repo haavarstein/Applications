@@ -43,7 +43,7 @@ If (!(Test-Path -Path $Source)) {
          }
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
-(Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
+(Start-Process msiexec.exe -ArgumentList "/i $PackageName.$InstallerType /qn ADDLOCAL=F_Agent,F_PowerShell ADDFWRULES=1" -Wait -Passthru).ExitCode
 
 Write-Verbose "Customization" -Verbose
 Add-LocalGroupMember -Group "Remote Desktop Users" -Member "$env:userdomain\Domain Users"
