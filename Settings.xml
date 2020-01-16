@@ -13,6 +13,9 @@
 		<SQLProdDatabase>Production</SQLProdDatabase>
 		<SQLBuildDatabase>Build</SQLBuildDatabase>
 		<SQLInstance>SQLEXPRESS</SQLInstance>
+		<ElevatedUser>ctxlab\administrator</ElevatedUser>
+		<PasswordFile>\\dc-01.ctxlab.local\xa\Credentials\CTXLAB.txt</PasswordFile>
+		<KeyFile>\\dc-01.ctxlab.local\xa\Credentials\CTXLAB.key</KeyFile>
 		<ProductionShare>\\mdt-01.ctxlab.local\mdtproduction$</ProductionShare>
 		<BuildShare>\\mdt-01.ctxlab.local\mdtbuildlab$</BuildShare>
 		<OU>OU=Servers,OU=Deployment,DC=ctxlab,DC=local</OU>
