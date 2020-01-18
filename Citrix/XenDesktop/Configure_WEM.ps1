@@ -43,7 +43,7 @@ If (Test-Path $DataFileUNCPath){
   Write-Verbose "Database already exists" -Verbose  
   }Else{
   Write-Verbose "Create New Database using Windows Authenticaion" -Verbose
-  New-WemDatabase -DatabaseServerInstance $DatabaseServer -DatabaseName $DatabaseName -DataFilePath $DataFilePath -LogFilePath $LogFilePath -DefaultAdministratorsGroup $DomainAdminGroup -PSDebugMode Enable 
+  New-WemDatabase -DatabaseServerInstance $DatabaseServer -DatabaseName $DatabaseName -DataFilePath $DataFilePath -LogFilePath $LogFilePath -DefaultAdministratorsGroup $DomainAdminGroup -SqlServerCredential $Database_CredObject -PSDebugMode Enable
 }
 
 Write-Verbose "Configure CWEM with Database" -Verbose
