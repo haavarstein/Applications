@@ -9,6 +9,7 @@
 	</Mail>
 	<MDT>
 		<Server>MDT-01</Server>
+		<Domain>CTXLAB</Domain>
 		<SQLServer>MDT-01</SQLServer>
 		<SQLProdDatabase>Production</SQLProdDatabase>
 		<SQLBuildDatabase>Build</SQLBuildDatabase>
