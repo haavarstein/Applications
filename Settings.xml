@@ -45,6 +45,8 @@
 		<DatabaseFolder>C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\</DatabaseFolder>
 		<DatabaseUser>CTXLAB\Administrator</DatabaseUser>
 		<DatabasePassword>P@ssw0rd</DatabasePassword>
+		<DatabasePasswordFile>\\dc-01.xenappblog.com\xa\Credentials\xenappblog.txt</DatabasePasswordFile>
+		<DatabaseKeyFile>\\dc-01.xenappblog.com\xa\Credentials\xenappblog.key</DatabaseKeyFile>
 	</Microsoft>	
 	<VMware>
 		<VCenter>vcsa.ctxlab.local</VCenter>
