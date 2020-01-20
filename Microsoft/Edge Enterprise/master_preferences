@@ -1,0 +1,15 @@
+{
+ "distribution": {
+   "skip_first_run_ui": true, 
+   "show_welcome_page": false, 
+   "import_search_engine": false, 
+   "import_history": false, 
+   "do_not_create_any_shortcuts" : true,
+   "do_not_create_taskbar_shortcut" :true,
+   "do_not_create_desktop_shortcut" :true,
+   "create_all_shortcuts": false, 
+   "do_not_launch_chrome": true, 
+   "make_chrome_default": false,
+   "system_level": true
+   }
+ }
