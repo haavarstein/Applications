@@ -3,7 +3,7 @@ Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
 $Vendor = "Set"
-$Product = "Elevated MDT Logon"
+$Product = "Elevated Logon"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product.log"
 
 Start-Transcript $LogPS
