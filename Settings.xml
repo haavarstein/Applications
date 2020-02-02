@@ -10,6 +10,7 @@
 	<MDT>
 		<Server>MDT-01</Server>
 		<Domain>CTXLAB</Domain>
+		<FQDN>CTXLAB.LOCAL</FQDN>
 		<SQLServer>MDT-01</SQLServer>
 		<SQLProdDatabase>Production</SQLProdDatabase>
 		<SQLBuildDatabase>Build</SQLBuildDatabase>
@@ -39,7 +40,55 @@
 		<Port>27000</Port>
 		<AddressType>WSL</AddressType>
 	</Citrix>
+	<Netscaler>
+		<Version>13.0-36.27_nc_64</Version>
+		<FileExtension>.ovf</FileExtension>
+		<Hostname>NSUG</Hostname>
+		<Timezone>GMT-03:00-BRT-America/Fortaleza</Timezone>
+		<NTPCountryCode>br</NTPCountryCode>
+		<LicensePath>\\DC-01.CTXLAB.LOCAL\XA\Licenses\Netscaler</LicensePath>
+		<NetScalerIP>192.168.10.250</NetScalerIP>
+		<SubnetIP>192.168.10.251</SubnetIP>
+		<UnifiedGatewayIP>192.168.10.252</UnifiedGatewayIP>
+		<LDAPVIP>192.168.10.50</LDAPVIP>
+		<ADFSVIP>192.168.10.51</ADFSVIP>
+		<GSLBVIP>192.168.10.52</GSLBVIP>
+		<ADNSVIP>192.168.10.53</ADNSVIP>
+		<CWEMVIP>192.168.10.54</CWEMVIP>
+		<DNSVIP>192.168.10.55</DNSVIP>
+		<DIRVIP>192.168.10.56</DIRVIP>
+		<LICVIP>192.168.10.57</LICVIP>
+		<SFVIP>192.168.10.58</SFVIP>
+		<Features>CS SSL SSLVPN REWRITE RESPONDER</Features>
+		<SubnetMask>255.255.255.0</SubnetMask>
+		<Gateway>192.168.10.1</Gateway>
+		<NSName>NSUG</NSName>
+		<MAC>00:50:56:b3:21:5d</MAC>
+		<UserName>nsroot</UserName>
+		<Password>nsroot</Password>
+		<CertFile>\\DC-01.CTXLAB.LOCAL\XA\Certificates\Internal\wildcard.crt</CertFile>
+		<CertFileShort>wildcard-internal.crt</CertFileShort>
+		<KeyFile>\\DC-01.CTXLAB.LOCAL\XA\Certificates\Internal\wildcard.key</KeyFile>
+		<KeyFileShort>wildcard-internal.key</KeyFileShort>
+		<WildCardCertDescription>wildcard.xenapptraining.com</WildCardCertDescription>
+		<CertRootFile>\\DC-01.CTXLAB.LOCAL\XA\Certificates\DigiCertCA.crt</CertRootFile>
+		<CertRootFileShort>DigiCertCA.crt</CertRootFileShort>
+		<CertRootFileDescription>DigiCertCA</CertRootFileDescription>
+		<LDAPServer>192.168.1.10</LDAPServer>
+		<RootDC>dc=ctxlab,dc=local</RootDC>
+		<BindAccount>svc-ms-ldap@ctxlab.local</BindAccount>
+		<BindPassword>P@ssw0rd</BindPassword>
+		<StoreFrontURL>https://xadc-01.ctxlab.local/Citrix/UGWeb</StoreFrontURL>
+		<Domain>ctxlab.local</Domain>
+		<Controller>https://xadc-01.ctxlab.local</Controller>
+		<DNSSuffix>ctxlab.local</DNSSuffix>
+		<PortalTheme>RfWebUI</PortalTheme>
+	</Netscaler>
 	<Microsoft>
+		<InternalCert>CTXLAB.LOCAL</InternalCert>
+		<ExternalCert>XENAPPTRAINING.COM</ExternalCert>
+		<DC01>DC-01.CTXLAB.LOCAL</DC01>
+		<DC02>DC-02.CTXLAB.LOCAL</DC02>
 		<Certificates>\\DC-01.CTXLAB.LOCAL\XA\Certificates</Certificates>
 		<DatabaseServer>SQL-01.CTXLAB.LOCAL</DatabaseServer>
 		<DatabaseFolderUNC>\\SQL-01.CTXLAB.LOCAL\C$\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\</DatabaseFolderUNC>
