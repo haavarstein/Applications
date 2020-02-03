@@ -8,13 +8,22 @@
 # $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 # (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
+Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
+Write-Verbose "Installing Modules" -Verbose
+if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
+if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
+Update-Module Evergreen
+
 $Vendor = "Microsoft"
 $Product = "Edge Enterprise x64"
-$Version = "79.0.309.68"
 $PackageName = "MicrosoftEdgeEnterpriseX64"
+$Evergreen = Get-MicrosoftEdge | Where-Object { $_.Architecture -eq "x64" -and $_.Product -eq "Stable" -and $_.Platform -eq "Windows" }
+$Evergreen = $Evergreen | Sort-Object -Property Version -Descending | Select-Object -First 1
+$Version = $Evergreen.Version
+$URL = $Evergreen.uri
 $InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
@@ -22,6 +31,7 @@ $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 $Url = "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/c39f1d27-cd11-495a-b638-eac3775b469d/MicrosoftEdgeEnterpriseX64.msi"
+$prefurl = "https://github.com/haavarstein/Applications/blob/master/Microsoft/Edge%20Enterprise/master_preferences"
 $ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS
@@ -30,13 +40,15 @@ If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | 
 
 CD $Version
 
-If (!(Test-Path -Path $Source)) {Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source}
+If (!(Test-Path -Path $Source)) {
+    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source
+    Invoke-WebRequest -UseBasicParsing -Uri $prefurl -OutFile master_preferences
+}
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Copy Preferences File" -Verbose
-CD..
 Copy-Item -Path .\master_preferences -Destination "C:\Program Files (x86)\Microsoft\Edge\Application\master_preferences" -Recurse -Force
 
 Write-Verbose "Stop and Disable Microsoft Edge Services" -Verbose
