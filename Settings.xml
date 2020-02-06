@@ -39,6 +39,10 @@
 		<ProductEdition>PLT</ProductEdition>
 		<Port>27000</Port>
 		<AddressType>WSL</AddressType>
+		<WEMSvcAcc>ctxlab\svc-ctx-wem</WEMSvcAcc>
+		<WEMSvcAccPwd>P@ssw0rd</WEMSvcAccPwd>
+		<WEMAdminGroup>ctxlab\Domain Admins</WEMAdminGroup>
+		<DBVuemUserPwd>P@ssw0rd</DBVuemUserPwd>
 	</Citrix>
 	<Netscaler>
 		<Version>13.0-36.27_nc_64</Version>
