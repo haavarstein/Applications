@@ -33,21 +33,11 @@ $XDC01 = $MyConfigFile.Settings.Citrix.XDC01
 
 $DatabaseServer = $MyConfigFile.Settings.Microsoft.DatabaseServer
 $DatabaseFolderUNC = $MyConfigFile.Settings.Microsoft.DatabaseFolderUNC
-$DatabaseUser = $MyConfigFile.Settings.Microsoft.DatabaseUser
-$DatabasePassword = $MyConfigFile.Settings.Microsoft.DatabasePassword
-$DatabasePasswordFile = $MyConfigFile.Settings.Microsoft.DatabasePasswordFile
-$DatabaseKeyFile = $MyConfigFile.Settings.Microsoft.DatabaseKeyFile
 
 $DatabaseName_Site = "$SiteName" + "_" + "Site"
 $DatabaseName_Logging = "$SiteName" + "_" + "Logging"
 $DatabaseName_Monitor = "$SiteName" + "_" + "Monitor"
 $DataFileUNCPath = "$DatabaseFolderUNC" + "$DatabaseName_Site" + ".mdf"
-
-Write-Verbose "Getting Encrypted Password from KeyFile" -Verbose
-#Use When Reading Password in clear text from XML
-#$DatabasePassword = $DatabasePassword | ConvertTo-SecureString -asPlainText -Force
-$DatabasePassword = ((Get-Content $DatabasePasswordFile) | ConvertTo-SecureString -Key (Get-Content $DatabaseKeyFile))
-$Database_CredObject = New-Object System.Management.Automation.PSCredential($DatabaseUser,$DatabasePassword)
 
 Write-Verbose "Import PowerShell Snapins" -Verbose
 Asnp Citrix.*
@@ -58,14 +48,10 @@ If (Test-Path $DataFileUNCPath){
   Set-BrokerSite -TrustRequestsSentToTheXmlServicePort $true
   }Else{
     Write-Verbose "New Site - Creating $SiteName Site and Databases" -Verbose  
-    New-XDDatabase -AdminAddress $target -SiteName $SiteName -DataStore Site -DatabaseServer $DatabaseServer -DatabaseName $DatabaseName_Site -DatabaseCredentials $Database_CredObject 
-    New-XDDatabase -AdminAddress $target -SiteName $SiteName -DataStore Logging -DatabaseServer $DatabaseServer -DatabaseName $DatabaseName_Logging -DatabaseCredentials $Database_CredObject 
-    New-XDDatabase -AdminAddress $target -SiteName $SiteName -DataStore Monitor -DatabaseServer $DatabaseServer -DatabaseName $DatabaseName_Monitor -DatabaseCredentials $Database_CredObject
+    New-XDDatabase -AdminAddress $target -SiteName $SiteName -DataStore Site -DatabaseServer $DatabaseServer -DatabaseName $DatabaseName_Site
+    New-XDDatabase -AdminAddress $target -SiteName $SiteName -DataStore Logging -DatabaseServer $DatabaseServer -DatabaseName $DatabaseName_Logging
+    New-XDDatabase -AdminAddress $target -SiteName $SiteName -DataStore Monitor -DatabaseServer $DatabaseServer -DatabaseName $DatabaseName_Monitor
     New-XDSite -AdminAddress $target -SiteName $SiteName -DatabaseServer $DatabaseServer -LoggingDatabaseName $DatabaseName_Logging -MonitorDatabaseName $DatabaseName_Monitor -SiteDatabaseName $DatabaseName_Site
-    Set-ConfigSite -AdminAddress $target -LicenseServerName $LicenseServer -LicenseServerPort $Port -LicensingModel $LicensingModel -ProductCode $ProductCode -ProductEdition $ProductEdition -ProductVersion $ProductVersion
-    $LicenseServer_AdminAddress = Get-LicLocation -AddressType $AddressType -LicenseServerAddress $LicenseServer -LicenseServerPort $Port
-    $LicenseServer_CertificateHash = $(Get-LicCertificate  -AdminAddress $LicenseServer_AdminAddress).CertHash
-    Set-ConfigSiteMetadata -AdminAddress $target -Name "CertificateHash" -Value $LicenseServer_CertificateHash
     Set-BrokerSite -TrustRequestsSentToTheXmlServicePort $true
 
         if( (Test-Path -Path $VMWDrivers ) )
