@@ -44,7 +44,7 @@ If (!(Test-Path -Path $Source)) {
          }
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
-#(Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
+.\portscanner.exe
 
 Write-Verbose "Customization" -Verbose
 
