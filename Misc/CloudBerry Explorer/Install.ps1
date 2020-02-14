@@ -1,3 +1,8 @@
+$url = "https://foris.cloudberrylab.com/api/products/936adcb0-8aa0-4118-b3ad-89cbf7064e23/cbes3pro"
+$r = Invoke-WebRequest -uri $url -UseBasicParsing
+$r.Content | ConvertFrom-Json
+$m = $r.Content | ConvertFrom-Json
+
 # PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
 # Example 1: Start-Process "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru
 # Example 2 Powershell: Start-Process powershell.exe -ExecutionPolicy bypass -file $Destination
@@ -14,14 +19,14 @@ $StartDTM = (Get-Date)
 $Vendor = "Misc"
 $Product = "Cloudberry Explorer"
 $PackageName = "CBESetup"
-$Version = "5.9.1.192"
+$Version = $m.lastVersion
 $InstallerType = "exe"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs='/S'
-$url = "https://www.cloudberrylab.com/file-download.ashx?fileName=CloudBerryExplorerSetup_v$($Version)_netv4.0.exe"
+$url = $m.downloadUrl
 $ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS
