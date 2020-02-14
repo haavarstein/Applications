@@ -1,3 +1,17 @@
+function Get-TightVNCVersion {
+    [cmdletbinding()]
+    [outputtype([string])]
+    $uri = "https://www.tightvnc.com/download.php"
+    $web = wget -UseBasicParsing -Uri $uri
+    $m = $web.ToString() -split "[`r`n]" | Select-String "Download TightVNC for Windows" | Select-Object -First 1
+    $m = $m -replace "<((?!@).)*?>"
+    $m = $m.Replace('Download TightVNC for Windows (Version','')
+    $m = $m.Replace(')','')
+    $m = $m.Replace(' ','')
+    $Version = $m
+    Write-Output $Version    
+}
+
 # PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
 # Example 1: Start-Process "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru
 # Example 2 Powershell: Start-Process powershell.exe -ExecutionPolicy bypass -file $Destination
@@ -21,7 +35,7 @@ $Vendor = "Misc"
 $Product = "TightVNC"
 $PackageName = "TightVNC-win64"
 #$Evergreen = Get-NotepadPlusPlus | Where-Object {$_.Architecture -eq "x64"}
-$Version = "2.8.27"
+$Version = $(Get-TightVNCVersion)
 $URL = "https://www.tightvnc.com/download/$Version/tightvnc-$Version-gpl-setup-64bit.msi"
 $InstallerType = "exe"
 $Source = "$PackageName" + "." + "$InstallerType"
