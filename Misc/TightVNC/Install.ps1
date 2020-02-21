@@ -37,13 +37,13 @@ $PackageName = "TightVNC-win64"
 #$Evergreen = Get-NotepadPlusPlus | Where-Object {$_.Architecture -eq "x64"}
 $Version = $(Get-TightVNCVersion)
 $URL = "https://www.tightvnc.com/download/$Version/tightvnc-$Version-gpl-setup-64bit.msi"
-$InstallerType = "exe"
+$InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $ProgressPreference = 'SilentlyContinue'
-$UnattendedArgs='/qn /norestart'
+$UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 
 Start-Transcript $LogPS | Out-Null
  
@@ -55,7 +55,7 @@ Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source)) {Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source}
         
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
-(Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
+(Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Customization" -Verbose
 
