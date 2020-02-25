@@ -73,7 +73,7 @@ $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$UnattendedArgs = '/verysilent'
+$UnattendedArgs = '/verysilent /ALLUSERS'
 $url = "https://ufpr.dl.sourceforge.net/project/winscp/WinSCP/$Version/WinSCP-$Version-Setup.exe"
 $ProgressPreference = 'SilentlyContinue'
 
