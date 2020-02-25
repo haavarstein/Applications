@@ -1,5 +1,6 @@
 # Get latest version and download latest BIS-F release via GitHub API
 # URL Format : https://github.com/EUCweb/BIS-F/releases/download/6.1.2/setup-BIS-F-6.1.2_build01.109.exe
+# New Installer Format : https://github.com/EUCweb/BIS-F/releases/download/7.1912.2/setup-BIS-F-7.1912.2.exe
 
 # GitHub API to query repository
 $repo = "EUCweb/BIS-F"
@@ -12,7 +13,7 @@ $latestVersion = $latestRelease.tag_name
 
 # Array of releases and downloaded
 $releases = $latestRelease.assets | Where-Object { $_.name -like "setup-BIS-F*" } | `
-    Select-Object name, browser_download_url
+Select-Object name, browser_download_url
 
 # PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
 # Example 1: Start-Process "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru
@@ -34,15 +35,15 @@ $PackageName = "setup-BIS-F"
 $Version = $Version = $latestVersion.Trim(".windows.1 , v")
 $InstallerType = "exe"
 $Source = "$PackageName" + "." + "$InstallerType"
-$SourceXML = "$PackageName" + "." + "zip"
 $SourceCTX = "CitrixOptimizer.zip"
+$SourceTools = "Tools.zip"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$UnattendedArgs = "/VERYSILENT /log:$LogApp /norestart /noicons"
+$UnattendedArgs = ' /i // /l*v c:\windows\logs\bisf.log /qb'
 $url = $releases.browser_download_url | Select-Object -first 1
-$xml = "https://eucweb.com/download/765/"
 $ctx = "http://xenapptraining.s3.amazonaws.com/Hydration/CitrixOptimizer.zip"
+$tools = "http://xenapptraining.s3.amazonaws.com/Hydration/Tools.zip"
 $ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS
@@ -56,13 +57,13 @@ CD $Version
 
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source)) {
-    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source
-    Write-Verbose "Downloading $Vendor $Product Reference Configuration" -Verbose
-    Invoke-WebRequest -Uri $xml -OutFile $SourceXML
-    Expand-Archive -Path $SourceXML -DestinationPath .\
+    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source    
     Write-Verbose "Downloading Citrix Optimizer" -Verbose
     Invoke-WebRequest -Uri $ctx -OutFile $SourceCTX
     Expand-Archive -Path $SourceCTX -DestinationPath .\CitrixOptimizer
+    Write-Verbose "Downloading Tools" -Verbose
+    Invoke-WebRequest -Uri $tools -OutFile $SourceTools
+    Expand-Archive -Path $SourceTools -DestinationPath .\Tools
              }
         Else {
             Write-Verbose "File exists. Skipping Download." -Verbose
@@ -72,15 +73,12 @@ Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Customization" -Verbose
-New-Item -ItemType directory -Path "C:\Program Files (x86)\Citrix Optimizer\" | Out-Null
-Copy-Item -Path .\CitrixOptimizer\* -Destination "C:\Program Files (x86)\Citrix Optimizer\" -Recurse -Force
-Copy-item -Path .\*.xml -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)" -Recurse -Force
-CD..
-Copy-Item -Path .\PREP_custom\*.ps1 -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)\Framework\SubCall\Preparation\Custom" -Recurse -Force
-Copy-Item -Path .\PERS_custom\*.ps1 -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)\Framework\SubCall\Personalization\Custom" -Recurse -Force
+New-Item -ItemType directory -Path "C:\Program Files\Citrix Optimizer\" | Out-Null
+Copy-Item -Path .\CitrixOptimizer\* -Destination "C:\Program Files\Citrix Optimizer\" -Recurse -Force
 Copy-Item -Path .\Tools\* -Destination $env:SystemRoot\System32 -Recurse -Force
-Copy-Item BISF.reg -Destination C:\Windows\Temp\BISF.reg -Recurse
-cmd.exe /c "regedit /s C:\Windows\Temp\BISF.reg"
+#CD..
+#Copy-Item -Path .\PREP_custom\*.ps1 -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)\Framework\SubCall\Preparation\Custom" -Recurse -Force
+#Copy-Item -Path .\PERS_custom\*.ps1 -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)\Framework\SubCall\Personalization\Custom" -Recurse -Force
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
