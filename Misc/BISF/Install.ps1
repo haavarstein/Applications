@@ -77,6 +77,8 @@ New-Item -ItemType directory -Path "C:\Program Files\Citrix Optimizer\" | Out-Nu
 Copy-Item -Path .\CitrixOptimizer\* -Destination "C:\Program Files\Citrix Optimizer\" -Recurse -Force
 Copy-Item -Path .\Tools\* -Destination $env:SystemRoot\System32 -Recurse -Force
 #CD..
+#Copy-Item BISF.reg -Destination C:\Windows\Temp\BISF.reg -Recurse
+#cmd.exe /c "regedit /s C:\Windows\Temp\BISF.reg"
 #Copy-Item -Path .\PREP_custom\*.ps1 -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)\Framework\SubCall\Preparation\Custom" -Recurse -Force
 #Copy-Item -Path .\PERS_custom\*.ps1 -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)\Framework\SubCall\Personalization\Custom" -Recurse -Force
 
