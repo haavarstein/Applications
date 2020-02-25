@@ -37,6 +37,8 @@ Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source)) {
     Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile AppV.zip
     Expand-Archive -Path AppV.zip -DestinationPath .
+    Rename-Item "App-V Scheduler Agent.msi" -NewName "Agent.msi"
+    Rename-Item "App-V Scheduler Central View.msi" -NewName "Console.msi"
     Remove-Item -Path AppV.zip
          }
         Else {
