@@ -8,8 +8,9 @@ $Feature = "Search-Service"
 
 Start-Transcript $LogPS
 
-Write-Verbose "Install $Product Features" -Verbose
-Get-WindowsFeature -Name $Feature | Install-WindowsFeature
+# ONLY applies to Windows 2012 R2
+#Write-Verbose "Install $Product Features" -Verbose
+#Get-WindowsFeature -Name $Feature | Install-WindowsFeature
 
 Write-Verbose "Set StartUp Type" -Verbose
 Set-Service -Name WSearch -StartupType Automatic
