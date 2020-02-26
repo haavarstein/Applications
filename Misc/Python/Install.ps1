@@ -43,7 +43,7 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $ProgressPreference = 'SilentlyContinue'
-$UnattendedArgs = "/quiet"
+$UnattendedArgs = "/quiet InstallAllUsers=1"
 
 Start-Transcript $LogPS | Out-Null
  
