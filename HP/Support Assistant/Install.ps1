@@ -26,7 +26,7 @@ $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$UnattendedArgs = '/s /v/qn'
+$UnattendedArgs = '/s /a /s /v" /qn"'
 
 Start-Transcript $LogPS | Out-Null
  
