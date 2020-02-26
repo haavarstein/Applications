@@ -43,11 +43,14 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $ProgressPreference = 'SilentlyContinue'
-$UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
+$MST = "TightVNC.mst"
+$UnattendedArgs = "/i $PackageName.$InstallerType TRANSFORMS=$MST ALLUSERS=1 /qn /liewa $LogApp"
 
 Start-Transcript $LogPS | Out-Null
  
 If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null}
+
+Copy-Item $MST -Destination $Version -Recurse -Force
  
 CD $Version
  
