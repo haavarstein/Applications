@@ -43,6 +43,9 @@ If (!(Test-Path -Path $Source)) {
             Write-Verbose "File exists. Skipping Download." -Verbose
          }
 
+Write-Verbose "Waiting for Citrix Cloud Connector to Syncronize" -Verbose
+while (!(Test-Path "C:\Program Files\Common Files\Citrix\HCLPlugins\RegisterPlugins.exe")) { Start-Sleep 10 }
+
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
