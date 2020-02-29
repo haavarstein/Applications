@@ -11,17 +11,19 @@
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
 $Vendor = "Misc"
 $Product = "Remote Display Analyzer"
 $PackageName = "RemoteDisplayAnalyzer"
-$Version = "1903"
+$Version = "1911"
 $InstallerType = "exe"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = '/qn'
-$url = "https://www.rdanalyzer.com/wp-content/uploads/2019/03/RDA1903.zip"
+$url = "https://rdanalyzer.com/wp-content/uploads/2019/11/RDA1911.zip"
 $ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS
