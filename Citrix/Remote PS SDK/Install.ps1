@@ -14,7 +14,7 @@ $StartDTM = (Get-Date)
 
 $Vendor = "Citrix"
 $Product = "Virtual Apps and Desktops Remote PowerShell SDK"
-$Version = "7.19.0.26"
+$Version = "7.23.0.21"
 $PackageName = "CitrixPoshSdk"
 $InstallerType = "exe"
 $Source = "$PackageName" + "." + "$InstallerType"
