@@ -17,15 +17,15 @@ $StartDTM = (Get-Date)
 
 $Vendor = "Microsoft"
 $Product = "Net Framework"
-$Version = "4.7.2"
-$PackageName = "NDP472"
+$Version = "4.8"
+$PackageName = "NDP"
 $InstallerType = "exe"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs='/q /norestart /log $LogApp'
-$url = "https://download.microsoft.com/download/6/E/4/6E48E8AB-DC00-419E-9704-06DD46E5F81D/NDP472-KB4054530-x86-x64-AllOS-ENU.exe"
+$url = "https://download.visualstudio.microsoft.com/download/pr/014120d7-d689-4305-befd-3cb711108212/0fd66638cde16859462a6243a4629a50/ndp48-x86-x64-allos-enu.exe"
 
 Start-Transcript $LogPS
 
