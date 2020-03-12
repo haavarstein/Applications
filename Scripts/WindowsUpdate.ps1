@@ -21,20 +21,6 @@ Get-WindowsUpdate -NotCategory "Drivers" -MicrosoftUpdate -ComputerName localhos
 Write-Verbose "Installing Available Updates from Microsoft" -Verbose
 Get-WindowsUpdate -NotCategory "Drivers" -MicrosoftUpdate -ComputerName localhost -Install -AcceptAll -IgnoreReboot | Out-File C:\PSWindowsUpdate.log -Append
 
-Write-Verbose "Updating Antivirus Signatures" -Verbose
-if( (Test-Path -Path "C:\Program Files (x86)\Symantec\Symantec Endpoint Protection" ) )
-{
-    Start-Process -FilePath "C:\Program Files (x86)\Symantec\Symantec Endpoint Protection\SepLiveUpdate.exe" -PassThru -Wait -RedirectStandardOutput SEP.txt
-    $SEP = Get-Content .\SEP.txt
-    Write-Verbose "$SEP" -Verbose
-}
-
-if( (Get-Service WinDefend| Where-Object {$_.Status -eq "Running"}) )
-{
-    CD "C:\Program Files\Windows Defender\"
-    .\MpCmdRun.exe -signatureupdate
-}
-
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
 Write-Verbose "Elapsed Time: $(($EndDTM-$StartDTM).TotalSeconds) Seconds" -Verbose
