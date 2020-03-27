@@ -16,20 +16,20 @@ $MyConfigFileloc = ("$env:Settings\Applications\Settings.xml")
 
 $Vendor = "Citrix"
 $Product = "StoreFront"
-$PackageName = "Controller and StoreFront"
+$PackageName = "CitrixStoreFront-x64"
 $InstallerType = "exe"
 $Version = $MyConfigFile.Settings.Citrix.Version
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
-$UnattendedArgs = '/quiet /configure_firewall /COMPONENTS STOREFRONT /nosql /noreboot /logpath "C:\Windows\Temp"'
-$Destination = "$Version\x64\XenDesktop Setup\"
+$UnattendedArgs = '-silent'
+$Destination = "$Version\x64\Storefront"
 
 Start-Transcript $LogPS
 
 CD $Destination
  
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
-(Start-Process -FilePath "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru).ExitCode
+(Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Customization" -Verbose
 
