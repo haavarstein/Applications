@@ -62,15 +62,14 @@ Function New-WildcardCertificate {
         Write-Verbose "Requesting certificate" 
         & c:\windows\system32\certreq.exe –new "Wildcard.ini" "$Path\wildcard.req"
         & c:\windows\system32\certreq.exe -config "$CAName" –submit "$Path\wildcard.req" "$Path\wildcard.cer"
-
+ 
         Write-Verbose "Installing certificate" 
         & c:\windows\system32\certreq.exe –accept "$Path\wildcard.cer"
-
+ 
         Write-Verbose "Exporting certificate and private key"
         $PFXPassword = ConvertTo-SecureString -String $Password -Force -AsPlainText
         $cert = new-object security.cryptography.x509certificates.x509certificate2 -arg "$Path\wildcard.cer"
-        Get-item cert:\localmachine\my\$($cert.Thumbprint) | Export-PfxCertificate -FilePath "$PFXPath\Wildcard.pfx" -Password $PFXPassword
-        $cert.Thumbprint | Out-File -FilePath $PFXFile
+        Get-item cert:\localmachine\my\$($cert.Thumbprint) | Export-PfxCertificate -FilePath "$PFXPath\Wildcard.pfx" -Password $PFXPassword 
         Write-Verbose "Certificate successfully exportert to wildcard.pfx"
     }   
     End {
@@ -81,6 +80,7 @@ Function New-WildcardCertificate {
         Remove-Item -Path $Path\wildcard.rsp -Force
     }
 }
+
 New-WildcardCertificate -Path C:\Install -PFXPath "$PFXPath\xa\Certificates\" -Password "P@ssw0rd" -Verbose 
 
 Write-Verbose "Stop logging" -Verbose
