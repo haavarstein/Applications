@@ -84,6 +84,7 @@
 		<Controller>https://xadc-01.ctxlab.local</Controller>
 		<DNSSuffix>ctxlab.local</DNSSuffix>
 		<PortalTheme>RfWebUI</PortalTheme>
+		<XASingleServer>True</XASingleServer>
 	</Netscaler>
 	<Microsoft>
 		<InternalCert>CTXLAB.LOCAL</InternalCert>
