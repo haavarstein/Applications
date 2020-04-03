@@ -6,15 +6,7 @@ $StartDTM = (Get-Date)
  
 Start-Transcript $LogPS
 
-$MyConfigFileloc = ("$PSScriptRoot\Settings.xml")
-[xml]$MyConfigFile = (Get-Content $MyConfigFileLoc)
-
-$Domain = $MyConfigFile.Settings.Domain
-$DomainFQDN = $MyConfigFile.Settings.DomainFQDN
-$NetworkId = $MyConfigFile.Settings.NetworkId
-$ReverseLookup = $MyConfigFile.Settings.ReverseLookup
-$val = Get-ItemProperty -Path "hklm:software\microsoft\windows nt\currentversion\" -Name "InstallationType"
-
+$DomainFQDN = $env:USERDNSDOMAIN
 set-executionpolicy bypass -force
 net user Administrator /passwordreq:yes
 Add-WindowsFeature "RSAT-AD-Tools"
