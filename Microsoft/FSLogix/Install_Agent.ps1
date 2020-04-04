@@ -21,7 +21,7 @@ Update-Module Evergreen
 
 $Vendor = "Microsoft"
 $Product = "FSLogix Apps"
-$PackageName = "FSLogix_Apps"
+$PackageName = "FSLogixAppsSetup"
 $Evergreen = Get-MicrosoftFSLogixApps
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
@@ -47,6 +47,8 @@ If (!(Test-Path -Path $Source1)) {
     Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source1
     Expand-Archive -Path "$PackageName.$DownloadType" -DestinationPath .
 }
+
+CD x64\Release
         
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
