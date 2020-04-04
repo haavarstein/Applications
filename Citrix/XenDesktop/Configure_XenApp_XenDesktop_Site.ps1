@@ -30,9 +30,16 @@ $Port = $MyConfigFile.Settings.Citrix.Port
 $AddressType = $MyConfigFile.Settings.Citrix.AddressType
 $ProductVersion = "7.24"
 $XDC01 = $MyConfigFile.Settings.Citrix.XDC01
-
+$IsSingleServer = $MyConfigFile.Settings.Citrix.XASingleServer
+ 
+ 
+If ($IsSingleServer -eq "False") {
 $DatabaseServer = $MyConfigFile.Settings.Microsoft.DatabaseServer
 $DatabaseFolderUNC = $MyConfigFile.Settings.Microsoft.DatabaseFolderUNC
+} Else {
+$DatabaseServer = "localhost\SQLExpress"
+$DatabaseFolderUNC = "C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\"
+}
 
 $DatabaseName_Site = "$SiteName" + "_" + "Site"
 $DatabaseName_Logging = "$SiteName" + "_" + "Logging"
