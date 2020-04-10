@@ -20,7 +20,7 @@
 		<OU>OU=Servers,OU=Deployment,DC=ctxlab,DC=local</OU>
 	</MDT>
 	<Citrix>
-		<Version>1909</Version>
+		<Version>2003</Version>
 		<XDC01>XADC-01.CTXLAB.LOCAL</XDC01>
 		<XDC02>XADC-02.CTXLAB.LOCAL</XDC02>
 		<SF01>SF-01.CTXLAB.LOCAL</SF01>
