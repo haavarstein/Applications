@@ -1,3 +1,8 @@
+# Use the Automation Framework PowerShell Module to create an enncrypted key file
+# Get-Help Protect-Passowrd -Examples
+# Protect-Password
+# Copy the 2 key files to .\Applications\Scripts and change line 16-18
+
 Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
