@@ -21,21 +21,20 @@ $WEMSvcAccCred = New-Object System.Management.Automation.PSCredential($WEMSvcAcc
 $DBVuemUserPwd = $MyConfigFile.Settings.Citrix.DBVuemUserPwd
 $DBVuemUserCred = $DBVuemUserPwd | ConvertTo-SecureString -asPlainText -Force
 
+If ($IsSingleServer -eq "False") {
 $DatabaseServer = $MyConfigFile.Settings.Microsoft.DatabaseServer
-$DatabaseFolder = $MyConfigFile.Settings.Microsoft.DatabaseFolder
 $DatabaseFolderUNC = $MyConfigFile.Settings.Microsoft.DatabaseFolderUNC
+$DatabaseFolder = $MyConfigFile.Settings.Microsoft.DatabaseFolder
+} Else {
+$DatabaseServer = "localhost\SQLExpress"
+$DatabaseFolderUNC = "C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\"
+$DatabaseFolder = $DatabaseFolderUNC
+}
 
 $DatabaseName = "$SiteName" + "_" + "WEM"
 $DataFilePath = "$DatabaseFolder" + "$DatabaseName" + "_" + "Data.mdf"
 $DataFileUNCPath = "$DatabaseFolderUNC" + "$DatabaseName" + "_" + "Data.mdf"
 $LogFilePath = "$DatabaseFolder" + "$DatabaseName" + "_" + "Log.ldf"
-
-#Write-Verbose "Getting Encrypted Password from KeyFile" -Verbose
-#Use When Reading Password in clear text from XML
-#$DatabasePassword = $DatabasePassword | ConvertTo-SecureString -asPlainText -Force
-#$DatabasePassword = ((Get-Content $DatabasePasswordFile) | ConvertTo-SecureString -Key (Get-Content $DatabaseKeyFile))
-#$DatabasePassword = $DatabasePassword | ConvertTo-SecureString -asPlainText -Force
-#$Database_CredObject = New-Object System.Management.Automation.PSCredential($DatabaseUser,$DatabasePassword)
 
 Write-Verbose "Import PowerShell Module" -Verbose
 Import-Module "C:\Program Files (x86)\Norskale\Norskale Infrastructure Services\Citrix.Wem.InfrastructureServiceConfiguration.dll" -Verbose
@@ -48,9 +47,7 @@ If (Test-Path $DataFileUNCPath){
 }
 
 Write-Verbose "Configure CWEM Service" -Verbose
-#Set-WemInfrastructureServiceConfiguration -DatabaseServerInstance $DatabaseServer -DatabaseName $DatabaseName -InfrastructureServiceAccountCredential $Database_CredObject
 Set-WemInfrastructureServiceConfiguration -EnableInfrastructureServiceAccountCredential Enable -InfrastructureServiceAccountCredential $WEMSvcAccCred -DatabaseServerInstance $DatabaseServer -DatabaseName $DatabaseName -SetSqlUserSpecificPassword Enable -SqlUserSpecificPassword $DBVuemUserCred -EnableScheduledMaintenance Enable -PSDebugMode Enable -SendGoogleAnalytics Disable -UseCacheEvenIfOnline Disable -DebugMode Enable
-
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
