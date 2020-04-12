@@ -40,6 +40,7 @@
 		<WEMSvcAccPwd>P@ssw0rd</WEMSvcAccPwd>
 		<WEMAdminGroup>ctxlab\Domain Admins</WEMAdminGroup>
 		<DBVuemUserPwd>P@ssw0rd</DBVuemUserPwd>
+		<XASingleServer>True</XASingleServer>
 	</Citrix>
 	<Netscaler>
 		<Version>13.0-36.27_nc_64</Version>
