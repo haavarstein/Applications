@@ -12,19 +12,33 @@ Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
+Write-Verbose "Installing Modules" -Verbose
+if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
+if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
+Update-Module Evergreen
+
 $Vendor = "Microsoft"
 $Product = "OneDrive for Business"
 $PackageName = "OneDriveSetup"
+$Evergreen = Get-MicrosoftOneDrive | Where-Object {$_.Ring -eq "Insider"}
+$Version = $Evergreen.Version
+$URL = $Evergreen.uri
 $InstallerType = "exe"
-$Version = "19.232.1124.0008"
+$Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "C:\Windows\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "C:\Windows\Temp\$Product.log"
+$ProgressPreference = 'SilentlyContinue'
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $UnattendedArgs = '/allusers /silent'
-$url = "https://oneclient.sfx.ms/Win/Prod/19.232.1124.0008/OneDriveSetup.exe"
 
 Start-Transcript $LogPS
 
+If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null}
+
 CD $Version
+
+Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
+If (!(Test-Path -Path $Source)) {Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source}
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
