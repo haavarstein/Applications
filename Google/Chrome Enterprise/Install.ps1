@@ -13,15 +13,14 @@ Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
 Write-Verbose "Installing Modules" -Verbose
-Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
 if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
 Update-Module Evergreen
 
 $Vendor = "Google"
 $Product = "Chrome Enterprise"
-$PackageName = "googlechromestandaloneenterprise64"
-$Evergreen = Get-GoogleChrome -Platform win64
+$PackageName = "googlechromestandaloneenterprise32"
+$Evergreen = Get-GoogleChrome -Platform win
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $InstallerType = "msi"
