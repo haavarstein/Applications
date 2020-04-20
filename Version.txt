@@ -5,3 +5,5 @@ Automation Framework Version Control System
 10/02/2019 : AF 1909.02 Windows Search & Defender
 
 11/09/2019 : AF 1911 - Improved installer with more customized settings, Protected content via API & updated Settings.xml
+
+20/04/2020 : AF 2004
