@@ -42,6 +42,19 @@
 		<DBVuemUserPwd>P@ssw0rd</DBVuemUserPwd>
 		<XASingleServer>True</XASingleServer>
 	</Citrix>
+	<Citrix_Cloud>
+		<ProvisioningType>MCS</ProvisioningType>
+		<AllocationType>Random</AllocationType>
+		<SessionSupport>MultiSession</SessionSupport>
+		<PersistUserChanges>Discard</PersistUserChanges>
+		<NamingScheme>NTX-CC-WS19-##</NamingScheme>
+		<HostingUnitName>AHV</HostingUnitName>
+		<CustomerID>xxxx</CustomerID>
+		<API>xxxx</API>
+		<PasswordFile>\\dc-01.ctxlab.local\xa\Credentials\Citrix-Cloud.txt</PasswordFile>
+		<KeyFile>\\dc-01.ctxlab.local\xa\Credentials\\Citrix-Cloud.key</KeyFile>
+		<OU>OU=WS19,OU=FMA,OU=Citrix,OU=vDesktops,OU=Deployment,DC=ctxlab,DC=local</OU>
+	</Citrix_Cloud>
 	<Netscaler>
 		<Version>13.0-36.27_nc_64</Version>
 		<FileExtension>.ovf</FileExtension>
