@@ -1,26 +1,3 @@
-Function Get-ZoomVersion {
-    
-    <#
-        .NOTES
-            Author: Trond Eirik Haavarstein
-            Twitter: @xenappblog
-    #>
-    
-    
-    $url = "https://zoom.us/download"
-
-    try {
-        $web = Invoke-WebRequest -UseBasicParsing -Uri $url -ErrorAction SilentlyContinue
-        $str1 = $web.tostring() -split "[`r`n]" | select-string "Version" | Select -First 1
-        $str2 = $str1 -replace "						</div>"
-        $Version = $str2 -replace "Version "
-        Write-Output $Version
-    }
-    catch {
-        Throw "Failed to connect to URL: $url with error $_."
-    }
-}
-
 # PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
 # Example 1: Start-Process "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru
 # Example 2 Powershell: Start-Process powershell.exe -ExecutionPolicy bypass -file $Destination
@@ -30,41 +7,42 @@ Function Get-ZoomVersion {
 # Example 4 MSI (Always use " "):
 # $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 # (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
+# Example 5 MSI with Space in the file name we need to use double quotes
+# $UnattendedArgs = "/i `"$PackageName.$InstallerType`" ALLUSERS=1 /qn /liewa `"$LogApp`""
 
 Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
+Write-Verbose "Installing Modules" -Verbose
+if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
+if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
+Update-Module Evergreen
+
 $Vendor = "Misc"
 $Product = "Zoom"
 $PackageName = "ZoomInstallerFull"
-$Version = "$(Get-ZoomVersion)"
+$Evergreen = Get-Zoom | Where-Object {$_.Platform -eq "Windows" -and $_.Type -eq "MSI"}
+$Version = $Evergreen.Version
+$URL = $Evergreen.uri
 $InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 $ProgressPreference = 'SilentlyContinue'
-$URL = "https://zoom.us/client/latest/ZoomInstallerFull.msi"
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+$UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 
-Start-Transcript $LogPS
-
-if ( -Not (Test-Path -Path $Version ) ) {
-    New-Item -ItemType directory -Path $Version
-}
-
+Start-Transcript $LogPS | Out-Null
+ 
+If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null}
+ 
 CD $Version
-
+ 
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
-If (!(Test-Path -Path $Source)) {
-    [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
-    Invoke-WebRequest -Uri $url -OutFile $Source
-         }
-        Else {
-            Write-Verbose "File exists. Skipping Download." -Verbose
-         }
-
+If (!(Test-Path -Path $Source)) {Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source}
+        
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
