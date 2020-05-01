@@ -128,7 +128,7 @@
 		<NICType>Vmxnet3</NICType>
 		<NetName>vLAN10</NetName>
 		<ISO>[QNAP]\MDTProduction_x64_UEFI.iso</ISO>
-		<BuildISO>[QNAP]\MDTBuildLab_x64.iso</BuildISO>
+		<BuildISO>[QNAP]\MDTBuildLab_x64_UEFI.iso</BuildISO>
 		<ESXi>192.168.2.21</ESXi>	
 		<VMGuestOS>windows9Server64Guest</VMGuestOS>	
 	</VMware>
