@@ -45,8 +45,8 @@ $UnattendedArgs2 = "/p $MSP2 /norestart /qn /liewa ${env:SystemRoot}\Temp\$MSP.l
 Write-Verbose "Customization and Active License" -Verbose
 Unregister-ScheduledTask -TaskName "Adobe Acrobat Update Task" -Confirm:$false
 sc.exe config AdobeARMservice start= disabled
-#.\adobe_prtk.exe --tool=Serialize --leid="V7{}AcrobatESR-17-Win-GM" --serial="1118-1264-1730-5471-8265-9270" --regsuppress=ss --eulasuppress
-#.\adobe_prtk.exe --tool=VolumeSerialize --generate --serial="1118-1264-1730-5471-8265-9270" --leid="V7{}AcrobatESR-17-Win-GM" --regsuppress=ss --eulasuppress --provfile=prov.xml
+#.\adobe_prtk.exe --tool=Serialize --leid="V7{}AcrobatESR-17-Win-GM" --serial="xxx-xxx-xxx-xxx" --regsuppress=ss --eulasuppress
+#.\adobe_prtk.exe --tool=VolumeSerialize --generate --serial="xxx-xxx-xxx-xxx" --leid="V7{}AcrobatESR-17-Win-GM" --regsuppress=ss --eulasuppress --provfile=prov.xml
 Copy-Item prov.xml -Destination "C:\Program Files (x86)\Adobe\Acrobat 2017"
 .\adobe_prtk.exe --tool=VolumeSerialize --provfile="C:\Program Files (x86)\Adobe\Acrobat 2017\prov.xml" --stream
 
