@@ -25,7 +25,7 @@ Install-ADDSDomainController `
 -InstallDns:$true `
 -LogPath "C:\Windows\NTDS" `
 -NoRebootOnCompletion:$true -Force `
--SiteName “Default-First-Site-Name” `
+-SiteName "Default-First-Site-Name" `
 -SysvolPath "C:\Windows\SYSVOL" `
 -SafeModeAdministratorPassword (ConvertTo-SecureString 'P@ssword' -AsPlainText -Force) `
 
