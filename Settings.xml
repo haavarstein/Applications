@@ -131,6 +131,7 @@
 		<BuildISO>[QNAP]\MDTBuildLab_x64_UEFI.iso</BuildISO>
 		<ESXi>192.168.2.21</ESXi>	
 		<VMGuestOS>windows9Server64Guest</VMGuestOS>	
+		<ConnectionServer>hcs-01.ctxlab.local</ConnectionServer>
 	</VMware>
 	<Nutanix>
 		<CVM>nutanix.ctxlab.local</CVM>
