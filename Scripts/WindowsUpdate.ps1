@@ -4,9 +4,6 @@ $StartDTM = (Get-Date)
 
 if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
 if (!(Get-Module -ListAvailable -Name PSWindowsUpdate)) {Install-Module PSWindowsUpdate -Scope CurrentUser -Force | Import-Module PSWindowsUpdate}
-if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Scope CurrentUser -Force | Import-Module Evergreen}
-
-Update-Module -Name Evergreen -Force
 
 Write-Verbose "Checking if the Windows Update Service is Running" -Verbose
 $ServiceName = 'wuauserv'
