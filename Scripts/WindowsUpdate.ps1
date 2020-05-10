@@ -2,11 +2,9 @@ Clear-Host
 Write-Verbose "Settings Arugments"
 $StartDTM = (Get-Date)
 
-Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
-
 if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
-if (!(Get-Module -ListAvailable -Name PSWindowsUpdate)) {Install-Module PSWindowsUpdate -Force | Import-Module PSWindowsUpdate}
-if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
+if (!(Get-Module -ListAvailable -Name PSWindowsUpdate)) {Install-Module PSWindowsUpdate -Scope CurrentUser -Force | Import-Module PSWindowsUpdate}
+if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Scope CurrentUser -Force | Import-Module Evergreen}
 
 Update-Module -Name Evergreen -Force
 
