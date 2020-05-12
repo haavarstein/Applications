@@ -84,9 +84,6 @@ If ((Test-Path -Path HKLM:SYSTEM\CurrentControlSet\services\CtxUvi)) {
     Set-ItemProperty -Path $RegPath -Name $RegName -Value "$CurrentValues$EdgeRegvalue;" | Out-Null
 }
 
-Write-Verbose "Remove Shortcut from Public Desktop" -Verbose
-Remove-Item -Path "$env:PUBLIC\Desktop\Microsoft Edge.lnk"
-
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
 Write-Verbose "Elapsed Time: $(($EndDTM-$StartDTM).TotalSeconds) Seconds" -Verbose
