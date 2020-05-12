@@ -20,7 +20,7 @@ Update-Module Evergreen
 $Vendor = "Microsoft"
 $Product = "Edge Enterprise x64"
 $PackageName = "MicrosoftEdgeEnterpriseX64"
-$Evergreen = Get-MicrosoftEdge | Where-Object { $_.Architecture -eq "x64" -and $_.Product -eq "Stable" -and $_.Platform -eq "Windows" }
+$Evergreen = Get-MicrosoftEdge | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Beta" -and $_.Platform -eq "Windows" }
 $Evergreen = $Evergreen | Sort-Object -Property Version -Descending | Select-Object -First 1
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
