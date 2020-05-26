@@ -1,42 +1,3 @@
-# https://github.com/BronsonMagnan/SoftwareUpdate/blob/master/ControlUpAgent.ps1
-
-
-function Get-CurrentControlUpAgentVersion {
-    [cmdletbinding()]
-    [outputType([version])]
-    param()
-    $agentURL = "http://www.controlup.com/products/controlup/agent/"
-    #ControlUP forces TLS 1.2 and rejects TLS 1.1
-    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    $webrequest = wget -Uri $agentURL -UseBasicParsing
-    $content = $webrequest.Content
-    #clean up the code into paragraph blocks
-    $paragraphSections = $content.replace("`n","").replace("  ","").replace("`t","").replace("<p>","#$%^<p>").split("#$%^").trim()
-    #now we are looking for the pattern <p><strong>Current agent version:</strong> 7.2.1.6</p>
-    $versionLine = $paragraphSections  | where {$_ -like "*Current*agent*"}
-    $splitlines = ($versionLine.replace('<','#$%^<').replace('>','>#$%^').split('#$%^')).trim()
-    $pattern = "(\d+\.){3}\d+"
-    $version = [Version]::new(($splitlines | select-string -Pattern $pattern).tostring())
-    Write-Output $version
-}
-
-function Get-CurrentControlUpAgentURL {
-    [cmdletBinding()]
-    [outputType([string])]
-    param(
-        [validateSet("net45","net35")]
-        [string]$netversion = "net45",
-        [validateSet("x86","x64")]
-        [string]$architecture = "x64"
-    )
-    $version = Get-CurrentControlUpAgentVersion
-    $DownloadURL = "https://downloads.controlup.com/agent/$($version.tostring())/ControlUpAgent-$($netversion)-$($architecture)-$($version).msi"
-    Write-Output $DownloadURL
-}
-
-# Example
-# Get-CurrentControlUpAgentURL -netversion net45 -architecture x64
-
 # PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
 # Example 1: Start-Process "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru
 # Example 2 Powershell: Start-Process powershell.exe -ExecutionPolicy bypass -file $Destination
@@ -51,9 +12,16 @@ Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
+Write-Verbose "Installing Modules" -Verbose
+if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
+if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
+Update-Module Evergreen
+
 $Vendor = "SmartX"
 $Product = "ControlUp Agent"
-$Version = "$(Get-CurrentControlUpAgentVersion)"
+$Evergreen = Get-ControlUpAgent | Where-Object { $_.Framework -eq "net45" -and $_.Architecture -eq "x64" } | Select-Object -First 1
+$Version = $Evergreen.Version
+$URL = $Evergreen.uri
 $PackageName = "CUPAgent"
 $InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
@@ -61,7 +29,7 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
-$url = "$(Get-CurrentControlUpAgentURL)"
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
 $ProgressPreference = 'SilentlyContinue'
 $ServiceName = "cuagent"
 
@@ -70,7 +38,6 @@ Start-Transcript $LogPS
 if ( -Not (Test-Path -Path $Version\$Source ) ) {
     New-Item -ItemType directory -Path $Version
     CD $Version
-    [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
     Invoke-WebRequest -Uri $url -OutFile "$Source"
   }
         Else {
@@ -85,7 +52,7 @@ If (Get-Service $serviceName -ErrorAction SilentlyContinue) {
 
     If ((Get-Service $serviceName).Status -eq 'Running') {
 
-        Set-Service -Name cuagent -StartupType Disabled -Status Stopped 
+        Set-Service -Name $serviceName -StartupType Disabled -Status Stopped 
         Write-Verbose "Stopping and Disabling $serviceName" -Verbose
 
     } Else {
@@ -102,6 +69,8 @@ If (Get-Service $serviceName -ErrorAction SilentlyContinue) {
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
+Set-Service -Name $serviceName -StartupType Automatic
+Start-Service -Name $serviceName
 
 Write-Verbose "Customization" -Verbose
 
