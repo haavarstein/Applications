@@ -6,6 +6,7 @@
 		<PasswordFile>\\dc-01.ctxlab.local\xa\Credentials\AmazonSES.txt</PasswordFile>
 		<KeyFile>\\dc-01.ctxlab.local\xa\Credentials\AmazonSES.key</KeyFile>
 		<API></API>
+		<SlackWebHook></SlackWebHook>
 	</Mail>
 	<MDT>
 		<Server>MDT-01</Server>
@@ -45,6 +46,7 @@
 	<Citrix_Cloud>
 		<ProvisioningType>MCS</ProvisioningType>
 		<AllocationType>Random</AllocationType>
+		<FunctionalLevel>L7_20</FunctionalLevel>
 		<SessionSupport>MultiSession</SessionSupport>
 		<PersistUserChanges>Discard</PersistUserChanges>
 		<NamingScheme>NTX-CC-WS19-##</NamingScheme>
