@@ -28,6 +28,7 @@ $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
 $ProgressPreference = 'SilentlyContinue'
 $UnattendedArgs = '/S'
 
