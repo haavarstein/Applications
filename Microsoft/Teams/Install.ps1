@@ -33,12 +33,14 @@ $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $ProgressPreference = 'SilentlyContinue'
 $MST = "teams_windows_x64.mst"
-$UnattendedArgs = "/i `"$PackageName.$InstallerType`" ALLUSER=1 TRANSFORM=$MST /qn /liewa `"$LogApp`""
+$UnattendedArgs = "/i `"$PackageName.$InstallerType`" ALLUSER=1 TRANSFORMS=$MST /qn /liewa `"$LogApp`""
 
 Start-Transcript $LogPS | Out-Null
  
 If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null}
  
+Copy-Item $MST -Destination $Version -Recurse -Force
+
 CD $Version
  
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
