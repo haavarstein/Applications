@@ -55,7 +55,7 @@
 		<API>xxxx</API>
 		<PasswordFile>\\dc-01.ctxlab.local\xa\Credentials\Citrix-Cloud.txt</PasswordFile>
 		<KeyFile>\\dc-01.ctxlab.local\xa\Credentials\\Citrix-Cloud.key</KeyFile>
-		<OU>OU=WS19,OU=FMA,OU=Citrix,OU=vDesktops,OU=Deployment,DC=ctxlab,DC=local</OU>
+		<OU>OU=WS19,OU=Citrix,OU=vDesktops,OU=Deployment,DC=ctxlab,DC=local</OU>
 	</Citrix_Cloud>
 	<Netscaler>
 		<Version>13.0-36.27_nc_64</Version>
@@ -103,6 +103,7 @@
 		<XASingleServer>True</XASingleServer>
 	</Netscaler>
 	<Microsoft>
+		<ADCA>CA-01.CTXLAB.LOCAL</ADCA>
 		<InternalCert>CTXLAB.LOCAL</InternalCert>
 		<ExternalCert>XENAPPTRAINING.COM</ExternalCert>
 		<DC01>DC-01.CTXLAB.LOCAL</DC01>
