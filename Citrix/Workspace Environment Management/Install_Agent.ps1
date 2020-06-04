@@ -20,13 +20,13 @@ $MyConfigFileloc = ("$env:Settings\Applications\Settings.xml")
 
 $Vendor = "Citrix"
 $Product = "Workspace Environment Management Agent"
-$PackageName = "Citrix Workspace Environment Management Agent Setup"
+$PackageName = "Citrix Workspace Environment Management Agent"
 $InstallerType = "exe"
-$Version = $MyConfigFile.Settings.Citrix.Version
+$Version = "2005"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$UnattendedArgs = '/quiet Cloud=0'
+$UnattendedArgs = '/quiet Cloud=1' # OnPrem 0 Cloud 1
 
 Start-Transcript $LogPS
 
