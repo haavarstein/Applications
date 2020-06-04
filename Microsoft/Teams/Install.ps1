@@ -33,7 +33,7 @@ $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $ProgressPreference = 'SilentlyContinue'
 $MST = "teams_windows_x64.mst"
-$UnattendedArgs = "/i `"$PackageName.$InstallerType`" ALLUSER=1 TRANSFORMS=$MST /qn /liewa `"$LogApp`""
+$UnattendedArgs = "/i `"$PackageName.$InstallerType`" ALLUSER=1 DISABLEMSTEAMSAUTORUN=1 TRANSFORMS=$MST /qn /liewa `"$LogApp`""
 
 Start-Transcript $LogPS | Out-Null
  
