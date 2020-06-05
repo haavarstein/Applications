@@ -50,7 +50,9 @@
 		<SessionSupport>MultiSession</SessionSupport>
 		<PersistUserChanges>Discard</PersistUserChanges>
 		<NamingScheme>NTX-CC-WS19-##</NamingScheme>
-		<HostingUnitName>AHV</HostingUnitName>
+		<HypervisorConnection>HQ</HypervisorConnection>
+		<HostingUnitName>NTNX-CE</HostingUnitName>
+		<HostingUnitNetwork>vLAN14</HostingUnitNetwork>
 		<CustomerID>xxxx</CustomerID>
 		<API>xxxx</API>
 		<PasswordFile>\\dc-01.ctxlab.local\xa\Credentials\Citrix-Cloud.txt</PasswordFile>
