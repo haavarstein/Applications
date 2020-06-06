@@ -33,7 +33,7 @@ Write-Host $DNS
 Write-Host $FQDN
 
 Write-Verbose "Getting Static IP Address" -Verbose
-New-NetIPAddress –InterfaceAlias “Ethernet0” –IPv4Address $IPAddress –PrefixLength 24 -DefaultGateway $Gateway
+New-NetIPAddress -InterfaceAlias Ethernet0 -IPv4Address $IPAddress -PrefixLength 24 -DefaultGateway $Gateway
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
