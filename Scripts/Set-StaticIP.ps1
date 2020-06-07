@@ -1,3 +1,5 @@
+# Needs to run as PowerShell and NOT as an Application in the Task Sequence (Module is not loaded)
+
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
@@ -6,6 +8,9 @@ $Product = "Set Static IP Address"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product PS Wrapper.log"
 
 Start-Transcript $LogPS
+
+Write-Verbose "Importing PowerShell Module" -Verbose
+Import-Module ZTIUtility.psm1
 
 Write-Verbose "Using COM interop to access the TSEnvironment object" -Verbose
 $TSEnv = New-Object -ComObject Microsoft.SMS.TSEnvironment
