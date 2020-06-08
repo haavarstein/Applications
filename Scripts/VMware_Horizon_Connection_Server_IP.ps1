@@ -1,4 +1,7 @@
-Clear-Host
+#Static Network Address VMWare View Connection Server
+#New-NetIPAddress -InterfaceIndex 12 -IPAddress 192.168.1.15 -PrefixLength 24 -DefaultGateway 192.168.1.1
+#Set-DNSClientServerAddress -InterfaceIndex 12 -ServerAddresses ("192.168.1.10")
+
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
@@ -12,14 +15,13 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product PS Wrapper.log"
 
 $NIC = Get-WMIObject Win32_NetworkAdapterConfiguration -computername . | where{$_.IPEnabled -eq $true -and $_.DHCPEnabled -eq $true}
 $GW = $nic.DefaultIPGateway | Out-String
-$DNS1 = $nic.DNSServerSearchOrder | Select-Object -First 1 | Out-String
 $IPAddress = $MyConfigFile.Settings.VMware.ConnectionServerIP
 
 Start-Transcript $LogPS
 
 Write-Verbose "Getting Static IP Address" -Verbose
 New-NetIPAddress -InterfaceAlias Ethernet0 -IPAddress $IPAddress -PrefixLength 24 -DefaultGateway $GW.Trim()
-Set-DnsClientServerAddress -InterfaceAlias Ethernet0 -ServerAddresses $DNS.Trim()
+Set-DnsClientServerAddress -InterfaceAlias Ethernet0 -ServerAddresses ("192.168.86.10","192.168.86.11")
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
