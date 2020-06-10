@@ -2,6 +2,7 @@ Clear-Host
 Write-Verbose "Settings Arugments"
 $StartDTM = (Get-Date)
 
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
 if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
 if (!(Get-Module -ListAvailable -Name PSWindowsUpdate)) {Install-Module PSWindowsUpdate -Scope CurrentUser -Force | Import-Module PSWindowsUpdate}
 
