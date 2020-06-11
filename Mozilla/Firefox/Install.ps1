@@ -21,10 +21,10 @@ $Vendor = "Mozilla"
 $Product = "FireFox"
 $ESR = $false #Extended Support Release
 If ($ESR -eq $true) {
-    $Evergreen = Get-MozillaFirefox -Platform win64 -Language nb-NO | Where-Object {$_.Version -match "esr"}
+    $Evergreen = Get-MozillaFirefox -Platform win64 | Where-Object {$_.Version -match "esr"}
 }
 Else {
-    $Evergreen = Get-MozillaFirefox -Platform win64 -Language nb-NO | Where-Object {$_.Version -notmatch "esr"}
+    $Evergreen = Get-MozillaFirefox -Platform win64 | Where-Object {$_.Version -notmatch "esr"}
 }
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
