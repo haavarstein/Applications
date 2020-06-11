@@ -19,7 +19,13 @@ Update-Module Evergreen
 
 $Vendor = "Mozilla"
 $Product = "FireFox"
-$Evergreen = Get-MozillaFirefox -Platform win64
+$ESR = $false #Extended Support Release
+If ($ESR -eq $true) {
+    $Evergreen = Get-MozillaFirefox -Platform win64 -Language nb-NO | Where-Object {$_.Version -match "esr"}
+}
+Else {
+    $Evergreen = Get-MozillaFirefox -Platform win64 -Language nb-NO | Where-Object {$_.Version -notmatch "esr"}
+}
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $PackageName = "Firefox"
