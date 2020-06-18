@@ -18,7 +18,7 @@
 		<SQLInstance>SQLEXPRESS</SQLInstance>
 		<ProductionShare>\\mdt-01.ctxlab.local\mdtproduction$</ProductionShare>
 		<BuildShare>\\mdt-01.ctxlab.local\mdtbuildlab$</BuildShare>
-		<OU>OU=Servers,OU=Deployment,DC=ctxlab,DC=local</OU>
+		<StagingOU>OU=Servers,OU=Deployment,DC=ctxlab,DC=local</StagingOU>
 	</MDT>
 	<Citrix>
 		<Version>2003</Version>
