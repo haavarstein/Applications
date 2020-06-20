@@ -58,7 +58,7 @@ Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 Write-Verbose "Customization" -Verbose
 CD..
 CD..
-Register-ScheduledTask -Xml (Get-Content WSearch.xml | Out-String) -TaskName "Reset Windows Search at Logoff"
+Register-ScheduledTask -Xml (Get-Content WSearch.xml | Out-String) -TaskName "Reset Windows Search at Logoff" -Force
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
