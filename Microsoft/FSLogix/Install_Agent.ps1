@@ -15,6 +15,7 @@ Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
 Write-Verbose "Installing Modules" -Verbose
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
 if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
 Update-Module Evergreen
@@ -33,12 +34,13 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $ProgressPreference = 'SilentlyContinue'
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $UnattendedArgs = '/S'
 
 Start-Transcript $LogPS | Out-Null
  
-If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null}
+If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null
+    Copy-Item .\WSearch.xml -Destination .\$Version
+}
  
 CD $Version
  
@@ -54,6 +56,9 @@ Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Customization" -Verbose
+CD..
+CD..
+Register-ScheduledTask -Xml (Get-Content WSearch.xml | Out-String) -TaskName "Reset Windows Search at Logoff"
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
