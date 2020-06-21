@@ -1,4 +1,4 @@
-# PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
+# PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 http://xenappblog.com 
 # Example 1: Start-Process "XenDesktopServerSetup.exe" -ArgumentList $unattendedArgs -Wait -Passthru
 # Example 2 Powershell: Start-Process powershell.exe -ExecutionPolicy bypass -file $Destination
 # Example 3 EXE (Always use ' '):
@@ -41,23 +41,18 @@ Start-Transcript $LogPS | Out-Null
 If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null
     Copy-Item .\WSearch.xml -Destination .\$Version
 }
- 
-CD $Version
- 
+
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source1)) {
-    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source1
-    Expand-Archive -Path "$PackageName.$DownloadType" -DestinationPath .
+    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile "$PSScriptRoot\$Version\$Source1"
+    Expand-Archive -Path "$PSScriptRoot\$Version\$PackageName.$DownloadType" -DestinationPath "$PSScriptRoot\$Version"
 }
 
-CD x64\Release
-        
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
-(Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
+(Start-Process "$PSScriptRoot\$Version\x64\Release\$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Customization" -Verbose
-CD..
-CD..
+
 Register-ScheduledTask -Xml (Get-Content WSearch.xml | Out-String) -TaskName "Reset Windows Search at Logoff" -Force
 
 Write-Verbose "Stop logging" -Verbose
