@@ -39,19 +39,15 @@ $UnattendedArgs = '/S'
 Start-Transcript $LogPS | Out-Null
  
 If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null}
- 
-CD $Version
- 
+
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source1)) {
-    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source1
-    Expand-Archive -Path "$PackageName.$DownloadType" -DestinationPath .
+    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile "$PSScriptRoot\$Version\$Source1"
+    Expand-Archive -Path "$PSScriptRoot\$Version\$Source1" -DestinationPath "$PSScriptRoot\$Version"
 }
-
-CD x64\Release
         
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
-(Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
+(Start-Process "$PSScriptRoot\$Version\x64\Release\$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Customization" -Verbose
 
