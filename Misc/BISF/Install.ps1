@@ -33,14 +33,14 @@ $Vendor = "Misc"
 $Product = "BISF"
 $PackageName = "setup-BIS-F"
 $Version = $Version = $latestVersion.Trim(".windows.1 , v")
-$InstallerType = "exe"
+$InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
 $SourceCTX = "CitrixOptimizer.zip"
 $SourceTools = "Tools.zip"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$UnattendedArgs = ' /i // /l*v c:\windows\logs\bisf.log /qb'
+$UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 $url = $releases.browser_download_url | Select-Object -first 1
 $ctx = "http://xenapptraining.s3.amazonaws.com/Hydration/CitrixOptimizer.zip"
 $tools = "http://xenapptraining.s3.amazonaws.com/Hydration/Tools.zip"
@@ -70,18 +70,15 @@ If (!(Test-Path -Path $Source)) {
          }
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
-(Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
+(Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Customization" -Verbose
 New-Item -ItemType directory -Path "C:\Program Files\Citrix Optimizer\" | Out-Null
 Copy-Item -Path .\CitrixOptimizer\* -Destination "C:\Program Files\Citrix Optimizer\" -Recurse -Force
 Copy-Item -Path .\Tools\* -Destination $env:SystemRoot\System32 -Recurse -Force
-Copy-Item -Path .\PREP_custom\*.ps1 -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)\Framework\SubCall\Preparation\Custom" -Recurse -Force
-Copy-Item -Path .\PERS_custom\*.ps1 -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)\Framework\SubCall\Personalization\Custom" -Recurse -Force
-
 #CD..
-#Copy-Item BISF.reg -Destination C:\Windows\Temp\BISF.reg -Recurse
-#cmd.exe /c "regedit /s C:\Windows\Temp\BISF.reg"
+#Copy-Item -Path .\PREP_custom\*.ps1 -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)\Framework\SubCall\Preparation\Custom" -Recurse -Force
+#Copy-Item -Path .\PERS_custom\*.ps1 -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)\Framework\SubCall\Personalization\Custom" -Recurse -Force
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
