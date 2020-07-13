@@ -41,7 +41,7 @@
 		<WEMSvcAccPwd>P@ssw0rd</WEMSvcAccPwd>
 		<WEMAdminGroup>ctxlab\Domain Admins</WEMAdminGroup>
 		<DBVuemUserPwd>P@ssw0rd</DBVuemUserPwd>
-		<XASingleServer>True</XASingleServer>
+		<XASingleServer>False</XASingleServer>
 	</Citrix>
 	<Citrix_Cloud>
 		<ProvisioningType>MCS</ProvisioningType>
