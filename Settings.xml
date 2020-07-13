@@ -8,6 +8,9 @@
 		<API></API>
 		<SlackWebHook></SlackWebHook>
 	</Mail>
+	<LE>
+		<API></API>
+	</LE>
 	<MDT>
 		<Server>MDT-01</Server>
 		<Domain>CTXLAB</Domain>
