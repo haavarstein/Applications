@@ -1,57 +1,75 @@
-Function Get-VMWareToolsVersion {
-    <#
-        .NOTES
-            Author: Bronson Magnan
-            Twitter: @cit_bronson
-    #>
+Function Disable-NetAdapterPowerSavings {
     [CmdletBinding()]
-    [OutputType([Version])]
-    Param()
 
-    $vmwareTools = "https://packages.vmware.com/tools/esx/latest/windows/x64/index.html"
-    $pattern = "[0-9]+\.[0-9]+\.[0-9]+\-[0-9]+\-x86_64"
+    Param
+    (
+        [string]$NIC ,
+        [string]$registryKeyword = 'PnPCapabilities' ,
+        [switch]$disable ,
+        [switch]$noRestart
+    )
 
-    #get the raw page content
-    $pageContent=(wget -UseBasicParsing -Uri $vmwareTools).content
+    if( ! ( $adapters = Get-Netadapter -Physical ) )
+    {
+        Throw 'Failed to find any physical NICs'
+    }
 
-    #change one big string into many strings, then find only the line with the version number
-    $interestingLine = ($pageContent.split("`n") | Select-string -Pattern $pattern).tostring().trim()
+    [int]$successes = 0
 
-    #remove the whitespace and split on the assignment operator, then split on the double quote and select the correct item
-    $filename = (($interestingLine.Replace(" ","").Split("=") | Select-string -Pattern $pattern).ToString().Trim().Split("`""))[1]
+    foreach ($adapter in $adapters)
+    {
+        Write-Verbose -Message "$($adapter.Name) - $($adapter.InterfaceDescription)"
+        if( ! $PSBoundParameters[ 'NIC' ] -or $adapter.InterfaceDescription -match $NIC )
+        {
+            [int]$newValue = -1
 
-    #file name is in the format "VMware-tools-10.2.1-8267844-x86_64.exe"
-    #convert to a .NET version class, that can be used to compare against other version objects
-    $version = [version]$filename.Replace("VMware-tools-","").Replace("-x86_64.exe","").Replace("-",".")
+	        if( ! ( $pnp = $adapter | Get-NetAdapterAdvancedProperty -RegistryKeyword $registryKeyword -AllProperties  -ErrorAction SilentlyContinue) )
+	        {
+                if( $disable )
+                {
+		            $newValue = 280
+                }
+                Write-Verbose -Message "No $registryKeyword found"
+	        }
+	        elseif (([int]"$($pnp.RegistryValue)" -band 24) -eq 0)
+	        {
+                Write-Verbose -Message "$registryKeyword found but power saving not set"
+                if( $disable )
+                {
+		            $newValue = [int]"$($pnp.RegistryValue)" -bor 24
+		            $adapter | Remove-NetAdapterAdvancedProperty -RegistryKeyword $registryKeyword -AllProperties -NoRestart:$noRestart
+                }
+	        }
+	        elseif (([int]"$($pnp.RegistryValue)" -band 24) -eq 24)
+	        {
+		        Write-Verbose -Message "Power saving $registryKeyword already enabled"
+                $successes++
+	        }
+	        else
+	        {
+		        Write-Warning -Message "Unexpected setting $($pnp.RegistryValue)" 
+	        }
 
-    #return the version object
-    Write-Output $version
-}
+            if( $disable -and $newValue -ge 0 )
+            {
+		        if( ! ( $newSetting = $adapter | New-NetAdapterAdvancedProperty -RegistryKeyword $registryKeyword -RegistryValue $newValue -RegistryDataType REG_DWORD -NoRestart:$noRestart ) -or $newSetting.RegistryValue -ne $newValue )
+                {
+                    Write-Warning -Message "Failed to set $registryKeyword to $newValue"
+                }
+                else
+                {
+                    Write-Verbose -Message "Set $registryKeyword to $newValue succeeded"
+                    $successes++
+                }
+            }
+        }
+        else
+        {
+            Write-Verbose -Message "Ignoring `"$($adapter.InterfaceDescription)`" as doesn't match $NIC"
+        }
+    }
 
-Function Get-VMWareToolsUri {
-    <#
-        .NOTES
-            Author: Bronson Magnan
-            Twitter: @cit_bronson
-    #>
-    [CmdletBinding()]
-    [OutputType([string])]
-    Param()
-
-    $vmwareTools = "https://packages.vmware.com/tools/esx/latest/windows/x64/index.html"
-    $pattern = "[0-9]+\.[0-9]+\.[0-9]+\-[0-9]+\-x86_64"
-
-    #get the raw page content
-    $pageContent=(wget -UseBasicParsing -Uri $vmwareTools).content
-
-    #change one big string into many strings, then find only the line with the version number
-    $interestingLine = ($pageContent.split("`n") | Select-string -Pattern $pattern).tostring().trim()
-
-    #remove the whitespace and split on the assignment operator, then split on the double quote and select the correct item
-    $filename = (($interestingLine.Replace(" ","").Split("=") | Select-string -Pattern $pattern).ToString().Trim().Split("`""))[1]
-
-    $url = "https://packages.vmware.com/tools/esx/latest/windows/x64/$($filename)"
-    Write-Output $url
+    $successes ## return
 }
 
 # PowerShell Wrapper for MDT, Standalone and Chocolatey Installation - (C)2015 xenappblog.com 
@@ -68,40 +86,40 @@ Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
+Write-Verbose "Installing Modules" -Verbose
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
+if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
+if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
+Update-Module Evergreen
+
 $Vendor = "VMware"
 $Product = "Tools"
 $PackageName = "setup64"
-$Version = "$(Get-VMWareToolsVersion)"
+$Evergreen = Get-VMWareTools | Where-Object {$_.Architecture -eq "x64"}
+$Version = $Evergreen.Version
+$URL = $Evergreen.uri
 $InstallerType = "exe"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = '/S /v /qn REBOOT=R'
-$URL = "$(Get-VMWareToolsUri)"
 $ProgressPreference = 'SilentlyContinue'
 
-Start-Transcript $LogPS
-
-if( -Not (Test-Path -Path $Version ) )
-{
-    New-Item -ItemType directory -Path $Version
-}
-
+Start-Transcript $LogPS | Out-Null
+ 
+If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null}
+ 
 CD $Version
-
+ 
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
-If (!(Test-Path -Path $Source)) {
-    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source
-         }
-        Else {
-            Write-Verbose "File exists. Skipping Download." -Verbose
-         }
+If (!(Test-Path -Path $Source)) {Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source}
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
 
-Write-Verbose "Customization" -Verbose
+Write-Verbose "Disabling Power Savings on NIC" -Verbose
+Disable-NetAdapterPowerSavings -disable -noRestart
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
