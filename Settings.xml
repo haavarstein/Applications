@@ -51,6 +51,9 @@
 		<FunctionalLevel>L7_20</FunctionalLevel>
 		<SessionSupport>MultiSession</SessionSupport>
 		<PersistUserChanges>Discard</PersistUserChanges>
+		<HypervisorConnection>VCSA</HypervisorConnection>
+		<HostingUnitName>LAN datastore1</HostingUnitName>
+		<HostingUnitNetwork>LAN</HostingUnitNetwork>
 	</Citrix>
 	<Citrix_Cloud>
 		<ProvisioningType>MCS</ProvisioningType>
