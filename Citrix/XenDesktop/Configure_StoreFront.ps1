@@ -19,8 +19,8 @@ $SF02 = $MyConfigFile.Settings.Citrix.SF02
 $DatabaseUser = $MyConfigFile.Settings.Microsoft.DatabaseUser
 $DatabasePassword = $MyConfigFile.Settings.Microsoft.DatabasePassword
 $DatabasePassword = $DatabasePassword | ConvertTo-SecureString -asPlainText -Force
-$Database_CredObject = New-Object System.Management.Automation.PSCredential($DatabaseUser,$DatabasePassword)
- 
+$Creds = New-Object System.Management.Automation.PSCredential($DatabaseUser,$DatabasePassword)
+
 # Import the StoreFront SDK
 import-module "C:\Program Files\Citrix\Receiver StoreFront\Scripts\ImportModules.ps1"
  
@@ -62,7 +62,7 @@ $DefaultDomain = $Domain
 
 If (Test-Path "\\$SF01\C$\Windows\Temp\Passcode.ps1"){
   Write-Verbose "StoreFront Cluster Exists - Joining" -Verbose
-  Invoke-Command -ComputerName "$SF01" -Credential $Database_CredObject -ScriptBlock {Start-ScheduledTask -Taskname 'Create StoreFront Cluster Join Passcode'}
+  Invoke-Command -ComputerName "$SF01" -Credential $Creds -ScriptBlock {Start-ScheduledTask -Taskname 'Create StoreFront Cluster Join Passcode'}
   Start-Sleep -s 60
   $passcode = Get-Content "\\$SF01\C$\Windows\Temp\Passcode.txt"
   import-module "C:\Program Files\Citrix\Receiver StoreFront\Scripts\ImportModules.ps1"
@@ -166,10 +166,8 @@ If (Test-Path "\\$SF01\C$\Windows\Temp\Passcode.ps1"){
     Copy-Item -Path "$PSScriptRoot\custom\storefront\branding\strings.en.js" -Destination "C:\iNetPub\wwwroot\$SFPathWeb\custom" -Recurse -Force
     Copy-Item -Path "$PSScriptRoot\custom\storefront\branding\style.css" -Destination "C:\iNetPub\wwwroot\$SFPathWeb\custom" -Recurse -Force
 
-    # Create Scheduled Task for Citrix StoreFront Cluster Join Passcode
-
+    Write-Verbose "Create Scheduled Task for Citrix StoreFront Cluster Join Passcode" -Verbose
     Copy-Item -Path "$PSScriptRoot\Passcode.ps1" -Destination "C:\Windows\Temp\" -Recurse -Force
-
     $A = New-ScheduledTaskAction -Execute "powershell.exe" -Argument '-ExecutionPolicy Bypass -file C:\Windows\Temp\Passcode.ps1'
     $T = New-ScheduledTaskTrigger -Once -At (get-date).AddSeconds(-10); $t.EndBoundary = (get-date).AddSeconds(60).ToString('s')
     $S = New-ScheduledTaskSettingsSet -StartWhenAvailable -DeleteExpiredTaskAfter 00:00:30
