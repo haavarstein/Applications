@@ -116,8 +116,8 @@
 		<DC02>DC-02.CTXLAB.LOCAL</DC02>
 		<Certificates>\\DC-01.CTXLAB.LOCAL\XA\Certificates</Certificates>
 		<DatabaseServer>SQL-01.CTXLAB.LOCAL</DatabaseServer>
-		<DatabaseFolderUNC>\\SQL-01.CTXLAB.LOCAL\C$\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\</DatabaseFolderUNC>
-		<DatabaseFolder>C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\</DatabaseFolder>
+		<DatabaseFolderUNC>\\SQL-01.CTXLAB.LOCAL\C$\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\</DatabaseFolderUNC>
+		<DatabaseFolder>C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\</DatabaseFolder>
 		<DatabaseUser>CTXLAB\Administrator</DatabaseUser>
 		<DatabasePassword>P@ssw0rd</DatabasePassword>
 		<DatabasePasswordFile>\\dc-01.xenappblog.com\xa\Credentials\xenappblog.txt</DatabasePasswordFile>
