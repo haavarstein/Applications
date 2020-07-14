@@ -10,6 +10,7 @@
 	</Mail>
 	<LE>
 		<API></API>
+		<Email></Email>
 	</LE>
 	<MDT>
 		<Server>MDT-01</Server>
