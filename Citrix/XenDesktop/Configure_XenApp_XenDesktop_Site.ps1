@@ -51,7 +51,7 @@ Asnp Citrix.*
 
 If (Test-Path $DataFileUNCPath){
   Write-Verbose "$SiteName Site Exists - Joining $SiteName" -Verbose
-  Add-XDController -DatabaseCredentials $Database_CredObject -AdminAddress $target -SiteControllerAddress $XDC01
+  Add-XDController -AdminAddress $target -SiteControllerAddress $XDC01
   Set-BrokerSite -TrustRequestsSentToTheXmlServicePort $true
   }Else{
     Write-Verbose "New Site - Creating $SiteName Site and Databases" -Verbose  
