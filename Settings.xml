@@ -41,7 +41,7 @@
 		<ProductEdition>PLT</ProductEdition>
 		<Port>27000</Port>
 		<AddressType>WSL</AddressType>
-		<WEMSvcAcc>ctxlab\svc-ctx-wem</WEMSvcAcc>
+		<WEMSvcAcc>ctxlab\administrator</WEMSvcAcc>
 		<WEMSvcAccPwd>P@ssw0rd</WEMSvcAccPwd>
 		<WEMAdminGroup>ctxlab\Domain Admins</WEMAdminGroup>
 		<DBVuemUserPwd>P@ssw0rd</DBVuemUserPwd>
