@@ -126,18 +126,18 @@
 	<VMware>
 		<VCenter>vcsa.ctxlab.local</VCenter>
 		<VCUser>administrator@vsphere.local</VCUser>
-		<VCPwd></VCPwd>
+		<VCPwd>P@ssw0rd</VCPwd>
 		<PasswordFile>\\dc-01.ctxlab.local\xa\Credentials\VCSA.txt</PasswordFile>
 		<KeyFile>\\dc-01.ctxlab.local\xa\Credentials\VCSA.key</KeyFile>
 		<VMDiskType>Thin</VMDiskType>
-		<VMDS>ESXi-01-NVMe</VMDS>
-		<VMCluster>Fortaleza</VMCluster>
-		<VMFolder>DEV</VMFolder>
+		<VMDS>datastore1</VMDS>
+		<VMCluster>CLuster</VMCluster>
+		<VMFolder></VMFolder>
 		<DataCenter>Datacenter</DataCenter>
 		<NICType>Vmxnet3</NICType>
-		<NetName>vLAN10</NetName>
-		<ISO>[QNAP]\MDTProduction_x64_UEFI.iso</ISO>
-		<BuildISO>[QNAP]\MDTBuildLab_x64_UEFI.iso</BuildISO>
+		<NetName>LAN</NetName>
+		<ISO>[datastore1]ISO\MDTProduction_x64_UEFI.iso</ISO>
+		<BuildISO>[datastore1]ISO\MDTBuildLab_x64_UEFI.iso</BuildISO>
 		<ESXi>192.168.2.21</ESXi>	
 		<VMGuestOS>windows9Server64Guest</VMGuestOS>	
 		<ConnectionServer>ca-cs-01.xenappblog.com</ConnectionServer>
