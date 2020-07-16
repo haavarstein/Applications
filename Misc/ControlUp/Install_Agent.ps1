@@ -31,22 +31,17 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
-[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
 $ProgressPreference = 'SilentlyContinue'
 $ServiceName = "cuagent"
 
-Start-Transcript $LogPS
-
-if ( -Not (Test-Path -Path $Version\$Source ) ) {
-    New-Item -ItemType directory -Path $Version
-    CD $Version
-    Invoke-WebRequest -Uri $url -OutFile "$Source"
-  }
-        Else {
-            Write-Verbose "File exists. Skipping Download." -Verbose
-            CD $Version
-         }
-
+Start-Transcript $LogPS | Out-Null
+ 
+If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null}
+ 
+CD $Version
+ 
+Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
+If (!(Test-Path -Path $Source)) {Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source}
 
 Write-Verbose "Checking if $Vendor $Product Service is Running" -Verbose
 
