@@ -14,7 +14,7 @@ $Product = "Horizon Connection Server IP Address"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product PS Wrapper.log"
 
 $NIC = Get-WMIObject Win32_NetworkAdapterConfiguration -computername . | where{$_.IPEnabled -eq $true -and $_.DHCPEnabled -eq $true}
-$GW = $nic.DefaultIPGateway | Out-String
+$GW = $nic.DefaultIPGateway | Select-Object -First 1 | Out-String
 $IPAddress = $MyConfigFile.Settings.VMware.ConnectionServerIP
 
 Start-Transcript $LogPS
