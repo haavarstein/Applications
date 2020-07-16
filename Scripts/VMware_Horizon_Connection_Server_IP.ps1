@@ -21,7 +21,7 @@ Start-Transcript $LogPS
 
 Write-Verbose "Getting Static IP Address" -Verbose
 New-NetIPAddress -InterfaceAlias Ethernet0 -IPAddress $IPAddress -PrefixLength 24 -DefaultGateway $GW.Trim()
-Set-DnsClientServerAddress -InterfaceAlias Ethernet0 -ServerAddresses ("192.168.86.10","192.168.86.11")
+Set-DnsClientServerAddress -InterfaceAlias Ethernet0 -ServerAddresses ("192.168.1.10","192.168.1.20")
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
