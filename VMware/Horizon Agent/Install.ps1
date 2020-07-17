@@ -11,15 +11,18 @@
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
+$MyConfigFileloc = ("$env:Settings\Applications\Settings.xml")
+[xml]$MyConfigFile = (Get-Content $MyConfigFileLoc)
+
 $Vendor = "VMware"
 $Product = "Horizon Agent"
-$PackageName = "VMware-Horizon-Agent-x86_64-8.0.0-16063546"
-$Version = "8.0.0"
+$PackageName = "VMware-Horizon-Agent-x86_64"
+$Version = $MyConfigFile.Settings.VMware.Version
 $InstallerType = "msi"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$MST = "VMware-Horizon-Agent-x86_64-8.0.0-16063546.mst"
+$MST = "VMware-Horizon-Agent-x86_64.mst"
 $UnattendedArgs = "/i $PackageName.$InstallerType TRANSFORMS=$MST ALLUSERS=1 /norestart /qn /liewa $LogApp"
 
 Start-Transcript $LogPS
