@@ -1,1 +1,115 @@
-
+{
+  "generalSettings": {
+    "ipMode0": "IPv4",
+    "ip0": "192.168.1.154",
+    "netmask0": "255.255.255.0",
+    "ip0AllocationMode": "DHCPV4",
+    "defaultGateway": "192.168.1.1",
+    "deploymentOption": "onenic"
+  },
+  "systemSettings": {
+    "locale": "en_US",
+    "fipsEnabled": false,
+    "adminPassword": "*****",
+    "adminPasswordExpirationDays": 90,
+    "cipherSuites": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384",
+    "ssl30Enabled": false,
+    "tls10Enabled": false,
+    "tls11Enabled": false,
+    "tls12Enabled": true,
+    "sysLogType": "UDP",
+    "healthCheckUrl": "/favicon.ico",
+    "cookiesToBeCached": "none",
+    "ipMode": "DHCPV4",
+    "sessionTimeout": 36000000,
+    "requestTimeoutMsec": 10000,
+    "bodyReceiveTimeoutMsec": 15000,
+    "authenticationTimeout": 300000,
+    "quiesceMode": false,
+    "monitorInterval": 60,
+    "httpConnectionTimeout": 120,
+    "tlsPortSharingEnabled": true,
+    "uagName": "uag-ef6cfeb0-f248-414d-aa3d-069e3468f1f1",
+    "ceipEnabled": true,
+    "adminCertRolledBack": false,
+    "clientConnectionIdleTimeout": 360,
+    "dns": "192.168.1.10",
+    "snmpEnabled": false,
+    "clockSkewTolerance": 600,
+    "maxConnectionsAllowedPerSession": 16
+  },
+  "edgeServiceSettingsList": {
+    "edgeServiceSettingsList": [
+      {
+        "enabled": true,
+        "identifier": "VIEW",
+        "proxyDestinationUrl": "https://vcs-01.desktopanywhere.io",
+        "proxyDestinationUrlThumbprints": "sha1=137da2a9c06936e35d56b0790b6cd2f1a9d670ab",
+        "healthCheckUrl": "/favicon.ico",
+        "redirectHostMappingList": "",
+        "pcoipEnabled": true,
+        "pcoipExternalUrl": "49.12.131.154:4172",
+        "blastEnabled": true,
+        "blastExternalUrl": "https://uag.desktopanywhere.io",
+        "tunnelEnabled": false,
+        "proxyPattern": "(/|/view-client(.*)|/portal(.*)|/appblast(.*))",
+        "smartCardHintPrompt": false,
+        "matchWindowsUserName": false,
+        "gatewayLocation": "External",
+        "windowsSSOEnabled": false,
+        "logoutOnCertRemoval": false,
+        "udpTunnelServerEnabled": true,
+        "queryBrokerInterval": 300,
+        "disableHtmlAccess": false,
+        "proxyDestinationIPSupport": "IPV4",
+        "radiusClassAttributeList": "",
+        "pcoipDisableLegacyCertificate": false,
+        "securityHeaders": {
+          "Strict-Transport-Security": "max-age=31536000",
+          "X-XSS-Protection": "1; mode=block",
+          "X-Content-Type-Options": "nosniff",
+          "Content-Security-Policy": "default-src 'self';font-src 'self' data:;script-src 'self' 'unsafe-inline' 'unsafe-eval' data:;style-src 'self' 'unsafe-inline';img-src 'self' blob: data:",
+          "X-Frame-Options": "SAMEORIGIN"
+        }
+      }
+    ]
+  },
+  "authMethodSettingsList": {
+    "authMethodSettingsList": []
+  },
+  "kerberosKeyTabSettingsList": {
+    "kerberosKeyTabSettings": []
+  },
+  "kerberosRealmSettingsList": {
+    "kerberosRealmSettingsList": []
+  },
+  "certificateWrapper": null,
+  "certificateWrapperAdmin": null,
+  "serviceProviderMetadataList": {
+    "items": [],
+    "_links": {
+      "self": {
+        "href": "/hc/ab/api/1/sp-metadatas"
+      }
+    }
+  },
+  "identityProviderMetaData": null,
+  "pfxCertStoreWrapper": null,
+  "pfxCertStoreWrapperAdmin": null,
+  "idpMediaType": null,
+  "customBrandingSettings": null,
+  "idPExternalMetadataSettingsList": {
+    "idPExternalMetadataSettingsList": []
+  },
+  "devicePolicySettingsList": {
+    "devicePolicySettingsList": []
+  },
+  "loadBalancerSettings": null,
+  "jwtSettingsList": {
+    "jwtSettingsList": []
+  },
+  "workspaceOneIntelligenceSettings": null,
+  "ocspSigningCertList": {
+    "ocspSigningCerts": null
+  }
+}
