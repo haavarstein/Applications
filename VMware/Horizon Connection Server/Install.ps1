@@ -12,10 +12,13 @@ Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
+$MyConfigFileloc = ("$env:Settings\Applications\Settings.xml")
+[xml]$MyConfigFile = (Get-Content $MyConfigFileLoc)
+
 $Vendor = "VMware"
 $Product = "Horizon Connection Server"
-$PackageName = "VMware-Horizon-Connection-Server-x86_64-8.0.0-16037280"
-$Version = "8.0.0"
+$PackageName = "VMware-Horizon-Connection-Server-x86_64"
+$Version = $MyConfigFile.Settings.VMware.Version
 $InstallerType = "exe"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
