@@ -134,6 +134,7 @@
 		<DatabaseKeyFile>\\dc-01.xenappblog.com\xa\Credentials\xenappblog.key</DatabaseKeyFile>
 	</Microsoft>	
 	<VMware>
+		<Version>7.12.0</Version>
 		<VCenter>vcsa.ctxlab.local</VCenter>
 		<VCUser>administrator@vsphere.local</VCUser>
 		<VCPwd>P@ssw0rd</VCPwd>
@@ -150,8 +151,8 @@
 		<BuildISO>[datastore1]ISO\MDTBuildLab_x64_UEFI.iso</BuildISO>
 		<ESXi>192.168.2.21</ESXi>	
 		<VMGuestOS>windows9Server64Guest</VMGuestOS>	
-		<ConnectionServer>ca-cs-01.xenappblog.com</ConnectionServer>
-		<ConnectionServerIP>192.168.86.16</ConnectionServerIP>
+		<ConnectionServer>vcs-01.ctxlab.local</ConnectionServer>
+		<ConnectionServerIP>192.168.1.21</ConnectionServerIP>
 	</VMware>
 	<Nutanix>
 		<CVM>nutanix.ctxlab.local</CVM>
