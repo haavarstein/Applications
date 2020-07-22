@@ -15,7 +15,7 @@ $StartDTM = (Get-Date)
 Write-Verbose "Installing Modules" -Verbose
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
 Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
-if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Install-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
+Install-PackageProvider -Name 'Nuget' -Force
 if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
 Update-Module Evergreen
 
