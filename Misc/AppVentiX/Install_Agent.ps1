@@ -12,7 +12,7 @@ Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
 $Vendor = "Misc"
-$Product = "AppVentiX"
+$Product = "AppVentiX Agent"
 $PackageName = "AppVentiX_Agent"
 $Version = "3.0.27"
 $InstallerType = "msi"
