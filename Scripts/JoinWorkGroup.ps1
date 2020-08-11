@@ -11,7 +11,7 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product.log"
 
 Start-Transcript $LogPS
 
-Remove-computer -WorkgroupName Workgroup
+Remove-computer -WorkgroupName Workgroup -Force
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
