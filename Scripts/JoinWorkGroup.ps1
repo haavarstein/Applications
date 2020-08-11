@@ -1,3 +1,6 @@
+# Requires permissions, use Elevated Logon prior
+# EASY : Set TS env DomainJoin to blank and JoinWorkGroup=Workgroup - Prevent VM from Joining the Domain
+
 Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
