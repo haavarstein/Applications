@@ -64,6 +64,7 @@ Write-Verbose "Customization" -Verbose
 If (!(Test-Path -Path "C:\Program Files\Citrix Optimizer")) {New-Item -ItemType directory -Path "C:\Program Files\Citrix Optimizer" | Out-Null}
 Copy-Item -Path .\CitrixOptimizer\* -Destination "C:\Program Files\Citrix Optimizer\" -Recurse -Force
 Copy-Item -Path $PSScriptRoot\Templates\*.xml -Destination "C:\Program Files\Citrix Optimizer\Templates" -Recurse -Force
+Copy-Item -Path $PSScriptRoot\*.json -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)" -Recurse -Force
 Copy-Item -Path .\Tools\* -Destination $env:SystemRoot\System32 -Recurse -Force
 
 #Copy-Item -Path $PSScriptRoot\PREP_custom\*.ps1 -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)\Framework\SubCall\Preparation\Custom" -Recurse -Force
