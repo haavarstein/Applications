@@ -7,6 +7,7 @@
 		<KeyFile>\\dc-01.ctxlab.local\xa\Credentials\AmazonSES.key</KeyFile>
 		<API></API>
 		<SlackWebHook></SlackWebHook>
+		<TeamsWebHook></TeamsWebHook>
 	</Mail>
 	<LE>
 		<API></API>
