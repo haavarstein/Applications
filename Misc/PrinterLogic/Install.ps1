@@ -39,7 +39,6 @@ Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Customization" -Verbose
-New-Item -Path HKLM:\SOFTWARE\Wow6432Node\PPP -Name PrinterInstaller –Force
 New-ItemProperty -Path "HKLM:\SOFTWARE\Wow6432Node\PPP\PrinterInstaller" -Name "TerminalServices" -Value ”1” -PropertyType "String"
 
 Write-Verbose "Stop logging" -Verbose
