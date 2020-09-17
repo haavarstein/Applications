@@ -62,10 +62,11 @@ Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 
 Write-Verbose "Customization" -Verbose
 If (!(Test-Path -Path "C:\Program Files\Citrix Optimizer")) {New-Item -ItemType directory -Path "C:\Program Files\Citrix Optimizer" | Out-Null}
-Copy-Item -Path $PSScriptRoot\CitrixOptimizer\* -Destination "C:\Program Files\Citrix Optimizer\" -Recurse -Force
-Copy-Item -Path $PSScriptRoot\Templates\* -Destination "C:\Program Files\Citrix Optimizer\Templates" -Recurse -Force
-Copy-Item -Path $PSScriptRoot\*.json -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)" -Recurse -Force
-Copy-Item -Path $PSScriptRoot\Tools\* -Destination $env:SystemRoot\System32 -Recurse -Force
+Copy-Item -Path .\CitrixOptimizer\* -Destination "C:\Program Files\Citrix Optimizer\" -Recurse -Force
+CD..
+Copy-Item -Path .\Templates\* -Destination "C:\Program Files\Citrix Optimizer\Templates" -Recurse -Force
+Copy-Item -Path .\Tools\* -Destination $env:SystemRoot\System32 -Recurse -Force
+Copy-Item -Path .\*.json -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)" -Recurse -Force
 
 #Copy-Item -Path $PSScriptRoot\PREP_custom\*.ps1 -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)\Framework\SubCall\Preparation\Custom" -Recurse -Force
 #Copy-Item -Path $PSScriptRoot\PERS_custom\*.ps1 -Destination "C:\Program Files (x86)\Base Image Script Framework (BIS-F)\Framework\SubCall\Personalization\Custom" -Recurse -Force
