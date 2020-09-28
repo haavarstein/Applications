@@ -19,7 +19,7 @@ Install-ADDSDomainController `
 -NoGlobalCatalog:$false `
 -CreateDnsDelegation:$false `
 -CriticalReplicationOnly:$false `
--Credential (Get-Credential $Domain\Administrator) `
+-Credential (Get-Credential $DomainFQDN\Administrator) `
 -DatabasePath "C:\Windows\NTDS" `
 -DomainName "$DomainFQDN" `
 -InstallDns:$true `
