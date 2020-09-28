@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<Settings>
+	<Domain>desktopanywhere</Domain>
+	<DomainFQDN>desktopanywhere.io</DomainFQDN>
+	<NetworkId>192.168.1.0/24</NetworkId>
+	<ReverseLookup>1.168.192.in-addr.arpa</ReverseLookup>
+</Settings>
