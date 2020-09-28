@@ -326,7 +326,7 @@
     {
         "Path":  "HKLM:\\SOFTWARE\\Policies\\Login Consultants\\BISF",
         "Name":  "LIC_BISF_CLI_SB",
-        "Value":  "NO",
+        "Value":  "YES",
         "Type":  1
     },
     {
