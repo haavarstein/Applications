@@ -2,6 +2,6 @@
 <Settings>
 	<Domain>desktopanywhere</Domain>
 	<DomainFQDN>desktopanywhere.io</DomainFQDN>
-	<NetworkId>192.168.1.0/24</NetworkId>
-	<ReverseLookup>1.168.192.in-addr.arpa</ReverseLookup>
+	<NetworkId>192.168.10.0/24</NetworkId>
+	<ReverseLookup>10.168.192.in-addr.arpa</ReverseLookup>
 </Settings>
