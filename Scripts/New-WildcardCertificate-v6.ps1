@@ -6,7 +6,7 @@ $StartDTM = (Get-Date)
  
 Start-Transcript $LogPS
 
-$PFXPath = "$env:LOGONSERVER" + "." + "$env:userdnsdomain"
+$PFXPath = "\\DC-01"
 $PFXFile = "$PFXPath\xa\Certificates\" + "Wildcard.txt"
 
 <#
