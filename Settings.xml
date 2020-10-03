@@ -26,7 +26,7 @@
 		<StagingOU>OU=Servers,OU=Deployment,DC=ctxlab,DC=local</StagingOU>
 	</MDT>
 	<Citrix>
-		<Version>2003</Version>
+		<Version>2009</Version>
 		<XDC01>XADC-01.CTXLAB.LOCAL</XDC01>
 		<XDC02>XADC-02.CTXLAB.LOCAL</XDC02>
 		<SF01>SF-01.CTXLAB.LOCAL</SF01>
@@ -151,7 +151,7 @@
 		<ISO>[datastore1]ISO\MDTProduction_x64_UEFI.iso</ISO>
 		<BuildISO>[datastore1]ISO\MDTBuildLab_x64_UEFI.iso</BuildISO>
 		<ESXi>192.168.2.21</ESXi>	
-		<VMGuestOS>windows9Server64Guest</VMGuestOS>	
+		<VMGuestOS>Windows2019srv_64Guest</VMGuestOS>	
 		<ConnectionServer>vcs-01.ctxlab.local</ConnectionServer>
 		<ConnectionServerIP>192.168.1.21</ConnectionServerIP>
 	</VMware>
