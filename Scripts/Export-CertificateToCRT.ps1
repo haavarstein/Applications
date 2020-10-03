@@ -65,7 +65,7 @@ function Export-CertificateToCRT
 
 Write-Verbose "Setting Arguments" -Verbose
 
-$PFXPath = "$env:LOGONSERVER" + "." + "$env:UserDNSDomain"
+$PFXPath = "\\DC-01"
 $OpenSSLPath = "C:\Windows\Temp\OpenSSL\openssl.exe"
 
 Write-Verbose "Downloading OpenSSL" -Verbose
