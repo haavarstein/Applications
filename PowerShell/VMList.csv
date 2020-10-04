@@ -1,0 +1,8 @@
+VMName,vCPU,vRAM,vDiskGB,vDiskGB2,VMStaticIP,VMNetmask,VMGateway,VMDns1,VMNetwork,TaskID,PreBuild,OU
+SQL-01,2,2,40,,192.168.10.15,255.255.255.0,192.168.10.1,192.168.10.10,Internal,WS2019-009,,"OU=Database Servers,OU=Servers,OU=Deployment,DC=desktopanywhere,DC=io"
+XADC-01,2,3,40,,192.168.10.16,255.255.255.0,192.168.10.1,192.168.10.10,Internal,WS2019-028,,"OU=Delivery Controllers,OU=Servers,OU=Deployment,DC=desktopanywhere,DC=io"
+SF-01,2,2,40,,192.168.10.17,255.255.255.0,192.168.10.1,192.168.10.10,Internal,WS2019-026,,"OU=Infrastructure Servers,OU=Servers,OU=Deployment,DC=desktopanywhere,DC=io"
+MGMT-01,2,2,40,,192.168.10.18,255.255.255.0,192.168.10.1,192.168.10.10,Internal,WS2019-007,,"OU=Infrastructure Servers,OU=Servers,OU=Deployment,DC=desktopanywhere,DC=io"
+SPL-01,2,2,40,,192.168.10.19,255.255.255.0,192.168.10.1,192.168.10.10,Internal,WS2019-023,,"OU=Splunk,OU=Servers,OU=Deployment,DC=desktopanywhere,DC=io"
+XADC-02,2,3,40,,192.168.10.20,255.255.255.0,192.168.10.1,192.168.10.10,Internal,WS2019-028,,"OU=Delivery Controllers,OU=Servers,OU=Deployment,DC=desktopanywhere,DC=io"
+SF-02,2,2,40,,192.168.10.21,255.255.255.0,192.168.10.1,192.168.10.10,Internal,WS2019-026,,"OU=Infrastructure Servers,OU=Servers,OU=Deployment,DC=desktopanywhere,DC=io"
