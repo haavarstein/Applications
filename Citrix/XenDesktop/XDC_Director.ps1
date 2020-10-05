@@ -22,7 +22,7 @@ $InstallerType = "exe"
 $Version = $MyConfigFile.Settings.Citrix.Version
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $PackageName $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
-$UnattendedArgs = '/quiet /configure_firewall /COMPONENTS STUDIO,CONTROLLER,DESKTOPDIRECTOR /nosql /ignore_hw_check_failure /logpath $LogApp /noreboot'
+$UnattendedArgs = '/quiet /configure_firewall /COMPONENTS CONTROLLER,DESKTOPDIRECTOR /nosql /ignore_hw_check_failure /logpath $LogApp /noreboot'
 $Destination = "$Version\x64\XenDesktop Setup\"
 
 Start-Transcript $LogPS
