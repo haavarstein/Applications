@@ -3,7 +3,7 @@
 Write-Verbose "Importing VMware PowerCli Module" -Verbose
 Import-Module VMware.DeployAutomation
 
-$CSV = "C:\Source\PS Scripts\VMware\VMList.csv"
+$CSV = "$env:Settings\Applications\PowerShell\VMList.csv"
 Import-Csv -Path $CSV | ForEach-Object {
 
     $oThisVM = Get-VM -Name $_.VMName
