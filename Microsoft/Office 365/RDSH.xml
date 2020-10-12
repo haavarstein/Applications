@@ -1,17 +1,27 @@
-<Configuration ID="0a8cb0dd-c6c7-408f-8ae8-2348f6595787">
-  <Add OfficeClientEdition="32" Channel="Monthly" ForceUpgrade="TRUE">
+<Configuration ID="dcc1f399-c387-4eb6-9064-f6f6d0e86593">
+  <Add OfficeClientEdition="64" Channel="CurrentPreview">
     <Product ID="O365ProPlusRetail">
       <Language ID="en-us" />
       <ExcludeApp ID="Groove" />
       <ExcludeApp ID="Lync" />
       <ExcludeApp ID="OneDrive" />
-	  <ExcludeApp ID="Teams"/>
+      <ExcludeApp ID="Teams" />
+      <ExcludeApp ID="Bing" />
     </Product>
   </Add>
   <Property Name="SharedComputerLicensing" Value="1" />
   <Property Name="PinIconsToTaskbar" Value="TRUE" />
   <Property Name="SCLCacheOverride" Value="0" />
-  <Updates Enabled="TRUE" />
+  <Property Name="AUTOACTIVATE" Value="0" />
+  <Property Name="FORCEAPPSHUTDOWN" Value="FALSE" />
+  <Property Name="DeviceBasedLicensing" Value="0" />
+  <Updates Enabled="FALSE" />
+  <AppSettings>
+    <Setup Name="Company" Value="xenappblog LLC" />
+    <User Key="software\microsoft\office\16.0\excel\options" Name="defaultformat" Value="51" Type="REG_DWORD" App="excel16" Id="L_SaveExcelfilesas" />
+    <User Key="software\microsoft\office\16.0\powerpoint\options" Name="defaultformat" Value="27" Type="REG_DWORD" App="ppt16" Id="L_SavePowerPointfilesas" />
+    <User Key="software\microsoft\office\16.0\word\options" Name="defaultformat" Value="" Type="REG_SZ" App="word16" Id="L_SaveWordfilesas" />
+  </AppSettings>
   <Display Level="None" AcceptEULA="TRUE" />
   <Logging Level="Standard" Path="%temp%" />
 </Configuration>
