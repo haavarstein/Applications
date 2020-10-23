@@ -7,6 +7,8 @@
 # Example 4 MSI (Always use " "):
 # $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 # (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
+# Example 5 MSI with space in file name
+# $UnattendedArgs = "/i `"$PackageName.$InstallerType`" ALLUSERS=1 /qn /liewa `"$LogApp`""
 
 Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
