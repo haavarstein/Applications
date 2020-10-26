@@ -56,6 +56,6 @@
   </Settings>
   <PrepareComputer DisableWindowsSearchService="false" />
   <SaveLocation PackagePath="SetPackagePath" TemplatePath="SetTemplatePath" />
-  <Installer Path="SetInstallerPath" Arguments="/qn /norestart ALLUSERS=1" />
+  <Installer Path="SetInstallerPath" Arguments="setArguments" />
   <PackageInformation PackageName="SetPackageName" PackageDisplayName="SetPackageDisplayName" PublisherName="CN=Test" PublisherDisplayName="SetPublisherDisplayName" Version="SetVersion" p4:PackageDescription="SetPackageDescription" xmlns:p4="http://schemas.microsoft.com/msix/msixpackagingtool/template/1910" />
 </MsixPackagingToolTemplate>
