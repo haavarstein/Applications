@@ -98,10 +98,6 @@ MsixPackagingTool.exe create-package --template $Template
 Write-Verbose "Signing $MSIXFileName" -Verbose
 msixherocli sign --file $Certificate --password $CertificatePwd "$Path\$MSIXFileName"
 
-#Write-Verbose "Cleaning Up" -Verbose
-#$UnattendedArgs = "/x $ProductCode /qn"
-#(Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
-
 $EndDTM = (Get-Date)
 Write-Verbose "Elapsed Time: $([math]::Round( ($EndDTM-$StartDTM).TotalMinutes )) Minutes" -Verbose
 
