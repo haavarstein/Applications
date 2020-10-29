@@ -40,9 +40,8 @@ $StartDTM = (Get-Date)
 
 Write-Verbose "Installing Modules" -Verbose
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
-if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Install-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
-if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
-Update-Module Evergreen
+Install-PackageProvider -Name 'Nuget' -Force
+Install-Module Evergreen -Force | Import-Module Evergreen
 
 $Path = Get-Location
 $Path = $Path.Path
@@ -61,7 +60,6 @@ $Template = "$Path\$PackageName.xml"
 $Certificate = "$Path" + "\Test.pfx"
 $CertificatePwd = "P@ssw0rd"
 $xmlTemplate = "$Path" + "\MSIX_Template.xml"
-[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
 $ProgressPreference = 'SilentlyContinue'
 
 Write-Verbose "Downloading MSIX Template" -Verbose
