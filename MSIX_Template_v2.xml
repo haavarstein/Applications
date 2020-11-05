@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<MsixPackagingToolTemplate xmlns="http://schemas.microsoft.com/appx/msixpackagingtool/template/2018">
+  <Settings AllowTelemetry="true" ApplyAllPrepareComputerFixes="false" GenerateCommandLineFile="true" AllowPromptForPassword="false" p4:EnforceMicrosoftStoreRequirements="true" p5:ServerPortNumber="1599" p6:AddPackageIntegrity="true" p7:SupportedWindowsVersionForMsixCore="None" xmlns:p7="http://schemas.microsoft.com/msix/msixpackagingtool/template/2004" xmlns:p6="http://schemas.microsoft.com/msix/msixpackagingtool/template/2001" xmlns:p5="http://schemas.microsoft.com/msix/msixpackagingtool/template/1904" xmlns:p4="http://schemas.microsoft.com/msix/msixpackagingtool/template/2007">
+    <ExclusionItems>
+      <FileExclusion ExcludePath="[{CryptoKeys}]" />
+      <FileExclusion ExcludePath="[{Common AppData}]\Microsoft\Crypto" />
+      <FileExclusion ExcludePath="[{Common AppData}]\Microsoft\Search\Data" />
+      <FileExclusion ExcludePath="[{Cookies}]" />
+      <FileExclusion ExcludePath="[{History}]" />
+      <FileExclusion ExcludePath="[{Cache}]" />
+      <FileExclusion ExcludePath="[{Personal}]" />
+      <FileExclusion ExcludePath="[{Profile}]\Local Settings" />
+      <FileExclusion ExcludePath="[{Profile}]\NTUSER.DAT.LOG1" />
+      <FileExclusion ExcludePath="[{Profile}]\NTUSER.DAT.LOG2" />
+      <FileExclusion ExcludePath="[{Recent}]" />
+      <FileExclusion ExcludePath="[{Windows}]\Debug" />
+      <FileExclusion ExcludePath="[{Windows}]\Logs\CBS" />
+      <FileExclusion ExcludePath="[{Windows}]\Temp" />
+      <FileExclusion ExcludePath="[{Windows}]\WinSxS\ManifestCache" />
+      <FileExclusion ExcludePath="[{Windows}]\WindowsUpdate.log" />
+      <FileExclusion ExcludePath="[{Windows}]\Installer" />
+      <FileExclusion ExcludePath="[{PackageDrive}]\$Recycle.Bin" />
+      <FileExclusion ExcludePath="[{PackageDrive}]\System Volume Information" />
+      <FileExclusion ExcludePath="[{AppData}]\Microsoft\AppV" />
+      <FileExclusion ExcludePath="[{Local AppData}]\Packages" />
+      <FileExclusion ExcludePath="[{Local AppData}]\Temp" />
+      <FileExclusion ExcludePath="[{Local AppData}]\Microsoft\Windows" />
+      <FileExclusion ExcludePath="[{Common AppData}]\Microsoft\Microsoft Security Client" />
+      <FileExclusion ExcludePath="[{Common AppData}]\Microsoft\Microsoft Antimalware" />
+      <FileExclusion ExcludePath="[{Common AppData}]\Microsoft\Windows Defender" />
+      <FileExclusion ExcludePath="[{ProgramFiles}]\Microsoft Security Client" />
+      <FileExclusion ExcludePath="[{ProgramFiles}]\Windows Defender" />
+      <FileExclusion ExcludePath="[{ProgramFiles}]\WindowsApps" />
+      <FileExclusion ExcludePath="[{PackageDrive}]\Config.Msi" />
+      <FileExclusion ExcludePath="[{Local AppData}]\Microsoft\OneDrive" />
+      <FileExclusion ExcludePath="[{Local AppData}]\Temp" />
+      <RegistryExclusion ExcludePath="REGISTRY\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Cryptography" />
+      <RegistryExclusion ExcludePath="REGISTRY\MACHINE\SOFTWARE\Microsoft\Cryptography" />
+      <RegistryExclusion ExcludePath="REGISTRY\MACHINE\SOFTWARE\Microsoft\Microsoft Antimalware" />
+      <RegistryExclusion ExcludePath="REGISTRY\MACHINE\SOFTWARE\Microsoft\Microsoft Antimalware Setup" />
+      <RegistryExclusion ExcludePath="REGISTRY\MACHINE\SOFTWARE\Microsoft\Microsoft Security Client" />
+      <RegistryExclusion ExcludePath="REGISTRY\MACHINE\SOFTWARE\Policies\Microsoft\Microsoft Antimalware" />
+      <RegistryExclusion ExcludePath="REGISTRY\MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender" />
+      <RegistryExclusion ExcludePath="REGISTRY\USER\[{CurrentUserSID}]\Software\Microsoft\Windows\CurrentVersion\Explorer\StreamMRU" />
+      <RegistryExclusion ExcludePath="REGISTRY\USER\[{CurrentUserSID}]\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\StreamMRU" />
+      <RegistryExclusion ExcludePath="REGISTRY\USER\[{CurrentUserSID}]\Software\Microsoft\Windows\CurrentVersion\Explorer\Streams" />
+      <RegistryExclusion ExcludePath="REGISTRY\USER\[{CurrentUserSID}]\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Streams" />
+      <RegistryExclusion ExcludePath="REGISTRY\MACHINE\SOFTWARE\Microsoft\AppV" />
+      <RegistryExclusion ExcludePath="REGISTRY\MACHINE\SOFTWARE\Wow6432Node\Microsoft\AppV" />
+      <RegistryExclusion ExcludePath="REGISTRY\USER\[{CurrentUserSID}]\Software\Microsoft\AppV" />
+      <RegistryExclusion ExcludePath="REGISTRY\USER\[{CurrentUserSID}]\Software\Wow6432Node\Microsoft\AppV" />
+      <RegistryExclusion ExcludePath="REGISTRY\USER\[{CurrentUserSID}]_Classes\AppID\OneDrive.EXE" />
+      <RegistryExclusion ExcludePath="REGISTRY\USER\[{CurrentUserSID}]_Classes\OOBERequestHandler.OOBERequestHandler" />
+      <RegistryExclusion ExcludePath="REGISTRY\USER\[{CurrentUserSID}]_Classes\SyncEngineFileInfoProvider.SyncEngineFileInfoProvider" />
+    </ExclusionItems>
+  </Settings>
+  <PrepareComputer DisableWindowsSearchService="false" />
+  <SaveLocation PackagePath="{0}" TemplatePath="{1}" />
+  <Installer Path="{2}" Arguments="{6}" />
+  <PackageInformation PackageName="{3}" PackageDisplayName="{3}" PublisherName="CN=Test" PublisherDisplayName="{4}" Version="{5}" p4:PackageDescription="SetPackageDescription" xmlns:p4="http://schemas.microsoft.com/msix/msixpackagingtool/template/1910" />
+</MsixPackagingToolTemplate>
