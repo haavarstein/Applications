@@ -66,6 +66,8 @@ Write-Verbose "Downloading $PackageName $Version" -Verbose
 Invoke-WebRequest -Uri $url -OutFile $Source
 
 $MSIXFileName = "$PackageName" + "_" + "$Version" + "_" + "$Architecture.msix"
+$VHDFileName = "$PackageName" + "_" + "$Version" + "_" + "$Architecture"
+$JSONFileName = "$PackageName" + "_" + "$Version" + "_" + "$Architecture.json"
 
 Write-Verbose "Creating Template XML"
 $xml = Get-Content $xmlTemplate
@@ -94,9 +96,9 @@ MsixPackagingTool.exe create-package --template $Template
 Write-Verbose "Signing $MSIXFileName" -Verbose
 msixherocli sign --file $Certificate --password $CertificatePwd "$Path\$MSIXFileName"
 
-#Write-Verbose "Cleaning Up" -Verbose
-#$UnattendedArgs = "/x $ProductCode /qn"
-#(Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
+Write-Verbose "Creating VHD for App Attach" -Verbose
+msixherocli appattach -d "$Path" -p "$MSIXFileName" -n "$VHDFileName"
+Rename-Item .\app-attach.json $JSONFileName
 
 $EndDTM = (Get-Date)
 Write-Verbose "Elapsed Time: $([math]::Round( ($EndDTM-$StartDTM).TotalMinutes )) Minutes" -Verbose
