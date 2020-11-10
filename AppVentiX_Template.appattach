@@ -1,0 +1,12 @@
+<!--This file is created and used by AppVentiX-->
+<Root>
+  <Id>SetPackageID</Id>
+  <VolumeGuid>\\?\Volume{setPackageGUID}\</VolumeGuid>
+  <ParentFolder>AppAttach</ParentFolder>
+  <Name>SetPackageName</Name>
+  <Version>SetVersion</Version>
+  <FullPackageName>setMSIXPackageName</FullPackageName>
+  <Applications>
+    <Application>setVFS</Application>
+  </Applications>
+</Root>
