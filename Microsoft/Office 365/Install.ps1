@@ -46,7 +46,7 @@ CD $Version
 
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $PSScriptRoot\$Version\Office\Data\v32.cab)) {
-    (Start-Process "Setup.exe" -ArgumentList $unattendedArgs2 -Wait -Passthru).ExitCode
+    (Start-Process "setupodt.exe" -ArgumentList $unattendedArgs2 -Wait -Passthru).ExitCode
          }
         Else {
             Write-Verbose "File exists. Skipping Download." -Verbose
