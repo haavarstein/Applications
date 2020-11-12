@@ -20,7 +20,7 @@ Update-Module Evergreen
 
 $Vendor = "Microsoft"
 $Product = "Office 365 x64"
-$PackageName = "setup"
+$PackageName = "setupodt"
 $Evergreen = Get-MicrosoftOffice | Where-Object {$_.Channel -eq "Monthly"}
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
