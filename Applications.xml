@@ -1,0 +1,18 @@
+<Applications>
+	<FileZilla>
+		<Vendor>Tim Kosse</Vendor>
+		<Product>FileZilla</Product>
+		<DisplayName>FileZilla Client</DisplayName>
+		<Description>FileZilla Client {VERSION}</Description>
+		<Evergreen>Get-FileZilla</Evergreen>
+		<Install>/S</Install>
+		<Uninstall>uninstall.exe</Uninstall>
+		<Path>C:\Program Files\FileZilla FTP Client</Path>
+		<Categories>C:\Program Files\FileZilla FTP Client</Categories>
+		<Assignments customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</FileZilla>
+</Applications>
