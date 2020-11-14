@@ -4,7 +4,6 @@
 		<Product>FileZilla</Product>
 		<DisplayName>FileZilla Client</DisplayName>
 		<Description>FileZilla Client {VERSION}</Description>
-		<Evergreen>Get-FileZilla</Evergreen>
 		<Install>/S</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\FileZilla FTP Client</Path>
