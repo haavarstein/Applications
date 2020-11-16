@@ -1,0 +1,33 @@
+<Applications>
+	<FileZilla>
+		<Vendor>Tim Kosse</Vendor>
+		<Product>FileZilla</Product>
+		<DisplayName>FileZilla Client</DisplayName>
+		<Description>FileZilla Client {VERSION}</Description>
+		<Install>/S</Install>
+		<Uninstall>uninstall.exe</Uninstall>
+		<Path>C:\Program Files\FileZilla FTP Client</Path>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</FileZilla>
+	<WinSCP>
+		<Vendor>Martin Prikyl</Vendor>
+		<Product>WinSCP</Product>
+		<DisplayName>WinSCP</DisplayName>
+		<Description>WinSCP {VERSION}</Description>
+		<Install>/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-</Install>
+		<Uninstall>unins000.exe</Uninstall>
+		<Path>C:\Program Files (x86)\WinSCP</Path>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</WinSCP>
+	
+</Applications>
