@@ -30,8 +30,8 @@
 		</Assignments>
 	</WinSCP>
 	<NotePadPlusPlus>
-		<Vendor>Notepad++ Team</Vendor>
-		<Product>Notepad++</Product>
+		<Vendor>NotepadPP Team</Vendor>
+		<Product>NotepadPP</Product>
 		<DisplayName>Notepad++</DisplayName>
 		<Description>Notepad++ {VERSION}</Description>
 		<Install>/S</Install>
