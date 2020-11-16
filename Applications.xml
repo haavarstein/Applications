@@ -29,4 +29,19 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</WinSCP>
+	<NotePadPlusPlus>
+		<Vendor>Notepad++ Team</Vendor>
+		<Product>Notepad++</Product>
+		<DisplayName>Notepad++</DisplayName>
+		<Description>Notepad++ {VERSION}</Description>
+		<Install>/S</Install>
+		<Uninstall>uninstall.exe</Uninstall>
+		<Path>C:\Program Files\Notepad++</Path>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</NotePadPlusPlus>
 </Applications>
