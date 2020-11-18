@@ -1,8 +1,8 @@
 ## FROM RAS Server ##
 
-Import-Module PSAdmin
+Import-Module RASAdmin
 Set-NetFirewallProfile -Profile Domain -Enabled False
-$Server = "pras-01.desktopanywhere.io"
+$Server = "pras-ws19-gw.desktopanywhere.io"
 $User = "administrator@desktopanywhere.io"
 $Pwd = "P@ssw0rd"
 $Password = ConvertTo-SecureString $Pwd -AsPlainText -Force
@@ -10,24 +10,21 @@ $Email = "xxx@gmail.com"
 $EmailPwd = "P@ssw0rd"
 $EmailPassword = ConvertTo-SecureString $EmailPwd -AsPlainText -Force
 New-RASSession -Username $User -Password $Password -Server $Server
-Import-Module PSAdmin
-Set-NetFirewallProfile -Profile Domain -Enabled False
-$Server = "pras-01.desktopanywhere.io"
-$User = "administrator@desktopanywhere.io"
+
+$RDS1 = New-RDS -Server "ras-ws19-01.desktopanywhere.io"
 $RDSList = Get-RDS
 New-RDSGroup -Name "Windows 2019 RDS" -RDSObject $RDSList
 Set-RDSDefaultSettings -MaxSessions 100 -EnableAppMonitoring $true
 New-PubRDSDesktop -Name "Desktop"
-Set-RASTurboSettings -Enable $False
 Set-2FASetting -Provider GAuthTOTP
 Invoke-LicenseActivate -email $Email -Password $EmailPassword
 Invoke-Apply
 
 ## FROM RDS WORKER ##
 
-Import-Module PSAdmin
-$Server = "ras-01.ctxlab.local"
-$User = "administrator@ctxlab.local"
+Import-Module RASAdmin
+$Server = "pras-ws19-gw.desktopanywhere.io"
+$User = "administrator@desktopanywhere.io"
 $Pwd = "P@ssw0rd"
 $Password = ConvertTo-SecureString $Pwd -AsPlainText -Force
 New-RASSession -Username $User -Password $Password -Server $Server
