@@ -30,7 +30,7 @@ $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 DONOTCREATEDESKTOPSHORTCUT=TRUE DONOTCREATETASKBARSHORTCUT=TRUE /qn /liewa $LogApp"
+$UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /norestart DONOTCREATEDESKTOPSHORTCUT=TRUE DONOTCREATETASKBARSHORTCUT=TRUE /qn /liewa $LogApp"
 $prefurl = "https://github.com/haavarstein/Applications/blob/master/Microsoft/Edge%20Enterprise/master_preferences"
 $ProgressPreference = 'SilentlyContinue'
 
