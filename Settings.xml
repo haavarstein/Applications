@@ -61,7 +61,7 @@
 	<Citrix_Cloud>
 		<ProvisioningType>MCS</ProvisioningType>
 		<AllocationType>Random</AllocationType>
-		<FunctionalLevel>L7_20</FunctionalLevel>
+		<FunctionalLevel>L7_25</FunctionalLevel>
 		<SessionSupport>MultiSession</SessionSupport>
 		<PersistUserChanges>Discard</PersistUserChanges>
 		<NamingScheme>NTX-CC-WS19-##</NamingScheme>
