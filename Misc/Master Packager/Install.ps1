@@ -12,9 +12,7 @@ Function Get-MasterPackagerVersion {
     try {
         $temp = New-TemporaryFile
         Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $temp -ErrorAction SilentlyContinue
-        $file = get-content $temp
-        $f1 = $file.trimstart("uberAgent-")
-        $Version = $f1.TrimEnd(".zip")
+        $Version = get-content $temp
         Write-Output $Version
     }
     catch {
@@ -32,12 +30,13 @@ Function Get-MasterPackagerVersion {
 # $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 # (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
+Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
 $Vendor = "Misc"
 $Product = "Master Packager"
-$PackageName = "Master_Packager_Std"
+$PackageName = "masterpackager"
 $Version = "$(Get-MasterPackagerVersion)"
 $InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
@@ -45,25 +44,18 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
-$url = "https://www.masterpackager.com/installer/public/standard/Master_Packager_Std_$($Version).0.msi"
+$url = "https://www.masterpackager.com/installer/public/standard/masterpackager_$($Version).0.msi"
 $ProgressPreference = 'SilentlyContinue'
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
 
 Start-Transcript $LogPS
 
-if( -Not (Test-Path -Path $Version ) )
-{
-    New-Item -ItemType directory -Path $Version | Out-Null
-}
+If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null}
 
 CD $Version
 
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
-If (!(Test-Path -Path $Source)) {
-    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source
-         }
-        Else {
-            Write-Verbose "File exists. Skipping Download." -Verbose
-         }
+If (!(Test-Path -Path $Source)) {Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source}
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
