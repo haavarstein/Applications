@@ -45,7 +45,7 @@
 			<RequiredGroup>All Devices</RequiredGroup>
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
-	</otePadPlusPlus>
+	</NotePadPlusPlus>
 	<ShareX>
 		<Vendor>ShareX</Vendor>
 		<Product>ShareX</Product>
