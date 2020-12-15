@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SequencerTemplate xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AllowMU>false</AllowMU>
+  <AppendPackageVersionToFilename>true</AppendPackageVersionToFilename>
+  <AllowLocalInteractionToCom>false</AllowLocalInteractionToCom>
+  <AllowLocalInteractionToObject>false</AllowLocalInteractionToObject>
+  <FullVFSWriteMode>true</FullVFSWriteMode>
+  <ExcludePreExistingSxSAndVC>true</ExcludePreExistingSxSAndVC>
+  <FileExclusions>
+    <string>[{CryptoKeys}]</string>
+    <string>[{Common AppData}]\Microsoft\Crypto</string>
+    <string>[{Common AppData}]\Microsoft\Search\Data</string>
+    <string>[{Cookies}]</string>
+    <string>[{History}]</string>
+    <string>[{Cache}]</string>
+    <string>[{Local AppData}]</string>
+    <string>[{LocalAppDataLow}]</string>
+    <string>[{Personal}]</string>
+    <string>[{Profile}]\Local Settings</string>
+    <string>[{Profile}]\NTUSER.DAT.LOG1</string>
+    <string>[{Profile}]\NTUSER.DAT.LOG2</string>
+    <string>[{Recent}]</string>
+    <string>[{Windows}]\Debug</string>
+    <string>[{Windows}]\Logs\CBS</string>
+    <string>[{Windows}]\Temp</string>
+    <string>[{Windows}]\WinSxS\ManifestCache</string>
+    <string>[{Windows}]\WindowsUpdate.log</string>
+    <string>[{AppVPackageDrive}]\$Recycle.Bin</string>
+    <string>[{AppVPackageDrive}]\System Volume Information</string>
+    <string>[{AppData}]\Microsoft\AppV</string>
+    <string>[{Local AppData}]\Temp</string>
+    <string>[{ProgramFilesX64}]\Microsoft Application Virtualization\Sequencer</string>
+    <string>[{Windows}]\ServiceProfiles\LocalService</string>
+    <string>[{Windows}]\ServiceProfiles\NetworkService</string>
+    <string>[{Common AppData}]\Microsoft\RAC</string>
+    <string>[{System}]\config</string>
+    <string>[{AppVSystem32Logfiles}]</string>
+    <string>[{Windows}]\security</string>
+    <string>[{LocalAppDataLow}]\Microsoft\CryptnetUrlCache</string>
+    <string>[{Profile}]\NTUSER.DAT</string>
+    <string>[{Profile}]\NTUSER.DAT.LOG</string>
+    <string>[{System}]\SMI</string>
+    <string>[{System}]\wbem</string>
+    <string>[{SystemX86}]\config</string>
+    <string>[{SystemX86}]\SMI</string>
+  </FileExclusions>
+  <RegExclusions>
+    <string>REGISTRY\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Cryptography</string>
+    <string>REGISTRY\MACHINE\SOFTWARE\Microsoft\Cryptography</string>
+    <string>REGISTRY\USER\[{AppVCurrentUserSID}]\Software\Microsoft\Windows\CurrentVersion\Explorer\StreamMRU</string>
+    <string>REGISTRY\USER\[{AppVCurrentUserSID}]\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\StreamMRU</string>
+    <string>REGISTRY\USER\[{AppVCurrentUserSID}]\Software\Microsoft\Windows\CurrentVersion\Explorer\Streams</string>
+    <string>REGISTRY\USER\[{AppVCurrentUserSID}]\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Streams</string>
+    <string>REGISTRY\MACHINE\SOFTWARE\Microsoft\AppV</string>
+    <string>REGISTRY\MACHINE\SOFTWARE\Wow6432Node\Microsoft\AppV</string>
+    <string>REGISTRY\USER\[{AppVCurrentUserSID}]\Software\Microsoft\AppV</string>
+    <string>REGISTRY\USER\[{AppVCurrentUserSID}]\Software\Wow6432Node\Microsoft\AppV</string>
+    <string>REGISTRY\MACHINE\SOFTWARE\Microsoft\Reliability Analysis\RAC</string>
+    <string>REGISTRY\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrenVersion\SPP</string>
+    <string>REGISTRY\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrenVersion\SystemRestore</string>
+    <string>REGISTRY\MACHINE\SYSTEM\CurrentControlSet\services\VSS</string>
+    <string>REGISTRY\MACHINE\SOFTWARE\Microsoft\SQMClient</string>
+    <string>REGISTRY\USER\S-1-5-19\Software\Microsoft\SQMClient</string>
+    <string>REGISTRY\[{AppVCurrentUserSID}]_CLASSES\Local Settings\MuiCache</string>
+    <string>REGISTRY\[{AppVCurrentUserSID}]_CLASSES\Local Settings\Software\Microsoft\Windows\Shell\BagMRU</string>
+    <string>REGISTRY\[{AppVCurrentUserSID}]_CLASSES\Local Settings\Software\Microsoft\Windows\Shell\Bags</string>
+    <string>REGISTRY\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Active Setup</string>
+    <string>REGISTRY\USER\[{AppVCurrentUserSID}]_CLASSES\Local Settings\MuiCache</string>
+    <string>REGISTRY\USER\[{AppVCurrentUserSID}]_CLASSES\Local Settings\Software\Microsoft\Windows\Shell\BagMRU</string>
+    <string>REGISTRY\USER\[{AppVCurrentUserSID}]_CLASSES\Local Settings\Software\Microsoft\Windows\Shell\Bags</string>
+    <string>REGISTRY\USER\[{AppVCurrentUserSID}]\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist</string>
+    <string>REGISTRY\MACHINE\SOFTWARE\Microsoft\Active Setup</string>
+  </RegExclusions>
+  <TargetOSes />
+</SequencerTemplate>
