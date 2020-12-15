@@ -1,34 +1,4 @@
 <Applications>
-	<FileZilla>
-		<Vendor>Tim Kosse</Vendor>
-		<Product>FileZilla</Product>
-		<DisplayName>FileZilla Client</DisplayName>
-		<Description>FileZilla Client {VERSION}</Description>
-		<Install>/S</Install>
-		<Uninstall>uninstall.exe</Uninstall>
-		<Path>C:\Program Files\FileZilla FTP Client</Path>
-		<Categories>IT Admin Tools</Categories>
-		<Assignments Customer="xenappblog">
-			<Group>All Users</Group>
-			<RequiredGroup>All Devices</RequiredGroup>
-			<PilotGroup>Intune IT Pilot</PilotGroup>
-		</Assignments>
-	</FileZilla>
-	<WinSCP>
-		<Vendor>Martin Prikyl</Vendor>
-		<Product>WinSCP</Product>
-		<DisplayName>WinSCP</DisplayName>
-		<Description>WinSCP {VERSION}</Description>
-		<Install>/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-</Install>
-		<Uninstall>unins000.exe</Uninstall>
-		<Path>C:\Program Files (x86)\WinSCP</Path>
-		<Categories>IT Admin Tools</Categories>
-		<Assignments Customer="xenappblog">
-			<Group>All Users</Group>
-			<RequiredGroup>All Devices</RequiredGroup>
-			<PilotGroup>Intune IT Pilot</PilotGroup>
-		</Assignments>
-	</WinSCP>
 	<NotePadPlusPlus>
 		<Vendor>NotepadPlusPlus Team</Vendor>
 		<Product>NotepadPlusPlus</Product>
@@ -36,6 +6,7 @@
 		<Evergreen>Get-NotepadPlusPlus | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
 		<DisplayName>NotepadPlusPlus</DisplayName>
 		<Description>NotepadPlusPlus {VERSION}</Description>
+		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\NotepadPlusPlus</Path>
@@ -53,9 +24,10 @@
 		<Evergreen>Get-ShareX | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
 		<DisplayName>ShareX</DisplayName>
 		<Description>ShareX {VERSION}</Description>
+		<Installer>exe</Installer>
 		<Install>/Verysilent /Norun</Install>
-		<Uninstall>uninstall.exe</Uninstall>
-		<Path>C:\Program Files (x86)\ShareX</Path>
+		<Uninstall>unins000.exe</Uninstall>
+		<Path>C:\Program Files\ShareX</Path>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -66,8 +38,11 @@
 	<mRemoteNG>
 		<Vendor>Next Generation Software</Vendor>
 		<Product>mRemoteNG</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen>Get-mRemoteNG | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
 		<DisplayName>mRemoteNG</DisplayName>
 		<Description>mRemoteNG {VERSION}</Description>
+		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
 		<Path>C:\Program Files (x86)\mRemoteNG</Path>
@@ -78,4 +53,40 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</mRemoteNG>
+	<WinSCP>
+		<Vendor>Martin Prikyl</Vendor>
+		<Product>WinSCP</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen>Get-WinSCP | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
+		<DisplayName>WinSCP</DisplayName>
+		<Description>WinSCP {VERSION}</Description>
+		<Installer>exe</Installer>
+		<Install>/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-</Install>
+		<Uninstall>unins000.exe</Uninstall>
+		<Path>C:\Program Files (x86)\WinSCP</Path>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</WinSCP>
+	<FileZilla>
+		<Vendor>Tim Kosse</Vendor>
+		<Product>FileZilla</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen>Get-FileZilla</Evergreen>
+		<DisplayName>FileZilla Client</DisplayName>
+		<Description>FileZilla Client {VERSION}</Description>
+		<Installer>exe</Installer>
+		<Install>/S</Install>
+		<Uninstall>uninstall.exe</Uninstall>
+		<Path>C:\Program Files\FileZilla FTP Client</Path>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</FileZilla>
 </Applications>
