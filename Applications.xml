@@ -45,7 +45,24 @@
 			<RequiredGroup>All Devices</RequiredGroup>
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
-	</NotePadPlusPlus>
+	</otePadPlusPlus>
+	<ShareX>
+		<Vendor>ShareX</Vendor>
+		<Product>ShareX</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen>Get-ShareX | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
+		<DisplayName>ShareX</DisplayName>
+		<Description>ShareX {VERSION}</Description>
+		<Install>/Verysilent /Norun</Install>
+		<Uninstall>uninstall.exe</Uninstall>
+		<Path>C:\Program Files (x86)\ShareX</Path>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</ShareX>
 	<mRemoteNG>
 		<Vendor>Next Generation Software</Vendor>
 		<Product>mRemoteNG</Product>
