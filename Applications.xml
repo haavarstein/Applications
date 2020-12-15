@@ -30,13 +30,15 @@
 		</Assignments>
 	</WinSCP>
 	<NotePadPlusPlus>
-		<Vendor>Notepad++ Team</Vendor>
-		<Product>Notepad++</Product>
-		<DisplayName>Notepad++</DisplayName>
-		<Description>Notepad++ {VERSION}</Description>
+		<Vendor>NotepadPlusPlus Team</Vendor>
+		<Product>NotepadPlusPlus</Product>
+		<Architecture>x64</Architecture>
+		<Evergreen>Get-NotepadPlusPlus | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
+		<DisplayName>NotepadPlusPlus</DisplayName>
+		<Description>NotepadPlusPlus {VERSION}</Description>
 		<Install>/S</Install>
 		<Uninstall>uninstall.exe</Uninstall>
-		<Path>C:\Program Files\Notepad++</Path>
+		<Path>C:\Program Files\NotepadPlusPlus</Path>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
