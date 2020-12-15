@@ -47,7 +47,7 @@
 		</Assignments>
 	</NotePadPlusPlus>
 	<ShareX>
-		<Vendor>ShareX</Vendor>
+		<Vendor>ShareX Team</Vendor>
 		<Product>ShareX</Product>
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-ShareX | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
