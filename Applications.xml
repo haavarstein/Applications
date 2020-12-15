@@ -93,7 +93,7 @@
 		<Vendor>7Zip</Vendor>
 		<Product>7Zip</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-7zip | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi"</Evergreen>
+		<Evergreen>Get-7zip | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
 		<DisplayName>7Zip</DisplayName>
 		<Description>7Zip {VERSION}</Description>
 		<Installer>msi</Installer>
