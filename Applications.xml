@@ -125,4 +125,22 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</TeamViewer>
+	<WinMerge>
+		<Vendor>Thingamahoochie Software</Vendor>
+		<Product>WinMerge</Product>
+		<Architecture>x64</Architecture>
+		<Evergreen>Get-WinMerge | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*x64-Setup.exe" }</Evergreen>
+		<DisplayName>WinMerge</DisplayName>
+		<Description>WinMerge {VERSION}</Description>
+		<Installer>exe</Installer>
+		<Install>/VERYSILENT /SP- /NORESTART</Install>
+		<Uninstall>uninstall.exe</Uninstall>
+		<Path>C:\Program Files (x86)\TeamViewer</Path>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</WinMerge>
 </Applications>
