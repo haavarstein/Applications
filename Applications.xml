@@ -134,8 +134,8 @@
 		<Description>WinMerge {VERSION}</Description>
 		<Installer>exe</Installer>
 		<Install>/VERYSILENT /SP- /NORESTART</Install>
-		<Uninstall>uninstall.exe</Uninstall>
-		<Path>C:\Program Files (x86)\TeamViewer</Path>
+		<Uninstall>unins000.exe</Uninstall>
+		<Path>C:\Program Files\WinMerge</Path>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -143,4 +143,22 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</WinMerge>
+	<VideoLanVlcPlayer>
+		<Vendor>VideoLanVlcPlayer</Vendor>
+		<Product>VideoLanVlcPlayer</Product>
+		<Architecture>x64</Architecture>
+		<Evergreen>Get-VideoLanVlcPlayer | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
+		<DisplayName>VideoLanVlcPlayer</DisplayName>
+		<Description>VideoLanVlcPlayer {VERSION}</Description>
+		<Installer>msi</Installer>
+		<Install>/i ALLUSERS=1 /qn</Install>
+		<Uninstall>/x</Uninstall>
+		<Path>C:\Program Files (x86)\TeamViewer</Path>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</VideoLanVlcPlayer>
 </Applications>
