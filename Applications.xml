@@ -197,4 +197,22 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</Cyberduck>
+	<Handbrake>
+		<Vendor>Handbrake</Vendor>
+		<Product>Handbrake</Product>
+		<Architecture>x64</Architecture>
+		<Evergreen>Get-Handbrake | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*Win_GUI.exe" }</Evergreen>
+		<DisplayName>Handbrake</DisplayName>
+		<Description>Handbrake {VERSION}</Description>
+		<Installer>exe</Installer>
+		<Install>/S</Install>
+		<Uninstall>uninst.exe</Uninstall>
+		<Path>C:\Program Files\Handbrake</Path>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</Handbrake>
 </Applications>
