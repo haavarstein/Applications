@@ -144,7 +144,7 @@
 		</Assignments>
 	</WinMerge>
 	<VideoLanVlcPlayer>
-		<Vendor>VideoLanVlcPlayer</Vendor>
+		<Vendor>VideoLAN</Vendor>
 		<Product>VideoLanVlcPlayer</Product>
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-VideoLanVlcPlayer | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
@@ -161,4 +161,40 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</VideoLanVlcPlayer>
+	<GreenShot>
+		<Vendor>GreenShot</Vendor>
+		<Product>GreenShot</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen>Get-GreenShot | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*RELEASE.exe" }</Evergreen>
+		<DisplayName>GreenShot</DisplayName>
+		<Description>GreenShot {VERSION}</Description>
+		<Installer>exe</Installer>
+		<Install>/VERYSILENT /SUPPRESSMESSAGEBOXES /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS /NORESTART</Install>
+		<Uninstall>unins000.exe</Uninstall>
+		<Path>C:\Program Files\Greenshot</Path>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</GreenShot>
+	<Cyberduck>
+		<Vendor>iterate GmbH</Vendor>
+		<Product>Cyberduck</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen>Get-Cyberduck | Where-Object { $_.Channel -eq "Release" }</Evergreen>
+		<DisplayName>Cyberduck</DisplayName>
+		<Description>Cyberduck {VERSION}</Description>
+		<Installer>exe</Installer>
+		<Install>/quiet</Install>
+		<Uninstall></Uninstall>
+		<Path>C:\Program Files\Cyberduck</Path>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</Cyberduck>
 </Applications>
