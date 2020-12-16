@@ -20,7 +20,7 @@ Update-Module Evergreen
 
 $Vendor = "Mozilla"
 $Product = "FireFox"
-$Evergreen = Get-MozillaFirefox -Platform win64 | Where-Object -Property Version -NotLike "*esr*"
+$Evergreen = Get-MozillaFirefox | Where-Object { $_.Architecture -eq "x64" -and $_.Type -eq "exe" -and $_.Channel -eq "LATEST_FIREFOX_VERSION" }
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $PackageName = "Firefox"
