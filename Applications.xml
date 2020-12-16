@@ -215,4 +215,40 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</Handbrake>
+	<TreeSizeFree>
+		<Vendor>JAM Software</Vendor>
+		<Product>TreeSizeFree</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen>Get-JamTreeSizeFree</Evergreen>
+		<DisplayName>TreeSize Free</DisplayName>
+		<Description>TreeSize Free {VERSION}</Description>
+		<Installer>exe</Installer>
+		<Install>/verysilent</Install>
+		<Uninstall>unins000.exe</Uninstall>
+		<Path>C:\Program Files (x86)\JAM Software\TreeSize Free</Path>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</TreeSizeFree>
+	<MozillaFirefox>
+		<Vendor>Mozilla</Vendor>
+		<Product>MozillaFirefox</Product>
+		<Architecture>x64</Architecture>
+		<Evergreen>Get-MozillaFirefox | Where-Object { $_.Architecture -eq "$Architecture" -and $_.Type -eq "$InstallerType" -and $_.Channel -eq "LATEST_FIREFOX_VERSION" }</Evergreen>
+		<DisplayName>Mozilla Firefox</DisplayName>
+		<Description>Mozilla Firefox {VERSION}</Description>
+		<Installer>msi</Installer>
+		<Install>/i ALLUSERS=1 /qn</Install>
+		<Uninstall>/X</Uninstall>
+		<Path>C:\Program Files\Mozilla Firefox</Path>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</MozillaFirefox>
 </Applications>
