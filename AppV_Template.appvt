@@ -34,6 +34,7 @@
     <string>[{Windows}]\ServiceProfiles\LocalService</string>
     <string>[{Windows}]\ServiceProfiles\NetworkService</string>
     <string>[{Common AppData}]\Microsoft\RAC</string>
+    <string>[{Common Desktop}]</string>
     <string>[{System}]\config</string>
     <string>[{AppVSystem32Logfiles}]</string>
     <string>[{Windows}]\security</string>
