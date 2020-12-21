@@ -23,6 +23,7 @@
     <string>[{Windows}]\Debug</string>
     <string>[{Windows}]\Logs\CBS</string>
     <string>[{Windows}]\Temp</string>
+    <string>[{Windows}]\Installer</string>
     <string>[{Windows}]\WinSxS\ManifestCache</string>
     <string>[{Windows}]\WindowsUpdate.log</string>
     <string>[{AppVPackageDrive}]\$Recycle.Bin</string>
