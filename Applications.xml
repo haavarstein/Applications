@@ -94,8 +94,8 @@
 		<Product>7Zip</Product>
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-7zip | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
-		<DisplayName>7Zip</DisplayName>
-		<Description>7Zip {VERSION}</Description>
+		<DisplayName>7-Zip</DisplayName>
+		<Description>7-Zip {VERSION}</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
@@ -148,8 +148,8 @@
 		<Product>VideoLanVlcPlayer</Product>
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-VideoLanVlcPlayer | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
-		<DisplayName>VideoLanVlcPlayer</DisplayName>
-		<Description>VideoLanVlcPlayer {VERSION}</Description>
+		<DisplayName>VideoLAN</DisplayName>
+		<Description>VideoLAN {VERSION}</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
