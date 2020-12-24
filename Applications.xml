@@ -80,8 +80,8 @@
 		<Product>FileZilla</Product>
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-FileZilla</Evergreen>
-		<DisplayName>FileZilla Client</DisplayName>
-		<Description>FileZilla Client {VERSION}</Description>
+		<DisplayName>FileZilla FTP Client</DisplayName>
+		<Description>FileZilla FTP Client {VERSION}</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall>uninstall.exe</Uninstall>
