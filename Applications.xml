@@ -285,4 +285,24 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</CCleaner>
+	<PaintNET>
+		<Vendor>PaintNET</Vendor>
+		<Product>PaintNET</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen>choco install paint.net</Evergreen>
+		<DisplayName>PaintNET</DisplayName>
+		<Description>PaintNET {VERSION}</Description>
+		<Installer>exe</Installer>
+		<Install>/S</Install>
+		<Uninstall>/X</Uninstall>
+		<Path>C:\Program Files\PaintNET</Path>
+		<Enabled>True</Enabled>
+		<Choco>True</Choco>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</CCleaner>
 </Applications>
