@@ -304,5 +304,5 @@
 			<RequiredGroup>All Devices</RequiredGroup>
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
-	</CCleaner>
+	</PaintNET>
 </Applications>
