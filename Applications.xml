@@ -265,4 +265,24 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</MozillaFirefox>
+	<CCleaner>
+		<Vendor>CCleaner</Vendor>
+		<Product>CCleaner</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen>Get-MozillaFirefox | Where-Object { $_.Architecture -eq "$Architecture" -and $_.Type -eq "$InstallerType" -and $_.Channel -eq "LATEST_FIREFOX_VERSION" }</Evergreen>
+		<DisplayName>CCleaner</DisplayName>
+		<Description>CCleaner {VERSION}</Description>
+		<Installer>exe</Installer>
+		<Install>/S</Install>
+		<Uninstall>/X</Uninstall>
+		<Path>C:\Program Files\CCleaner</Path>
+		<Enabled>True</Enabled>
+		<Choco>choco install ccleaner</Choco>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</CCleaner>
 </Applications>
