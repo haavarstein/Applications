@@ -393,7 +393,7 @@
 		<DisplayName>Wireshark</DisplayName>
 		<Description>Wireshark {VERSION}</Description>
 		<Installer>exe</Installer>
-		<Install>/S</Install>
+		<Install>/S /quicklaunchicon=no</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\Wireshark</Path>
 		<Enabled>True</Enabled>
