@@ -305,4 +305,44 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</PaintNET>
+	<StreamDeck>
+		<Vendor>Elgato</Vendor>
+		<Product>StreamDeck</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen>choco install streamdeck</Evergreen>
+		<DisplayName>Elgato</DisplayName>
+		<Description>StreamDeck {VERSION}</Description>
+		<Installer>MSI</Installer>
+		<Install>/i ALLUSERS=1 /qn</Install>
+		<Uninstall>/X</Uninstall>
+		<Path>C:\Program Files\StreamDeck</Path>
+		<Enabled>True</Enabled>
+		<Choco>True</Choco>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</StreamDeck>
+	<Gimp>
+		<Vendor>Gimp</Vendor>
+		<Product>Gimp</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen>choco install Gimp</Evergreen>
+		<DisplayName>Elgato</DisplayName>
+		<Description>Gimp {VERSION}</Description>
+		<Installer>MSI</Installer>
+		<Install>/i ALLUSERS=1 /qn</Install>
+		<Uninstall>/X</Uninstall>
+		<Path>C:\Program Files\Gimp</Path>
+		<Enabled>True</Enabled>
+		<Choco>True</Choco>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</Gimp>
 </Applications>
