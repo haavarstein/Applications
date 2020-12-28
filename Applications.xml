@@ -266,7 +266,7 @@
 		</Assignments>
 	</MozillaFirefox>
 	<CCleaner>
-		<Vendor>CCleaner</Vendor>
+		<Vendor>Piriform</Vendor>
 		<Product>CCleaner</Product>
 		<Architecture>x86</Architecture>
 		<Evergreen>choco install ccleaner</Evergreen>
@@ -274,7 +274,7 @@
 		<Description>CCleaner {VERSION}</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
-		<Uninstall>/X</Uninstall>
+		<Uninstall>uninst.exe</Uninstall>
 		<Path>C:\Program Files\CCleaner</Path>
 		<Enabled>True</Enabled>
 		<Choco>True</Choco>
@@ -286,16 +286,16 @@
 		</Assignments>
 	</CCleaner>
 	<PaintNET>
-		<Vendor>PaintNET</Vendor>
+		<Vendor>dotPDN LLC</Vendor>
 		<Product>PaintNET</Product>
-		<Architecture>x86</Architecture>
+		<Architecture>x64</Architecture>
 		<Evergreen>choco install paint.net</Evergreen>
-		<DisplayName>PaintNET</DisplayName>
-		<Description>PaintNET {VERSION}</Description>
+		<DisplayName>Paint.NET</DisplayName>
+		<Description>Paint.NET {VERSION}</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall>/X</Uninstall>
-		<Path>C:\Program Files\PaintNET</Path>
+		<Path>C:\Program Files\paint.net</Path>
 		<Enabled>True</Enabled>
 		<Choco>True</Choco>
 		<Categories>IT Admin Tools</Categories>
@@ -306,16 +306,16 @@
 		</Assignments>
 	</PaintNET>
 	<Gimp>
-		<Vendor>Gimp</Vendor>
+		<Vendor>The Gimp Team</Vendor>
 		<Product>Gimp</Product>
 		<Architecture>x86</Architecture>
 		<Evergreen>choco install Gimp</Evergreen>
-		<DisplayName>Elgato</DisplayName>
+		<DisplayName>Gimp</DisplayName>
 		<Description>Gimp {VERSION}</Description>
 		<Installer>MSI</Installer>
-		<Install>/i ALLUSERS=1 /qn</Install>
-		<Uninstall>/X</Uninstall>
-		<Path>C:\Program Files\Gimp</Path>
+		<Install>/S</Install>
+		<Uninstall>unins000.exe</Uninstall>
+		<Path>C:\Program Files\GIMP 2</Path>
 		<Enabled>True</Enabled>
 		<Choco>True</Choco>
 		<Categories>IT Admin Tools</Categories>
@@ -326,7 +326,7 @@
 		</Assignments>
 	</Gimp>
 	<MP3Tag>
-		<Vendor>MP3Tag</Vendor>
+		<Vendor>Florian Heidenreich</Vendor>
 		<Product>MP3Tag</Product>
 		<Architecture>x86</Architecture>
 		<Evergreen>choco install MP3Tag</Evergreen>
@@ -334,8 +334,8 @@
 		<Description>MP3Tag {VERSION}</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
-		<Uninstall>uninstall.exe</Uninstall>
-		<Path>C:\Program Files\MP3Tag</Path>
+		<Uninstall>Mp3tagUninstall.exe</Uninstall>
+		<Path>C:\Program Files (x86)\Mp3tag</Path>
 		<Enabled>True</Enabled>
 		<Choco>True</Choco>
 		<Categories>IT Admin Tools</Categories>
@@ -346,7 +346,7 @@
 		</Assignments>
 	</MP3Tag>
 	<Putty>
-		<Vendor>Putty</Vendor>
+		<Vendor>Simon Tatham</Vendor>
 		<Product>Putty</Product>
 		<Architecture>x86</Architecture>
 		<Evergreen>choco install putty.install</Evergreen>
