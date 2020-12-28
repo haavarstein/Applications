@@ -409,7 +409,7 @@
 		<Vendor>Progress Software Corporation</Vendor>
 		<Product>Fiddler</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen>choco install Fiddler --install-arguments "C:\Program Files\Fiddler"</Evergreen>
+		<Evergreen>choco install Fiddler --install-arguments "/D=C:\Program Files\Fiddler"</Evergreen>
 		<DisplayName>Fiddler</DisplayName>
 		<Description>Fiddler {VERSION}</Description>
 		<Installer>exe</Installer>
