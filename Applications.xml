@@ -406,7 +406,7 @@
 		</Assignments>
 	</Wireshark>
 	<Fiddler>
-		<Vendor>Fiddler Team</Vendor>
+		<Vendor>Progress Software Corporation</Vendor>
 		<Product>Fiddler</Product>
 		<Architecture>x86</Architecture>
 		<Evergreen>choco install Fiddler --install-arguments "C:\Program Files\Fiddler"</Evergreen>
