@@ -405,4 +405,24 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</Wireshark>
+	<Fiddler>
+		<Vendor>Fiddler Team</Vendor>
+		<Product>Fiddler</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen>choco install Fiddler</Evergreen>
+		<DisplayName>Fiddler</DisplayName>
+		<Description>Fiddler {VERSION}</Description>
+		<Installer>exe</Installer>
+		<Install>/S</Install>
+		<Uninstall>uninstall.exe</Uninstall>
+		<Path>C:\Program Files\Fiddler</Path>
+		<Enabled>True</Enabled>
+		<Choco>True</Choco>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</Fiddler>
 </Applications>
