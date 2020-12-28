@@ -345,4 +345,24 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</Gimp>
+	<MP3Tag>
+		<Vendor>MP3Tag</Vendor>
+		<Product>MP3Tag</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen>choco install MP3Tag</Evergreen>
+		<DisplayName>MP3Tag</DisplayName>
+		<Description>MP3Tag {VERSION}</Description>
+		<Installer>exe</Installer>
+		<Install>/S</Install>
+		<Uninstall>uninstall.exe</Uninstall>
+		<Path>C:\Program Files\MP3Tag</Path>
+		<Enabled>True</Enabled>
+		<Choco>True</Choco>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</MP3Tag>
 </Applications>
