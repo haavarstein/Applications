@@ -376,7 +376,7 @@
 		<Install>/S</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\PowerBI</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<Choco>True</Choco>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
