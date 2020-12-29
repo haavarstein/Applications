@@ -417,7 +417,7 @@
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\Fiddler</Path>
 		<Enabled>True</Enabled>
-		<Choco>False</Choco>
+		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
