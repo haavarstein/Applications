@@ -309,15 +309,15 @@
 		<Vendor>The Gimp Team</Vendor>
 		<Product>Gimp</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen>choco install Gimp</Evergreen>
+		<Evergreen></Evergreen>
 		<DisplayName>Gimp</DisplayName>
 		<Description>Gimp {VERSION}</Description>
-		<Installer>MSI</Installer>
-		<Install>/S</Install>
+		<Installer>exe</Installer>
+		<Install>/VERYSILENT /NORESTART</Install>
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files\GIMP 2</Path>
 		<Enabled>True</Enabled>
-		<Choco>True</Choco>
+		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -355,7 +355,7 @@
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/X</Uninstall>
-		<Path>C:\Program Files\Putty</Path>
+		<Path>C:\Program Files (x86)\PuTTY</Path>
 		<Enabled>True</Enabled>
 		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
