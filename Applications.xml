@@ -425,4 +425,24 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</AngryIPScanner>
+	<SumatraPDF>
+		<Vendor>Krzysztof Kowalczyk</Vendor>
+		<Product>SumatraPDF</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen></Evergreen>
+		<DisplayName>SumatraPDF</DisplayName>
+		<Description>SumatraPDF {VERSION}</Description>
+		<Installer>exe</Installer>
+		<Install>-s -d "C:\Program Files\SumatraPDF"</Install>
+		<Uninstall>uninstall.exe</Uninstall>
+		<Path>C:\Program Files\SumatraPDF</Path>
+		<Enabled>True</Enabled>
+		<PMPC>True</PMPC>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</SumatraPDF>
 </Applications>
