@@ -269,7 +269,7 @@
 		<Vendor>Piriform</Vendor>
 		<Product>CCleaner</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen>choco install ccleaner</Evergreen>
+		<Evergreen></Evergreen>
 		<DisplayName>CCleaner</DisplayName>
 		<Description>CCleaner {VERSION}</Description>
 		<Installer>exe</Installer>
@@ -277,7 +277,7 @@
 		<Uninstall>uninst.exe</Uninstall>
 		<Path>C:\Program Files\CCleaner</Path>
 		<Enabled>True</Enabled>
-		<Choco>True</Choco>
+		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -287,9 +287,9 @@
 	</CCleaner>
 	<PaintNET>
 		<Vendor>dotPDN LLC</Vendor>
-		<Product>PaintNET</Product>
+		<Product>Paint</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>choco install paint.net</Evergreen>
+		<Evergreen></Evergreen>
 		<DisplayName>Paint.NET</DisplayName>
 		<Description>Paint.NET {VERSION}</Description>
 		<Installer>exe</Installer>
@@ -297,7 +297,7 @@
 		<Uninstall>/X</Uninstall>
 		<Path>C:\Program Files\paint.net</Path>
 		<Enabled>True</Enabled>
-		<Choco>True</Choco>
+		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
