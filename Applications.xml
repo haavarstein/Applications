@@ -293,7 +293,7 @@
 		<DisplayName>Paint.NET</DisplayName>
 		<Description>Paint.NET {VERSION}</Description>
 		<Installer>exe</Installer>
-		<Install>/S</Install>
+		<Install>/auto</Install>
 		<Uninstall>/X</Uninstall>
 		<Path>C:\Program Files\paint.net</Path>
 		<Enabled>True</Enabled>
@@ -365,26 +365,6 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</PuTTY>
-	<PowerBI>
-		<Vendor>Microsoft</Vendor>
-		<Product>PowerBI</Product>
-		<Architecture>x86</Architecture>
-		<Evergreen>choco install PowerBI</Evergreen>
-		<DisplayName>Power BI</DisplayName>
-		<Description>Power BI {VERSION}</Description>
-		<Installer>exe</Installer>
-		<Install>/S</Install>
-		<Uninstall>uninstall.exe</Uninstall>
-		<Path>C:\Program Files\PowerBI</Path>
-		<Enabled>False</Enabled>
-		<Choco>True</Choco>
-		<Categories>IT Admin Tools</Categories>
-		<Assignments Customer="xenappblog">
-			<Group>All Users</Group>
-			<RequiredGroup>All Devices</RequiredGroup>
-			<PilotGroup>Intune IT Pilot</PilotGroup>
-		</Assignments>
-	</PowerBI>
 	<Wireshark>
 		<Vendor>Wireshark Team</Vendor>
 		<Product>WireShark</Product>
