@@ -445,4 +445,24 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</SumatraPDF>
+	<Telegram>
+		<Vendor>Telegram</Vendor>
+		<Product>Telegram</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen></Evergreen>
+		<DisplayName>Telegram</DisplayName>
+		<Description>Telegram {VERSION}</Description>
+		<Installer>exe</Installer>
+		<Install>/Verysilent</Install>
+		<Uninstall>uninstall.exe</Uninstall>
+		<Path>C:\Program Files\Telegram</Path>
+		<Enabled>True</Enabled>
+		<PMPC>True</PMPC>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</Telegram>
 </Applications>
