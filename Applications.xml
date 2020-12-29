@@ -387,7 +387,7 @@
 	</PowerBI>
 	<Wireshark>
 		<Vendor>Wireshark Team</Vendor>
-		<Product>Wireshark</Product>
+		<Product>WireShark</Product>
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Wireshark</DisplayName>
