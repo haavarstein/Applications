@@ -329,7 +329,7 @@
 		<Vendor>Florian Heidenreich</Vendor>
 		<Product>MP3Tag</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen>choco install MP3Tag</Evergreen>
+		<Evergreen></Evergreen>
 		<DisplayName>MP3Tag</DisplayName>
 		<Description>MP3Tag {VERSION}</Description>
 		<Installer>exe</Installer>
@@ -337,7 +337,7 @@
 		<Uninstall>Mp3tagUninstall.exe</Uninstall>
 		<Path>C:\Program Files (x86)\Mp3tag</Path>
 		<Enabled>True</Enabled>
-		<Choco>True</Choco>
+		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -409,7 +409,7 @@
 		<Vendor>Progress Software Corporation</Vendor>
 		<Product>Fiddler</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen>choco install Fiddler --install-arguments /D=C:\Program Files\Fiddler</Evergreen>
+		<Evergreen></Evergreen>
 		<DisplayName>Fiddler</DisplayName>
 		<Description>Fiddler {VERSION}</Description>
 		<Installer>exe</Installer>
