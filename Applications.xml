@@ -313,7 +313,7 @@
 		<DisplayName>Gimp</DisplayName>
 		<Description>Gimp {VERSION}</Description>
 		<Installer>exe</Installer>
-		<Install>/VERYSILENT /NORESTART</Install>
+		<Install>/VERYSILENT /NORESTART /RESTARTEXITCODE=3010 /SUPPRESSMSGBOXES /SP-</Install>
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files\GIMP 2</Path>
 		<Enabled>True</Enabled>
