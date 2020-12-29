@@ -389,7 +389,7 @@
 		<Vendor>Wireshark Team</Vendor>
 		<Product>Wireshark</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen>choco install Wireshark</Evergreen>
+		<Evergreen></Evergreen>
 		<DisplayName>Wireshark</DisplayName>
 		<Description>Wireshark {VERSION}</Description>
 		<Installer>exe</Installer>
@@ -397,7 +397,7 @@
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\Wireshark</Path>
 		<Enabled>True</Enabled>
-		<Choco>True</Choco>
+		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
