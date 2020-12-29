@@ -428,7 +428,7 @@
 	<SumatraPDF>
 		<Vendor>Krzysztof Kowalczyk</Vendor>
 		<Product>SumatraPDF</Product>
-		<Architecture>x86</Architecture>
+		<Architecture>x64</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>SumatraPDF</DisplayName>
 		<Description>SumatraPDF {VERSION}</Description>
@@ -436,7 +436,7 @@
 		<Install>-install"</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\SumatraPDF</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
