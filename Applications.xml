@@ -409,15 +409,15 @@
 		<Vendor>Progress Software Corporation</Vendor>
 		<Product>Fiddler</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen>choco install Fiddler --install-arguments "/D=C:\Program Files\Fiddler"</Evergreen>
+		<Evergreen>choco install Fiddler --install-arguments /D=C:\Program Files\Fiddler</Evergreen>
 		<DisplayName>Fiddler</DisplayName>
 		<Description>Fiddler {VERSION}</Description>
 		<Installer>exe</Installer>
-		<Install>/S</Install>
+		<Install>/S /D=C:\Program Files\Fiddler</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\Fiddler</Path>
 		<Enabled>True</Enabled>
-		<Choco>True</Choco>
+		<Choco>False</Choco>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
