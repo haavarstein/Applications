@@ -5,7 +5,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-NotepadPlusPlus | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
 		<DisplayName>NotepadPlusPlus</DisplayName>
-		<Description>NotepadPlusPlus {VERSION}</Description>
+		<Description>Notepad++</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall>uninstall.exe</Uninstall>
@@ -24,7 +24,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-ShareX | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
 		<DisplayName>ShareX</DisplayName>
-		<Description>ShareX {VERSION}</Description>
+		<Description>ShareX</Description>
 		<Installer>exe</Installer>
 		<Install>/Verysilent /Norun</Install>
 		<Uninstall>unins000.exe</Uninstall>
@@ -43,7 +43,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-mRemoteNG | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
 		<DisplayName>mRemoteNG</DisplayName>
-		<Description>mRemoteNG {VERSION}</Description>
+		<Description>mRemoteNG</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
@@ -62,7 +62,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-WinSCP | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
 		<DisplayName>WinSCP</DisplayName>
-		<Description>WinSCP {VERSION}</Description>
+		<Description>WinSCP</Description>
 		<Installer>exe</Installer>
 		<Install>/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-</Install>
 		<Uninstall>unins000.exe</Uninstall>
@@ -81,7 +81,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-FileZilla</Evergreen>
 		<DisplayName>FileZilla FTP Client</DisplayName>
-		<Description>FileZilla FTP Client {VERSION}</Description>
+		<Description>FileZilla FTP Client</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall>uninstall.exe</Uninstall>
@@ -100,7 +100,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-7zip | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
 		<DisplayName>7-Zip</DisplayName>
-		<Description>7-Zip {VERSION}</Description>
+		<Description>7-Zip</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
@@ -119,7 +119,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-TeamViewer</Evergreen>
 		<DisplayName>TeamViewer</DisplayName>
-		<Description>TeamViewer {VERSION}</Description>
+		<Description>Team Viewer</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall>uninstall.exe</Uninstall>
@@ -138,7 +138,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-WinMerge | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*x64-Setup.exe" }</Evergreen>
 		<DisplayName>WinMerge</DisplayName>
-		<Description>WinMerge {VERSION}</Description>
+		<Description>WinMerge</Description>
 		<Installer>exe</Installer>
 		<Install>/VERYSILENT /SP- /NORESTART</Install>
 		<Uninstall>unins000.exe</Uninstall>
@@ -157,7 +157,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-VideoLanVlcPlayer | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
 		<DisplayName>VideoLAN</DisplayName>
-		<Description>VideoLAN {VERSION}</Description>
+		<Description>VLC Player</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
@@ -176,7 +176,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-GreenShot | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*RELEASE.exe" }</Evergreen>
 		<DisplayName>GreenShot</DisplayName>
-		<Description>GreenShot {VERSION}</Description>
+		<Description>GreenShot</Description>
 		<Installer>exe</Installer>
 		<Install>/VERYSILENT /SUPPRESSMESSAGEBOXES /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS /NORESTART</Install>
 		<Uninstall>unins000.exe</Uninstall>
@@ -195,7 +195,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-Cyberduck | Where-Object { $_.Channel -eq "Release" }</Evergreen>
 		<DisplayName>Cyberduck</DisplayName>
-		<Description>Cyberduck {VERSION}</Description>
+		<Description>Cyberduck</Description>
 		<Installer>exe</Installer>
 		<Install>/quiet</Install>
 		<Uninstall></Uninstall>
@@ -214,7 +214,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-Handbrake | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*Win_GUI.exe" }</Evergreen>
 		<DisplayName>Handbrake</DisplayName>
-		<Description>Handbrake {VERSION}</Description>
+		<Description>Handbrake</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall>uninst.exe</Uninstall>
@@ -233,7 +233,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-JamTreeSizeFree</Evergreen>
 		<DisplayName>TreeSize Free</DisplayName>
-		<Description>TreeSize Free {VERSION}</Description>
+		<Description>TreeSize Free</Description>
 		<Installer>exe</Installer>
 		<Install>/verysilent</Install>
 		<Uninstall>unins000.exe</Uninstall>
@@ -252,7 +252,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-MozillaFirefox | Where-Object { $_.Architecture -eq "$Architecture" -and $_.Type -eq "$InstallerType" -and $_.Channel -eq "LATEST_FIREFOX_VERSION" }</Evergreen>
 		<DisplayName>Mozilla Firefox</DisplayName>
-		<Description>Mozilla Firefox {VERSION}</Description>
+		<Description>Mozilla Firefox</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/X</Uninstall>
@@ -271,7 +271,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>CCleaner</DisplayName>
-		<Description>CCleaner {VERSION}</Description>
+		<Description>CCleaner</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall>uninst.exe</Uninstall>
@@ -291,7 +291,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Paint.NET</DisplayName>
-		<Description>Paint.NET {VERSION}</Description>
+		<Description>Paint.NET</Description>
 		<Installer>exe</Installer>
 		<Install>/auto</Install>
 		<Uninstall>/X</Uninstall>
@@ -311,7 +311,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Gimp</DisplayName>
-		<Description>Gimp {VERSION}</Description>
+		<Description>Gimp</Description>
 		<Installer>exe</Installer>
 		<Install>/VERYSILENT /NORESTART /RESTARTEXITCODE=3010 /SUPPRESSMSGBOXES /SP-</Install>
 		<Uninstall>unins000.exe</Uninstall>
@@ -331,7 +331,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>MP3Tag</DisplayName>
-		<Description>MP3Tag {VERSION}</Description>
+		<Description>MP3Tag</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall>Mp3tagUninstall.exe</Uninstall>
@@ -351,7 +351,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>PuTTY</DisplayName>
-		<Description>PuTTY {VERSION}</Description>
+		<Description>PuTTY</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/X</Uninstall>
@@ -371,7 +371,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Wireshark</DisplayName>
-		<Description>Wireshark {VERSION}</Description>
+		<Description>Wireshark</Description>
 		<Installer>exe</Installer>
 		<Install>/S /quicklaunchicon=no</Install>
 		<Uninstall>uninstall.exe</Uninstall>
@@ -391,7 +391,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Fiddler</DisplayName>
-		<Description>Fiddler {VERSION}</Description>
+		<Description>Fiddler</Description>
 		<Installer>exe</Installer>
 		<Install>/S /D=C:\Program Files\Fiddler</Install>
 		<Uninstall>uninstall.exe</Uninstall>
@@ -411,7 +411,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>AngryIPScanner</DisplayName>
-		<Description>AngryIPScanner {VERSION}</Description>
+		<Description>AngryIPScanner</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall>uninstall.exe</Uninstall>
@@ -431,7 +431,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>SumatraPDF</DisplayName>
-		<Description>SumatraPDF {VERSION}</Description>
+		<Description>Sumatra PDF</Description>
 		<Installer>exe</Installer>
 		<Install>-install"</Install>
 		<Uninstall>uninstall.exe</Uninstall>
@@ -451,7 +451,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Telegram</DisplayName>
-		<Description>Telegram {VERSION}</Description>
+		<Description>Telegram Client</Description>
 		<Installer>exe</Installer>
 		<Install>/Verysilent</Install>
 		<Uninstall>uninstall.exe</Uninstall>
