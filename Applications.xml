@@ -153,7 +153,7 @@
 	</WinMerge>
 	<VideoLanVlcPlayer>
 		<Vendor>VideoLAN</Vendor>
-		<Product>VideoLanVlcPlayer</Product>
+		<Product>VLCPlayer</Product>
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-VideoLanVlcPlayer | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
 		<DisplayName>VideoLAN</DisplayName>
