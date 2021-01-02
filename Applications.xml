@@ -465,4 +465,23 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</Telegram>
+	<FoxitReader>
+		<Vendor>Foxit</Vendor>
+		<Product>FoxitReader</Product>
+		<Architecture>x64</Architecture>
+		<Evergreen>Get-FoxitReader | Where-Object { $_.Language -eq "English" }</Evergreen>
+		<DisplayName>Foxit Reader</DisplayName>
+		<Description>Foxit Reader</Description>
+		<Installer>exe</Installer>
+		<Install>/verysilent</Install>
+		<Uninstall></Uninstall>
+		<Path>C:\Program Files\Foxit Reader</Path>
+		<Enabled>True</Enabled>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</FoxitReader>
 </Applications>
