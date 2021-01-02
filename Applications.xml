@@ -466,7 +466,7 @@
 		</Assignments>
 	</Telegram>
 	<FoxitReader>
-		<Vendor>Foxit</Vendor>
+		<Vendor>Foxit Software</Vendor>
 		<Product>FoxitReader</Product>
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-FoxitReader | Where-Object { $_.Language -eq "English" }</Evergreen>
