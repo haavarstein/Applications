@@ -456,7 +456,7 @@
 		<Install>/Verysilent</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\Telegram</Path>
-		<Enabled>False</Enabled>
+		<Enabled>True</Enabled>
 		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
