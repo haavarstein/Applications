@@ -503,4 +503,23 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</Chrome>
+	<BeyondCompare>
+		<Vendor>Scooter Software</Vendor>
+		<Product>Beyond Compare</Product>
+		<Architecture>x64</Architecture>
+		<Evergreen>Get-ScooterBeyondCompare</Evergreen>
+		<DisplayName>Beyond Compare</DisplayName>
+		<Description>Beyond Compare</Description>
+		<Installer>exe</Installer>
+		<Install>/SP- /VERYSILENT /NORESTART</Install>
+		<Uninstall></Uninstall>
+		<Path>C:\Program Files\Beyond Compare</Path>
+		<Enabled>True</Enabled>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</BeyondCompare>
 </Applications>
