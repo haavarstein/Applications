@@ -21,7 +21,7 @@ Update-Module Evergreen
 $Vendor = "Adobe"
 $Product = "Reader DC"
 $PackageName = "AcroRead"
-$Evergreen = Get-AdobeAcrobatReaderDC | Where-Object { $_.Platform -eq "Windows" -and $_.Type -eq "Installer" -and ($_.Language -eq "English" -or $_.Language -eq "Neutral" -or $_.Language -eq "Multi") }
+$Evergreen = Get-AdobeAcrobatReaderDC | Where-Object { $_.Language -eq "English" }
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $InstallerType = "exe"
