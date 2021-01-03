@@ -541,4 +541,23 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</LibreCAD>
+	<PDFSam>
+		<Vendor>Andrea Vacondio</Vendor>
+		<Product>PDFSam</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen>Get-GitHubRelease -uri https://api.github.com/repos/torakiki/pdfsam/releases/latest | Where-Object { $_.URI -like "*.msi" }</Evergreen>
+		<DisplayName>PDFSam</DisplayName>
+		<Description>PDFSam</Description>
+		<Installer>msi</Installer>
+		<Install>/i ALLUSERS=1 /qn</Install>
+		<Uninstall>/x</Uninstall>
+		<Path>C:\Program Files (x86)\PDFSam</Path>
+		<Enabled>True</Enabled>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</PDFSam>
 </Applications>
