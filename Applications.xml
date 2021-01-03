@@ -645,7 +645,7 @@
 		<DisplayName>Brave Nightly</DisplayName>
 		<Description>Brave</Description>
 		<Installer>exe</Installer>
-		<Install</Install>
+		<Install></Install>
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files (x86)\BraveSoftware</Path>
 		<Enabled>True</Enabled>
