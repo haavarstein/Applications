@@ -656,4 +656,24 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</Brave>
+	<Opera>
+		<Vendor>Opera</Vendor>
+		<Product>Opera</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen></Evergreen>
+		<DisplayName>Opera</DisplayName>
+		<Description>Opera</Description>
+		<Installer>exe</Installer>
+		<Install>/install /silent /launchopera=0 /setdefaultbrowser=0 /allusers=1</Install>
+		<Uninstall></Uninstall>
+		<Path>C:\Program Files (x86)\Opera</Path>
+		<Enabled>True</Enabled>
+		<PMPC>True</PMPC>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</Opera>
 </Applications>
