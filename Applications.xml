@@ -522,4 +522,23 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</BeyondCompare>
+	<LibreCAD>
+		<Vendor>LibreCAD</Vendor>
+		<Product>LibreCAD</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen>Get-GitHubRelease -Uri https://api.github.com/repos/LibreCAD/LibreCAD/releases/latest</Evergreen>
+		<DisplayName>LibreCAD</DisplayName>
+		<Description>LibreCAD</Description>
+		<Installer>exe</Installer>
+		<Install>/S</Install>
+		<Uninstall></Uninstall>
+		<Path>C:\Program Files\LibreCAD</Path>
+		<Enabled>True</Enabled>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</LibreCAD>
 </Applications>
