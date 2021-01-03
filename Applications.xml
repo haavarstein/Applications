@@ -617,4 +617,24 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</ProjectLibre>
+	<VNCViewer>
+		<Vendor>VNCViewer FZ-LLC</Vendor>
+		<Product>VNCViewer</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen></Evergreen>
+		<DisplayName>VNCViewer</DisplayName>
+		<Description>VNCViewer Client</Description>
+		<Installer>exe</Installer>
+		<Install>/verysilent /norestart</Install>
+		<Uninstall>uninstall.exe</Uninstall>
+		<Path>C:\Program Files\VNCViewer</Path>
+		<Enabled>True</Enabled>
+		<PMPC>True</PMPC>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</VNCViewer>
 </Applications>
