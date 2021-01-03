@@ -598,4 +598,23 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</AcrobatReaderDC>
+	<ProjectLibre>
+		<Vendor>ProjectLibre</Vendor>
+		<Product>ProjectLibre</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen>Get-ProjectLibre | Where-Object { $_.URI -like "*.exe" }</Evergreen>
+		<DisplayName>ProjectLibre</DisplayName>
+		<Description>ProjectLibre</Description>
+		<Installer>exe</Installer>
+		<Install>/VERYSILENT /NORESTART</Install>
+		<Uninstall></Uninstall>
+		<Path>C:\Program Files\ProjectLibre</Path>
+		<Enabled>True</Enabled>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</ProjectLibre>
 </Applications>
