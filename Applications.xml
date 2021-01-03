@@ -513,8 +513,8 @@
 		<Installer>exe</Installer>
 		<Install>/SP- /VERYSILENT /NORESTART</Install>
 		<Uninstall></Uninstall>
-		<Path>C:\Program Files\Beyond Compare</Path>
-		<Enabled>True</Enabled>
+		<Path>C:\Program Files\Beyond Compare 4</Path>
+		<Enabled>False</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -532,7 +532,7 @@
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall></Uninstall>
-		<Path>C:\Program Files\LibreCAD</Path>
+		<Path>C:\Program Files (x86)\LibreCAD</Path>
 		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -544,14 +544,14 @@
 	<PDFSam>
 		<Vendor>Andrea Vacondio</Vendor>
 		<Product>PDFSam</Product>
-		<Architecture>x86</Architecture>
+		<Architecture>x64</Architecture>
 		<Evergreen>Get-GitHubRelease -uri https://api.github.com/repos/torakiki/pdfsam/releases/latest | Where-Object { $_.URI -like "*.msi" }</Evergreen>
 		<DisplayName>PDFSam</DisplayName>
 		<Description>PDFSam</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
-		<Path>C:\Program Files (x86)\PDFSam</Path>
+		<Path>C:\Program Files\PDFSam Basic</Path>
 		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -601,7 +601,7 @@
 	<ProjectLibre>
 		<Vendor>ProjectLibre</Vendor>
 		<Product>ProjectLibre</Product>
-		<Architecture>x86</Architecture>
+		<Architecture>x64</Architecture>
 		<Evergreen>Get-ProjectLibre | Where-Object { $_.URI -like "*.exe" }</Evergreen>
 		<DisplayName>ProjectLibre</DisplayName>
 		<Description>ProjectLibre</Description>
@@ -618,7 +618,7 @@
 		</Assignments>
 	</ProjectLibre>
 	<VNCViewer>
-		<Vendor>VNCViewer FZ-LLC</Vendor>
+		<Vendor>RealVNC</Vendor>
 		<Product>VNCViewer</Product>
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
@@ -628,7 +628,7 @@
 		<Install>/verysilent /norestart</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\VNCViewer</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
