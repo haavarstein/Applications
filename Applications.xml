@@ -638,16 +638,16 @@
 		</Assignments>
 	</VNCViewer>
 	<Brave>
-		<Vendor>Brave</Vendor>
+		<Vendor>Brave Software</Vendor>
 		<Product>Brave</Product>
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-GitHubRelease -uri https://api.github.com/repos/brave/brave-browser/releases/latest | Where-Object { $_.URI -like "*BraveBrowserStandaloneNightlySetup.exe" }</Evergreen>
-		<DisplayName>Brave</DisplayName>
+		<DisplayName>Brave Nightly</DisplayName>
 		<Description>Brave</Description>
 		<Installer>exe</Installer>
-		<Install>--install --silent --system-level</Install>
+		<Install</Install>
 		<Uninstall></Uninstall>
-		<Path>C:\Program Files (x86)\Brave</Path>
+		<Path>C:\Program Files (x86)\BraveSoftware</Path>
 		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
