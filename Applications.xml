@@ -581,11 +581,11 @@
 	</LibreOffice>
 	<AcrobatReaderDC>
 		<Vendor>Adobe Systems</Vendor>
-		<Product>Acrobat Reader DC</Product>
+		<Product>AcrobatReaderDC</Product>
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-AdobeAcrobatReaderDC | Where-Object { $_.Language -eq "English" }</Evergreen>
-		<DisplayName>Adobe</DisplayName>
-		<Description>Adobe</Description>
+		<DisplayName>Acrobat Reader DC</DisplayName>
+		<Description>Acrobat Reader DC</Description>
 		<Installer>exe</Installer>
 		<Install>-sfx_nu /sALL /msi EULA_ACCEPT=YES ENABLE_CHROMEEXT=0 DISABLE_BROWSER_INTEGRATION=1 ENABLE_OPTIMIZATION=YES ADD_THUMBNAILPREVIEW=0 DISABLEDESKTOPSHORTCUT=1 UPDATE_MODE=0 DISABLE_ARM_SERVICE_INSTALL=1</Install>
 		<Uninstall>/x</Uninstall>
