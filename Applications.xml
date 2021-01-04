@@ -431,13 +431,13 @@
 		<Architecture>x64</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>SumatraPDF</DisplayName>
-		<Description>Sumatra PDF</Description>
+		<Description>SumatraPDF</Description>
 		<Installer>exe</Installer>
-		<Install>-install"</Install>
+		<Install>-d "C:\Program Files\SumatraPDF"-s</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\SumatraPDF</Path>
 		<Enabled>False</Enabled>
-		<PMPC>True</PMPC>
+		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
