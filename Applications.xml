@@ -433,7 +433,7 @@
 		<DisplayName>SumatraPDF</DisplayName>
 		<Description>SumatraPDF</Description>
 		<Installer>exe</Installer>
-		<Install>-d "C:\Program Files\SumatraPDF"-s</Install>
+		<Install>-install -d "C:\Program Files\SumatraPDF" -s</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\SumatraPDF</Path>
 		<Enabled>True</Enabled>
