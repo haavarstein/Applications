@@ -765,7 +765,7 @@
 		<Installer>exe</Installer>
 		<Install>--quiet</Install>
 		<Uninstall></Uninstall>
-		<Path>C:\Program Files (x86)\Fusion360</Path>
+		<Path>C:\Program Files\Autodesk</Path>
 		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
@@ -775,4 +775,24 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</Fusion360>
+	<Bitwarden>
+		<Vendor>Bitwarden</Vendor>
+		<Product>Bitwarden</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen></Evergreen>
+		<DisplayName>Bitwarden</DisplayName>
+		<Description>Bitwarden</Description>
+		<Installer>exe</Installer>
+		<Install></Install>
+		<Uninstall></Uninstall>
+		<Path>C:\Program Files (x86)\Bitwarden</Path>
+		<Enabled>True</Enabled>
+		<WinGet>True</WinGet>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</Bitwarden>
 </Applications>
