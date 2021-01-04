@@ -705,7 +705,7 @@
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall></Uninstall>
-		<Path>C:\Program Files (x86)\OpenOffice</Path>
+		<Path>C:\Program Files (x86)\OpenOffice 4</Path>
 		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
@@ -745,7 +745,7 @@
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
-		<Path>C:\Program Files\RemoteDesktopManagerFree</Path>
+		<Path>C:\Program Files (x86)\Devolutions\Remote Desktop Manager Free</Path>
 		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
