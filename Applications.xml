@@ -785,7 +785,7 @@
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall></Uninstall>
-		<Path>C:\Program Files (x86)\Bitwarden</Path>
+		<Path>C:\Program Files\Bitwarden</Path>
 		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
