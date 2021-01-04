@@ -795,9 +795,9 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</Bitwarden>
-	<PowerBIDesktop>
+	<PowerBI>
 		<Vendor>Microsoft</Vendor>
-		<Product>PowerBIDesktop</Product>
+		<Product>PowerBI</Product>
 		<Architecture>x64</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>PowerBI Desktop</DisplayName>
@@ -805,7 +805,7 @@
 		<Installer>exe</Installer>
 		<Install>-silent -norestart ACCEPT_EULA=1</Install>
 		<Uninstall></Uninstall>
-		<Path>C:\Program Files\PowerBIDesktop</Path>
+		<Path>C:\Program Files\PowerBI</Path>
 		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
@@ -814,5 +814,5 @@
 			<RequiredGroup>All Devices</RequiredGroup>
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
-	</PowerBIDesktop>
+	</PowerBI>
 </Applications>
