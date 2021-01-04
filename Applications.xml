@@ -755,17 +755,17 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</RemoteDesktopManagerFree>
-	<Fushion360>
+	<Fusion360>
 		<Vendor>AutoDesk</Vendor>
-		<Product>Fushion 360</Product>
+		<Product>Fusion 360</Product>
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
-		<DisplayName>Fushion 360</DisplayName>
-		<Description>Fushion 360</Description>
+		<DisplayName>Fusion 360</DisplayName>
+		<Description>Fusion 360</Description>
 		<Installer>exe</Installer>
 		<Install>--quiet</Install>
 		<Uninstall></Uninstall>
-		<Path>C:\Program Files (x86)\Fushion360</Path>
+		<Path>C:\Program Files (x86)\Fusion360</Path>
 		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
@@ -774,5 +774,5 @@
 			<RequiredGroup>All Devices</RequiredGroup>
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
-	</Fushion360>
+	</Fusion360>
 </Applications>
