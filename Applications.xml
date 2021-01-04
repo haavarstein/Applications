@@ -735,4 +735,44 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</Audacity>
+	<RemoteDesktopManagerFree>
+		<Vendor>Devolutions</Vendor>
+		<Product>RemoteDesktopManagerFree</Product>
+		<Architecture>x64</Architecture>
+		<Evergreen></Evergreen>
+		<DisplayName>Remote DesktopManager Free</DisplayName>
+		<Description>RemoteDesktopManagerFree</Description>
+		<Installer>msi</Installer>
+		<Install>/i ALLUSERS=1 /qn</Install>
+		<Uninstall>/x</Uninstall>
+		<Path>C:\Program Files\RemoteDesktopManagerFree</Path>
+		<Enabled>False</Enabled>
+		<WinGet>True</WinGet>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</RemoteDesktopManagerFree>
+	<Fushion360>
+		<Vendor>AutoDesk</Vendor>
+		<Product>Fushion360</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen></Evergreen>
+		<DisplayName>Fushion 360</DisplayName>
+		<Description>Fushion 360</Description>
+		<Installer>exe</Installer>
+		<Install>--quiet</Install>
+		<Uninstall></Uninstall>
+		<Path>C:\Program Files (x86)\Fushion360</Path>
+		<Enabled>False</Enabled>
+		<WinGet>True</WinGet>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</Fushion360>
 </Applications>
