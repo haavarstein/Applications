@@ -156,7 +156,7 @@
 		<Product>VLCPlayer</Product>
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-VideoLanVlcPlayer | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
-		<DisplayName>VideoLAN</DisplayName>
+		<DisplayName>VLC Player</DisplayName>
 		<Description>VLC Player</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
