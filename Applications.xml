@@ -648,7 +648,7 @@
 		<Install></Install>
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files (x86)\BraveSoftware</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
