@@ -676,4 +676,23 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</Opera>
+	<Thunderbird>
+		<Vendor>Mozilla</Vendor>
+		<Product>Thunderbird</Product>
+		<Architecture>x64</Architecture>
+		<Evergreen>Get-MozillaThunderbird | Where-Object { $_.Architecture -eq "x64" -and $_.URI -like "*.msi" }</Evergreen>
+		<DisplayName>Thunderbird</DisplayName>
+		<Description>Thunderbird</Description>
+		<Installer>msi</Installer>
+		<Install>/i ALLUSERS=1 /qn</Install>
+		<Uninstall>/x</Uninstall>
+		<Path>C:\Program Files\Thunderbird</Path>
+		<Enabled>True</Enabled>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</Thunderbird>
 </Applications>
