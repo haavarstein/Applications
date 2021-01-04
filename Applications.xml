@@ -248,7 +248,7 @@
 	</TreeSizeFree>
 	<MozillaFirefox>
 		<Vendor>Mozilla</Vendor>
-		<Product>MozillaFirefox</Product>
+		<Product>Firefox</Product>
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-MozillaFirefox | Where-Object { $_.Architecture -eq "$Architecture" -and $_.Type -eq "$InstallerType" -and $_.Channel -eq "LATEST_FIREFOX_VERSION" }</Evergreen>
 		<DisplayName>Mozilla Firefox</DisplayName>
