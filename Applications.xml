@@ -783,7 +783,7 @@
 		<DisplayName>Bitwarden</DisplayName>
 		<Description>Bitwarden</Description>
 		<Installer>exe</Installer>
-		<Install></Install>
+		<Install>/S</Install>
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files (x86)\Bitwarden</Path>
 		<Enabled>True</Enabled>
