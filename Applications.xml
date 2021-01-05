@@ -4,7 +4,7 @@
 		<Product>NotepadPlusPlus</Product>
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-NotepadPlusPlus | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
-		<DisplayName>NotepadPlusPlus</DisplayName>
+		<DisplayName>Notepad++</DisplayName>
 		<Description>Notepad++</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
