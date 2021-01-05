@@ -546,8 +546,8 @@
 		<Product>PDFSam</Product>
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-GitHubRelease -uri https://api.github.com/repos/torakiki/pdfsam/releases/latest | Where-Object { $_.URI -like "*.msi" }</Evergreen>
-		<DisplayName>PDFSam</DisplayName>
-		<Description>PDFSam</Description>
+		<DisplayName>PDFsam Basic</DisplayName>
+		<Description>PDFsam Basic</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
@@ -565,8 +565,8 @@
 		<Product>LibreOffice</Product>
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-LibreOffice | Where-Object { $_.Architecture -eq "x86_64" -and  $_.Language -eq "Neutral" }</Evergreen>
-		<DisplayName>Libre Office</DisplayName>
-		<Description>Libre Office</Description>
+		<DisplayName>LibreOffice 7.0</DisplayName>
+		<Description>LibreOffice 7.0</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn ADDLOCAL=ALL CREATEDESKTOPLINKE=0 REGISTER_ALL_SMO_TYPES=1 REMOVE=gm_o_Onlineupdate RebootYesNo=No</Install>
 		<Uninstall>/x</Uninstall>
@@ -740,8 +740,8 @@
 		<Product>RemoteDesktopManagerFree</Product>
 		<Architecture>x64</Architecture>
 		<Evergreen></Evergreen>
-		<DisplayName>Remote DesktopManager Free</DisplayName>
-		<Description>RemoteDesktopManagerFree</Description>
+		<DisplayName>Remote Desktop Manager Free</DisplayName>
+		<Description>Remote Desktop Manager Free</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
