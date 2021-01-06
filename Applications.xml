@@ -5,7 +5,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-NotepadPlusPlus | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
 		<DisplayName>Notepad++</DisplayName>
-		<Description>Notepad++</Description>
+		<Description>Notepad++ is a text and source code editor for use with Microsoft Windows. It supports tabbed editing, which allows working with multiple open files in a single window. The project's name comes from the C increment operator. Notepad++ is distributed as free software.</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall>uninstall.exe</Uninstall>
@@ -24,7 +24,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-ShareX | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
 		<DisplayName>ShareX</DisplayName>
-		<Description>ShareX</Description>
+		<Description>ShareX is a free and open-source screenshot and screencast utility for Microsoft Windows. It is published under the GNU General Public License. The project's source code is hosted at the GitHub code-sharing and code development platform.</Description>
 		<Installer>exe</Installer>
 		<Install>/Verysilent /Norun</Install>
 		<Uninstall>unins000.exe</Uninstall>
@@ -43,7 +43,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-mRemoteNG | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
 		<DisplayName>mRemoteNG</DisplayName>
-		<Description>mRemoteNG</Description>
+		<Description>mRemoteNG is a fork of mRemote: an open source, tabbed, multi-protocol, remote connections manager for Windows. mRemoteNG adds bug fixes and new features to mRemote. It allows you to view all of your remote connections in a simple yet powerful tabbed interface.</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
@@ -62,7 +62,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-WinSCP | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
 		<DisplayName>WinSCP</DisplayName>
-		<Description>WinSCP</Description>
+		<Description>WinSCP is a free and open-source SFTP, FTP, WebDAV, Amazon S3 and SCP client for Microsoft Windows. Its main function is secure file transfer between a local and a remote computer. Beyond this, WinSCP offers basic file manager and file synchronization functionality.</Description>
 		<Installer>exe</Installer>
 		<Install>/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-</Install>
 		<Uninstall>unins000.exe</Uninstall>
@@ -81,7 +81,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-FileZilla</Evergreen>
 		<DisplayName>FileZilla FTP Client</DisplayName>
-		<Description>FileZilla FTP Client</Description>
+		<Description>FileZilla is a free software, cross-platform FTP application, consisting of FileZilla Client and FileZilla Server. Client binaries are available for Windows, Linux, and macOS, server binaries are available for Windows only.</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall>uninstall.exe</Uninstall>
@@ -100,7 +100,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-7zip | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
 		<DisplayName>7-Zip</DisplayName>
-		<Description>7-Zip</Description>
+		<Description>7-Zip is a free and open-source file archiver, a utility used to place groups of files within compressed containers known as "archives". It is developed by Igor Pavlov and was first released in 1999. 7-Zip uses its own 7z archive format, but can read and write several other archive formats.</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
@@ -119,7 +119,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-TeamViewer</Evergreen>
 		<DisplayName>TeamViewer</DisplayName>
-		<Description>Team Viewer</Description>
+		<Description>TeamViewer is a proprietary software application for remote control, desktop sharing, online meetings, web conferencing and file transfer between computers.</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall>uninstall.exe</Uninstall>
@@ -138,7 +138,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-WinMerge | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*x64-Setup.exe" }</Evergreen>
 		<DisplayName>WinMerge</DisplayName>
-		<Description>WinMerge</Description>
+		<Description>WinMerge is a free software tool for data comparison and merging of text-like files. It is useful for determining what has changed between versions, and then merging changes between versions.</Description>
 		<Installer>exe</Installer>
 		<Install>/VERYSILENT /SP- /NORESTART</Install>
 		<Uninstall>unins000.exe</Uninstall>
@@ -157,7 +157,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-VideoLanVlcPlayer | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
 		<DisplayName>VLC Player</DisplayName>
-		<Description>VLC Player</Description>
+		<Description>VLC media player is a free and open-source, portable, cross-platform media player software, and streaming media server developed by the VideoLAN project. VLC is available for desktop operating systems, and mobile platforms, such as Android, iOS, iPadOS, Tizen, Windows 10 Mobile, and Windows Phone.</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
@@ -176,7 +176,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-GreenShot | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*RELEASE.exe" }</Evergreen>
 		<DisplayName>GreenShot</DisplayName>
-		<Description>GreenShot</Description>
+		<Description>Greenshot is a free and open-source screenshot program for Microsoft Windows. It is developed by Thomas Braun, Jens Klingen and Robin Krom and is published under GNU General Public License, hosted by GitHub. Greenshot is also available for macOS, but as proprietary software through the App Store.</Description>
 		<Installer>exe</Installer>
 		<Install>/VERYSILENT /SUPPRESSMESSAGEBOXES /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS /NORESTART</Install>
 		<Uninstall>unins000.exe</Uninstall>
@@ -195,7 +195,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-Cyberduck | Where-Object { $_.Channel -eq "Release" }</Evergreen>
 		<DisplayName>Cyberduck</DisplayName>
-		<Description>Cyberduck</Description>
+		<Description>Cyberduck is an open-source client for FTP and SFTP, WebDAV, and cloud storage, available for macOS and Windows licensed under the GPL. Cyberduck is written in Java and C# using the Cocoa user interface framework on macOS and Windows Forms on Windows.</Description>
 		<Installer>exe</Installer>
 		<Install>/quiet</Install>
 		<Uninstall></Uninstall>
@@ -214,7 +214,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-Handbrake | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*Win_GUI.exe" }</Evergreen>
 		<DisplayName>Handbrake</DisplayName>
-		<Description>Handbrake</Description>
+		<Description>HandBrake is a free and open-source transcoder for digital video files, originally developed in 2003 by Eric Petit to make ripping a film from a DVD to a data storage device easier.</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall>uninst.exe</Uninstall>
@@ -233,7 +233,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-JamTreeSizeFree</Evergreen>
 		<DisplayName>TreeSize Free</DisplayName>
-		<Description>TreeSize Free</Description>
+		<Description>TreeSize is a disk space analyzer written by JAM Software. TreeSize has native 32 and 64-bit support for all Windows versions and client/server versions currently supported by Microsoft.</Description>
 		<Installer>exe</Installer>
 		<Install>/verysilent</Install>
 		<Uninstall>unins000.exe</Uninstall>
@@ -252,7 +252,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-MozillaFirefox | Where-Object { $_.Architecture -eq "$Architecture" -and $_.Type -eq "$InstallerType" -and $_.Channel -eq "LATEST_FIREFOX_VERSION" }</Evergreen>
 		<DisplayName>Mozilla Firefox</DisplayName>
-		<Description>Mozilla Firefox</Description>
+		<Description>Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation and its subsidiary, the Mozilla Corporation. Firefox uses the Gecko layout engine to render web pages, which implements current and anticipated web standards.</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/X</Uninstall>
@@ -271,7 +271,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>CCleaner</DisplayName>
-		<Description>CCleaner</Description>
+		<Description>CCleaner, developed by Piriform, is a utility used to clean potentially unwanted files and invalid Windows Registry entries from a computer. It is one of the longest-established system cleaners, first launched in 2004. It was originally developed for Microsoft Windows only, but in 2012, a macOS version was released.</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall>uninst.exe</Uninstall>
