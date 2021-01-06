@@ -291,7 +291,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Paint.NET</DisplayName>
-		<Description>Paint.NET</Description>
+		<Description>Paint.net is a freeware raster graphics editor program for Microsoft Windows, developed on the .NET Framework.</Description>
 		<Installer>exe</Installer>
 		<Install>/auto</Install>
 		<Uninstall>/X</Uninstall>
@@ -311,7 +311,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Gimp</DisplayName>
-		<Description>Gimp</Description>
+		<Description>GIMP is a free and open-source raster graphics editor used for image manipulation and image editing, free-form drawing, transcoding between different image file formats, and more specialized tasks. GIMP is released under GPLv3+ license and is available for Linux, macOS, and Microsoft Windows.</Description>
 		<Installer>exe</Installer>
 		<Install>/VERYSILENT /NORESTART /RESTARTEXITCODE=3010 /SUPPRESSMSGBOXES /SP-</Install>
 		<Uninstall>unins000.exe</Uninstall>
@@ -331,7 +331,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>MP3Tag</DisplayName>
-		<Description>MP3Tag</Description>
+		<Description>Mp3tag is a freeware metadata editor for many audio file formats for Microsoft Windows and Apple macOS.</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall>Mp3tagUninstall.exe</Uninstall>
@@ -351,7 +351,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>PuTTY</DisplayName>
-		<Description>PuTTY</Description>
+		<Description>PuTTY is a free and open-source terminal emulator, serial console and network file transfer application. It supports several network protocols, including SCP, SSH, Telnet, rlogin, and raw socket connection. It can also connect to a serial port. The name "PuTTY" has no official meaning.</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/X</Uninstall>
@@ -371,7 +371,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Wireshark</DisplayName>
-		<Description>Wireshark</Description>
+		<Description>Wireshark is a free and open-source packet analyzer. It is used for network troubleshooting, analysis, software and communications protocol development, and education. Originally named Ethereal, the project was renamed Wireshark in May 2006 due to trademark issues.</Description>
 		<Installer>exe</Installer>
 		<Install>/S /quicklaunchicon=no</Install>
 		<Uninstall>uninstall.exe</Uninstall>
@@ -391,7 +391,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Fiddler</DisplayName>
-		<Description>Fiddler</Description>
+		<Description>Fiddler is a debugging proxy server tool used to log, inspect, and alter HTTP and HTTPS traffic between a computer and a web server or servers. Fiddler was originally written by Eric Lawrence while a Program Manager on the Internet Explorer development team at Microsoft.</Description>
 		<Installer>exe</Installer>
 		<Install>/S /D=C:\Program Files\Fiddler</Install>
 		<Uninstall>uninstall.exe</Uninstall>
@@ -411,7 +411,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>AngryIPScanner</DisplayName>
-		<Description>AngryIPScanner</Description>
+		<Description>Angry IP scanner is a very fast IP address and port scanner. It can scan IP addresses in any range as well as any their ports. It is cross-platform and lightweight. Not requiring any installations, it can be freely copied and used anywhere.</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall>uninstall.exe</Uninstall>
@@ -431,7 +431,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>SumatraPDF</DisplayName>
-		<Description>SumatraPDF</Description>
+		<Description>Sumatra PDF is a free and open-source document viewer that supports many document formats including: Portable Document Format, Microsoft Compiled HTML Help, DjVu, EPUB, FictionBook, MOBI, PRC, Open XML Paper Specification, and Comic Book Archive file. If Ghostscript is installed, it supports PostScript files.</Description>
 		<Installer>exe</Installer>
 		<Install>-install -d "C:\Program Files\SumatraPDF" -s</Install>
 		<Uninstall>uninstall.exe</Uninstall>
@@ -451,7 +451,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Telegram</DisplayName>
-		<Description>Telegram Client</Description>
+		<Description>Telegram is a freeware, cross-platform, cloud-based instant messaging, video calling, and VoIP service. It was initially launched for iOS on 14 August 2013 and Android in October 2013. The app servers are spread worldwide, wihle development is currently based in Dubai.</Description>
 		<Installer>exe</Installer>
 		<Install>/Verysilent</Install>
 		<Uninstall>uninstall.exe</Uninstall>
@@ -471,7 +471,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-FoxitReader | Where-Object { $_.Language -eq "English" }</Evergreen>
 		<DisplayName>Foxit Reader</DisplayName>
-		<Description>Foxit Reader</Description>
+		<Description>Foxit Reader is a multilingual freemium PDF tool that can create, view, edit, digitally sign, and print PDF files.</Description>
 		<Installer>exe</Installer>
 		<Install>/verysilent</Install>
 		<Uninstall></Uninstall>
@@ -490,7 +490,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-GoogleChrome | Where-Object { $_.Architecture -eq "$Architecture" }</Evergreen>
 		<DisplayName>Google Chrome</DisplayName>
-		<Description>Google Chrome</Description>
+		<Description>Google Chrome is a cross-platform web browser developed by Google. It was first released in 2008 for Microsoft Windows, and was later ported to Linux, macOS, iOS, and Android where it is the default browser built into the OS.</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 NOGOOGLEUPDATEPING=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
@@ -509,7 +509,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-ScooterBeyondCompare</Evergreen>
 		<DisplayName>Beyond Compare</DisplayName>
-		<Description>Beyond Compare</Description>
+		<Description>Beyond Compare is a data comparison utility. Aside from comparing files, the program is capable of doing side-by-side comparison of directories, FTP and SFTP directories, Dropbox directories, Amazon S3 directories, and archives. It is available for Windows, Mac OS, and Linux operating systems.</Description>
 		<Installer>exe</Installer>
 		<Install>/SP- /VERYSILENT /NORESTART</Install>
 		<Uninstall></Uninstall>
