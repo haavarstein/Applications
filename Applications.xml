@@ -528,7 +528,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-GitHubRelease -Uri https://api.github.com/repos/LibreCAD/LibreCAD/releases/latest</Evergreen>
 		<DisplayName>LibreCAD</DisplayName>
-		<Description>LibreCAD</Description>
+		<Description>LibreCAD is a free computer-aided design application for 2D design. It works on Linux, macOS, Unix and Windows operating systems. LibreCAD was developed as a fork of QCAD Community Edition. The GUI of LibreCAD is based on Qt5 libraries, so it runs on several platforms in the same way.</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall></Uninstall>
@@ -547,7 +547,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-GitHubRelease -uri https://api.github.com/repos/torakiki/pdfsam/releases/latest | Where-Object { $_.URI -like "*.msi" }</Evergreen>
 		<DisplayName>PDFsam Basic</DisplayName>
-		<Description>PDFsam Basic</Description>
+		<Description>PDFsam Basic or PDF Split and Merge is a free and open-source cross-platform desktop application to split, merge, extract pages, rotate and mix PDF documents.</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
@@ -565,8 +565,8 @@
 		<Product>LibreOffice</Product>
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-LibreOffice | Where-Object { $_.Architecture -eq "x86_64" -and  $_.Language -eq "Neutral" }</Evergreen>
-		<DisplayName>LibreOffice 7.0</DisplayName>
-		<Description>LibreOffice 7.0</Description>
+		<DisplayName>LibreOffice</DisplayName>
+		<Description>LibreOffice is a free and open-source office suite, a project of The Document Foundation. It was forked in 2010 from OpenOffice.org, which was an open-sourced version of the earlier StarOffice.</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn ADDLOCAL=ALL CREATEDESKTOPLINKE=0 REGISTER_ALL_SMO_TYPES=1 REMOVE=gm_o_Onlineupdate RebootYesNo=No</Install>
 		<Uninstall>/x</Uninstall>
@@ -585,7 +585,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-AdobeAcrobatReaderDC | Where-Object { $_.Language -eq "English" }</Evergreen>
 		<DisplayName>Acrobat Reader DC</DisplayName>
-		<Description>Acrobat Reader DC</Description>
+		<Description>Adobe Acrobat Reader DC software is the free, trusted global standard for viewing, printing, signing, sharing, and annotating PDFs. It's the only PDF viewer that can open and interact with all types of PDF content – including forms and multimedia.</Description>
 		<Installer>exe</Installer>
 		<Install>-sfx_nu /sALL /msi EULA_ACCEPT=YES ENABLE_CHROMEEXT=0 DISABLE_BROWSER_INTEGRATION=1 ENABLE_OPTIMIZATION=YES ADD_THUMBNAILPREVIEW=0 DISABLEDESKTOPSHORTCUT=1 UPDATE_MODE=0 DISABLE_ARM_SERVICE_INSTALL=1</Install>
 		<Uninstall>/x</Uninstall>
@@ -604,7 +604,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-ProjectLibre | Where-Object { $_.URI -like "*.exe" }</Evergreen>
 		<DisplayName>ProjectLibre</DisplayName>
-		<Description>ProjectLibre</Description>
+		<Description>ProjectLibre is a project management software company with both a free open-source desktop and an upcoming Cloud version. ProjectLibre desktop is a free and open-source project management software system intended ultimately as a standalone replacement for Microsoft Project.</Description>
 		<Installer>exe</Installer>
 		<Install>/VERYSILENT /NORESTART</Install>
 		<Uninstall></Uninstall>
@@ -623,7 +623,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>VNCViewer</DisplayName>
-		<Description>VNCViewer Client</Description>
+		<Description>RealVNC is a company that provides remote access software. The software consists of a server (VNC Server) and client (VNC Viewer) application for the Virtual Network Computing (VNC) protocol to control another computer's screen remotely.</Description>
 		<Installer>exe</Installer>
 		<Install>/verysilent /norestart</Install>
 		<Uninstall>uninstall.exe</Uninstall>
@@ -643,7 +643,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen>Get-GitHubRelease -uri https://api.github.com/repos/brave/brave-browser/releases/latest | Where-Object { $_.URI -like "*BraveBrowserStandaloneNightlySetup.exe" }</Evergreen>
 		<DisplayName>Brave Nightly</DisplayName>
-		<Description>Brave</Description>
+		<Description>Brave is a free and open-source web browser developed by Brave Software, Inc. based on the Chromium web browser. It blocks ads and website trackers, and provides a way for users to send cryptocurrency contributions in the form of Basic Attention Tokens to websites and content creators.</Description>
 		<Installer>exe</Installer>
 		<Install></Install>
 		<Uninstall></Uninstall>
@@ -662,7 +662,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Opera</DisplayName>
-		<Description>Opera</Description>
+		<Description>Opera is a multi-platform web browser developed by Opera Software. Opera is a Chromium-based browser. Opera was initially released in April 1995, making it one of the oldest desktop web browsers still actively developed today.</Description>
 		<Installer>exe</Installer>
 		<Install>/install /silent /NoTaskbarShortcut /launchopera=0 /setdefaultbrowser=0 /allusers=1</Install>
 		<Uninstall></Uninstall>
@@ -682,7 +682,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen>Get-MozillaThunderbird | Where-Object { $_.Architecture -eq "x64" -and $_.URI -like "*.msi" }</Evergreen>
 		<DisplayName>Thunderbird</DisplayName>
-		<Description>Thunderbird</Description>
+		<Description>Mozilla Thunderbird is a free and open-source cross-platform email client, personal information manager, news client, RSS and chat client developed by the Mozilla Foundation. The project strategy was originally modeled after that of the Mozilla Firefox web browser.</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
@@ -701,7 +701,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>OpenOffice</DisplayName>
-		<Description>OpenOffice</Description>
+		<Description>Apache OpenOffice is an open-source office productivity software suite. It is one of the successor projects of OpenOffice.org and the designated successor of IBM Lotus Symphony. It is a close cousin of LibreOffice and NeoOffice.</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall></Uninstall>
@@ -721,7 +721,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Audacity</DisplayName>
-		<Description>Audacity</Description>
+		<Description>Audacity is a free and open-source digital audio editor and recording application software, available for Windows, macOS, Linux, and other Unix-like operating systems.</Description>
 		<Installer>exe</Installer>
 		<Install>/verysilent</Install>
 		<Uninstall>uninstall.exe</Uninstall>
@@ -741,7 +741,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Remote Desktop Manager Free</DisplayName>
-		<Description>Remote Desktop Manager Free</Description>
+		<Description>Remote Desktop Manager is an application that integrates a comprehensive set of tools and managers to meet the needs of any IT team. It is designed to centralize remote connection technologies, credentials, and secure the access to these resources.</Description>
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
@@ -761,7 +761,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Fusion 360</DisplayName>
-		<Description>Fusion 360</Description>
+		<Description>Fusion 360 is a cloud-based CAD/CAM tool for collaborative product development. Fusion 360 enables exploration and iteration on product ideas and collaboration within distributed product development team. Fusion 360 combines organic shapes modelling, mechanical design and manufacturing in one comprehensive package.</Description>
 		<Installer>exe</Installer>
 		<Install>--quiet</Install>
 		<Uninstall></Uninstall>
@@ -781,7 +781,7 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Bitwarden</DisplayName>
-		<Description>Bitwarden</Description>
+		<Description>Bitwarden is a free and open-source password management service that stores sensitive information such as website credentials in an encrypted vault. The Bitwarden platform offers a variety of client applications including a web interface, desktop applications, browser extensions, mobile apps, and a CLI.</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
 		<Uninstall></Uninstall>
@@ -801,7 +801,7 @@
 		<Architecture>x64</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>PowerBI Desktop</DisplayName>
-		<Description>PowerBI Desktop</Description>
+		<Description>Power BI is a business analytics service by Microsoft. It aims to provide interactive visualizations and business intelligence capabilities with an interface simple enough for end users to create their own reports and dashboards.</Description>
 		<Installer>exe</Installer>
 		<Install>-silent -norestart ACCEPT_EULA=1</Install>
 		<Uninstall></Uninstall>
