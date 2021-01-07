@@ -706,7 +706,7 @@
 		<Install>/S</Install>
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files (x86)\OpenOffice 4</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -766,7 +766,7 @@
 		<Install>--quiet</Install>
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files\Autodesk</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -806,7 +806,7 @@
 		<Install>-silent -norestart ACCEPT_EULA=1</Install>
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files\PowerBI</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
