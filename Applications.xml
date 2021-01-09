@@ -706,7 +706,7 @@
 		<Install>/S</Install>
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files (x86)\OpenOffice 4</Path>
-		<Enabled>False</Enabled>
+		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -726,7 +726,7 @@
 		<Install>/verysilent</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\Audacity</Path>
-		<Enabled>False</Enabled>
+		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
