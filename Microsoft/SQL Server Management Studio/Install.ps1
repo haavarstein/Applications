@@ -18,7 +18,7 @@ Install-Module Evergreen -Force
 
 $Vendor = "Microsoft"
 $Product = "SQL Server Management Studio"
-$Evergreen = Get-MicrosoftSsms
+$Evergreen = Get-MicrosoftSsms | Where-Object { $_.Language -eq "English" }
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $PackageName = "SSMS-Setup-ENU"
