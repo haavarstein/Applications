@@ -816,14 +816,14 @@
 		</Assignments>
 	</PowerBI>
 	<Signal>
-		<Vendor>Signal</Vendor>
+		<Vendor>Open Whisper Systems</Vendor>
 		<Product>Signal</Product>
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Signal</DisplayName>
 		<Description>Signal is a cross-platform encrypted messaging service developed by the Signal Foundation and Signal Messenger. It uses the Internet to send one-to-one and group messages, which can include files, voice notes, images and videos.</Description>
 		<Installer>exe</Installer>
-		<Install>/S /D=C:\Program Files (x86)\Signal</Install>
+		<Install>/S /D="C:\Program Files (x86)\Signal"</Install>
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files (x86)\Signal</Path>
 		<Enabled>True</Enabled>
