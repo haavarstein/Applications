@@ -15,6 +15,7 @@ Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
 Write-Verbose "Installing Modules" -Verbose
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
 if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
 if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
 Update-Module Evergreen
@@ -22,16 +23,15 @@ Update-Module Evergreen
 $Vendor = "Microsoft"
 $Product = "PowerShell Core"
 $PackageName = "PowerShell_x64"
-$Evergreen = Get-MicrosoftPowerShellCore | Where-Object {$_.Platform -eq "Windows" -and $_.Architecture -eq "x64" }
-$Version = $Evergreen.Version | select -First 1
-$URL = $Evergreen.uri | select -First 1
+$Evergreen = Get-MicrosoftPowerShellCore | Where-Object { $_.Architecture -eq "x64" -and $_.URI -like "*.msi" }
+$Version = $Evergreen.Version
+$URL = $Evergreen.uri
 $InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $ProgressPreference = 'SilentlyContinue'
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $UnattendedArgs = "/i `"$PackageName.$InstallerType`" ALLUSERS=1 /qn /liewa `"$LogApp`""
 
 Start-Transcript $LogPS | Out-Null
