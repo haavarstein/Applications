@@ -77,6 +77,10 @@ If (Test-Path $DataFileUNCPath){
         }
 }
 
+Write-Verbose "Adding Permissions" -Verbose
+New-AdminAdministrator -Enabled $True -Name "$env:UserDomain\Domain Admins"
+Add-AdminRight -Administrator "$env:UserDomain\Domain Admins" -Role "Full Administrator" -Scope "All"
+
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
 Write-Verbose "Elapsed Time: $(($EndDTM-$StartDTM).TotalSeconds) Seconds" -Verbose
