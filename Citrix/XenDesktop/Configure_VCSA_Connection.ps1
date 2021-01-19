@@ -16,12 +16,19 @@ $XDC01 = $MyConfigFile.Settings.Citrix.XDC01
 $VCenter = $MyConfigFile.Settings.VMware.VCenter
 $VCUser = $MyConfigFile.Settings.VMware.VCUser
 $VCPwd = $MyConfigFile.Settings.VMware.VCPwd
+$PasswordFile = $MyConfigFile.Settings.VMware.PasswordFile
+$KeyFile = $MyConfigFile.Settings.VMware.KeyFile
 $DataCenter = $MyConfigFile.Settings.VMware.DataCenter
 $ESXi = $MyConfigFile.Settings.VMware.ESXi
 $Cluster = $MyConfigFile.Settings.VMware.VMCluster
 $VMDS = $MyConfigFile.Settings.VMware.VMDS
 $NetName = $MyConfigFile.Settings.VMware.NetName
 
+Write-Verbose "Getting Encrypted Password from KeyFile" -Verbose
+$SecurePassword = ((Get-Content $PasswordFile) | ConvertTo-SecureString -Key (Get-Content $KeyFile))
+$SecurePasswordInMemory = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($SecurePassword);
+$VCPwd = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($SecurePasswordInMemory);
+[Runtime.InteropServices.Marshal]::ZeroFreeBSTR($SecurePasswordInMemory);
 $VCPwd = $VCPwd | ConvertTo-SecureString -asPlainText -Force
 
 $VCenterSDK = "https://" + "$VCenter" + "/sdk"
