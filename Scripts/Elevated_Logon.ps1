@@ -13,7 +13,7 @@ $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product.log"
 
 Start-Transcript $LogPS
 
-$ElevatedUser = "xenappblog\svc-elevated"
+$ElevatedUser = "desktopanywhere\svc-elevated"
 $PasswordFile = "elevated.txt"
 $KeyFile = "elevated.key"
 
