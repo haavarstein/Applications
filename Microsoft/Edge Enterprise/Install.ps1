@@ -22,7 +22,6 @@ $Vendor = "Microsoft"
 $Product = "Edge Enterprise x64"
 $PackageName = "MicrosoftEdgeEnterpriseX64"
 $Evergreen = Get-MicrosoftEdge | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Beta" -and $_.Platform -eq "Windows" }
-$Evergreen = $Evergreen | Sort-Object -Property Version -Descending | Select-Object -First 1
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $InstallerType = "msi"
@@ -30,7 +29,7 @@ $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /norestart DONOTCREATEDESKTOPSHORTCUT=TRUE DONOTCREATETASKBARSHORTCUT=TRUE /qn /liewa $LogApp"
+$UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /norestart DONOTCREATETASKBARSHORTCUT=TRUE /qn /liewa $LogApp"
 $prefurl = "https://github.com/haavarstein/Applications/blob/master/Microsoft/Edge%20Enterprise/master_preferences"
 $ProgressPreference = 'SilentlyContinue'
 
