@@ -309,7 +309,7 @@
 		<Vendor>The Gimp Team</Vendor>
 		<Product>Gimp</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen></Evergreen>
+		<Evergreen>Get-Gimp</Evergreen>
 		<DisplayName>Gimp</DisplayName>
 		<Description>GIMP is a free and open-source raster graphics editor used for image manipulation and image editing, free-form drawing, transcoding between different image file formats, and more specialized tasks. GIMP is released under GPLv3+ license and is available for Linux, macOS, and Microsoft Windows.</Description>
 		<Installer>exe</Installer>
@@ -317,7 +317,7 @@
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files\GIMP 2</Path>
 		<Enabled>True</Enabled>
-		<PMPC>True</PMPC>
+		<PMPC>False</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
