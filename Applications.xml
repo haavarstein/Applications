@@ -449,7 +449,7 @@
 		<Vendor>Telegram FZ-LLC</Vendor>
 		<Product>Telegram</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen></Evergreen>
+		<Evergreen>Get-TelegramDesktop</Evergreen>
 		<DisplayName>Telegram</DisplayName>
 		<Description>Telegram is a freeware, cross-platform, cloud-based instant messaging, video calling, and VoIP service. It was initially launched for iOS on 14 August 2013 and Android in October 2013. The app servers are spread worldwide, wihle development is currently based in Dubai.</Description>
 		<Installer>exe</Installer>
@@ -457,7 +457,7 @@
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\Telegram</Path>
 		<Enabled>True</Enabled>
-		<PMPC>True</PMPC>
+		<PMPC>False</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -779,7 +779,7 @@
 		<Vendor>Bitwarden</Vendor>
 		<Product>Bitwarden</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen></Evergreen>
+		<Evergreen>Get-BitwardenDesktop | Where-Object { $_.URI -like "*Bitwarden-Installer*.*" }</Evergreen>
 		<DisplayName>Bitwarden</DisplayName>
 		<Description>Bitwarden is a free and open-source password management service that stores sensitive information such as website credentials in an encrypted vault. The Bitwarden platform offers a variety of client applications including a web interface, desktop applications, browser extensions, mobile apps, and a CLI.</Description>
 		<Installer>exe</Installer>
@@ -787,7 +787,7 @@
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files\Bitwarden</Path>
 		<Enabled>True</Enabled>
-		<WinGet>True</WinGet>
+		<WinGet>False</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
