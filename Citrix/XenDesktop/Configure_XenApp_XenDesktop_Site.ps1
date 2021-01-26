@@ -59,6 +59,7 @@ If (Test-Path $DataFileUNCPath){
     New-XDDatabase -AdminAddress $target -SiteName $SiteName -DataStore Logging -DatabaseServer $DatabaseServer -DatabaseName $DatabaseName_Logging
     New-XDDatabase -AdminAddress $target -SiteName $SiteName -DataStore Monitor -DatabaseServer $DatabaseServer -DatabaseName $DatabaseName_Monitor
     New-XDSite -AdminAddress $target -SiteName $SiteName -DatabaseServer $DatabaseServer -LoggingDatabaseName $DatabaseName_Logging -MonitorDatabaseName $DatabaseName_Monitor -SiteDatabaseName $DatabaseName_Site
+    Set-ConfigSite -AdminAddress $target -SiteName $SiteName -ProductEdition PLT -LicenseServerName $LicenseServer
     Set-BrokerSite -TrustRequestsSentToTheXmlServicePort $true
 
         if( (Test-Path -Path $VMWDrivers ) )
