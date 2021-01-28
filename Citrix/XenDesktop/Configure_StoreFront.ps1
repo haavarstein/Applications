@@ -9,7 +9,6 @@ Start-Transcript $LogPS
 $MyConfigFileloc = ("$env:Settings\Applications\Settings.xml")
 [xml]$MyConfigFile = (Get-Content $MyConfigFileLoc)
 
-$Domain = $env:USERDOMAIN
 $DomainFQDN = $env:USERDNSDOMAIN
 $XDC01 = $MyConfigFile.Settings.Citrix.XDC01
 $XDC02 = $MyConfigFile.Settings.Citrix.XDC02
@@ -45,18 +44,15 @@ $SiteID = 1
 $GatewayAddress = "https://workspace." + "$DomainFQDN"
  
 # Define Beacons
-$InternalBeacon = "https://workspace." + "$DomainFQDN"
-$ExternalBeacon1 = "https://workspace." + "$DomainFQDN"
-$ExternalBeacon2 = "https://www.citrix.com"
+$ExternalBeacon = "https://www.citrix.com"
  
 # Define NetScaler Variables
-$GatewayName = "workspace" + "$DomainFQDN"
+$GatewayName = "Netscaler Gateway"
 $staservers = "https://$XDC01/scripts/ctxsta.dll","https://$XDC02/scripts/ctxsta.dll"
 $CallBackURL = "https://workspace." + "$DomainFQDN"
  
 # Define Trusted Domains
 $AuthPath = "/Citrix/Authentication"
-$DefaultDomain = $Domain
 
 # Check if New or Existing Cluster
 
@@ -97,7 +93,7 @@ If (Test-Path "\\$SF01\C$\Windows\Temp\Passcode.ps1"){
     Enable-STFAuthenticationServiceProtocol -AuthenticationService $AuthService -Name CitrixAGBasic
  
     # Add beacon External
-    Set-STFRoamingBeacon -internal $InternalBeacon -external $ExternalBeacon1,$ExternalBeacon2
+    # Set-STFRoamingBeacon -internal $InternalBeacon -external $ExternalBeacon1,$ExternalBeacon2
  
     # Enable Unified Experience
     $Store = Get-STFStoreService -siteID $SiteID -VirtualPath $SFPath
@@ -108,26 +104,17 @@ If (Test-Path "\\$SF01\C$\Windows\Temp\Passcode.ps1"){
     Set-STFWebReceiverService -WebReceiverService $Rfw -DefaultIISSite:$True
  
     # Configure Trusted Domains
-    Set-STFExplicitCommonOptions -AuthenticationService $AuthService -Domains $Domain1 -DefaultDomain $DefaultDomain -HideDomainField $True -AllowUserPasswordChange Always -ShowPasswordExpiryWarning Windows
+    Set-STFExplicitCommonOptions -AuthenticationService $AuthService -Domains $DomainFQDN -DefaultDomain $DomainFQDN -HideDomainField $True -AllowUserPasswordChange Always -ShowPasswordExpiryWarning Windows
  
     # Enable the authentication methods
     # Enable-STFAuthenticationServiceProtocol -AuthenticationService $AuthService -Name Forms-Saml,Certificate
     Enable-STFAuthenticationServiceProtocol -AuthenticationService $AuthService -Name ExplicitForms
  
     # Fully Delegate Cred Auth to NetScaler Gateway
-    Set-STFCitrixAGBasicOptions -AuthenticationService $AuthService -CredentialValidationMode Kerberos
+    # Set-STFCitrixAGBasicOptions -AuthenticationService $AuthService -CredentialValidationMode Kerberos
  
-    # Create Featured App Groups1
-    $FeaturedGroup = New-STFWebReceiverFeaturedAppGroup `
-        -Title "Office 365" `
-        -Description "Office 365 Applications" `
-        -TileId appBundle1 `
-        -ContentType AppName `
-        -Contents "Outlook 2016","Word 2016","Excel 2016","PowerPoint 2016","Access 2016","Publisher 2016"
-    Set-STFWebReceiverFeaturedAppGroups -WebReceiverService $Rfw -FeaturedAppGroup $FeaturedGroup
-
     # Set Receiver for Web Auth Methods
-    Set-STFWebReceiverAuthenticationMethods -WebReceiverService $Rfw -AuthenticationMethods ExplicitForms,Certificate,CitrixAGBasic,Forms-Saml
+    Set-STFWebReceiverAuthenticationMethods -WebReceiverService $Rfw -AuthenticationMethods ExplicitForms,CitrixAGBasic
  
     # Set Receiver Deployment Methods
     Set-STFWebReceiverPluginAssistant -WebReceiverService $Rfw -Html5Enabled Fallback -enabled $false
