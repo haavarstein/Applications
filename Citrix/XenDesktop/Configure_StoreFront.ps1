@@ -156,7 +156,7 @@ If (Test-Path "\\$SF01\C$\Windows\Temp\Passcode.ps1"){
     Write-Verbose "Create Scheduled Task for Citrix StoreFront Cluster Join Passcode" -Verbose
     Copy-Item -Path "$PSScriptRoot\Passcode.ps1" -Destination "C:\Windows\Temp\" -Recurse -Force
     $A = New-ScheduledTaskAction -Execute "powershell.exe" -Argument '-ExecutionPolicy Bypass -file C:\Windows\Temp\Passcode.ps1'
-    $T = New-ScheduledTaskTrigger -Once -At (get-date).AddSeconds(-10); $t.EndBoundary = (get-date).AddSeconds(60).ToString('s')
+    $T = New-ScheduledTaskTrigger -Once -At (get-date).AddSeconds(-10); $t.EndBoundary = (get-date).AddSeconds(3600).ToString('s')
     $S = New-ScheduledTaskSettingsSet -StartWhenAvailable -DeleteExpiredTaskAfter 00:00:30
     Register-ScheduledTask -Force -user SYSTEM -TaskName "Create StoreFront Cluster Join Passcode" -Action $A -Trigger $T -Settings $S
 
