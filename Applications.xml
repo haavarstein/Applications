@@ -162,7 +162,7 @@
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
 		<Path>C:\Program Files (x86)\TeamViewer</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -316,7 +316,7 @@
 		<Install>/VERYSILENT /NORESTART /RESTARTEXITCODE=3010 /SUPPRESSMSGBOXES /SP-</Install>
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files\GIMP 2</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<PMPC>False</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
