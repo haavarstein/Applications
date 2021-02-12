@@ -21,10 +21,11 @@ if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -For
 Update-Module Evergreen
 
 $Vendor = "Microsoft"
-$Product = "Virtual Desktop Boot Loader"
+$Product = "WvD Boot Loader"
 $PackageName = "RDInfra_RDAgentBootLoader_Installer_x64"
-$Version = "1.0.0.0"
-$URL = "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH?ranMID=24542&ranEAID=je6NUbpObpQ&ranSiteID=je6NUbpObpQ-sSuccZvhED4Nxw5lDWKa8g&epi=je6NUbpObpQ-sSuccZvhED4Nxw5lDWKa8g&irgwc=1&OCID=AID2000142_aff_7593_1243925&tduid=%28ir__uldfun9kl9kfthdhkk0sohzjx32xnj1d0medbvat00%29%287593%29%281243925%29%28je6NUbpObpQ-sSuccZvhED4Nxw5lDWKa8g%29%28%29&irclickid=_uldfun9kl9kfthdhkk0sohzjx32xnj1d0medbvat00"
+$Evergreen = Get-MicrosoftWvdBootLoader
+$Version = $Evergreen.Version
+$URL = $Evergreen.URI
 $InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
