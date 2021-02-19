@@ -1,3 +1,6 @@
+Clear-Host
+
+Write-Verbose "Uninstalling Existing ControlUp Agent" -Verbose
 $ServiceName = "cuagent"
 Set-Service -Name $serviceName -StartupType Disabled -Status Stopped
 (gwmi win32_service -filter "name='$serviceName'").delete()
