@@ -680,7 +680,7 @@
 		<Vendor>Mozilla</Vendor>
 		<Product>Thunderbird</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-MozillaThunderbird | Where-Object { $_.Architecture -eq "x64" -and $_.URI -like "*.msi" }</Evergreen>
+		<Evergreen>Get-MozillaThunderbird | Where-Object { $_.Architecture -eq "x64" -and $_.Language -eq "en-US" -and $_.URI -like "*.msi" }</Evergreen>
 		<DisplayName>Thunderbird</DisplayName>
 		<Description>Mozilla Thunderbird is a free and open-source cross-platform email client, personal information manager, news client, RSS and chat client developed by the Mozilla Foundation. The project strategy was originally modeled after that of the Mozilla Firefox web browser.</Description>
 		<Installer>msi</Installer>
