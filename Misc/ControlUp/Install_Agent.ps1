@@ -14,9 +14,9 @@ $StartDTM = (Get-Date)
 
 Write-Verbose "Installing Modules" -Verbose
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
-if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Install-PackageProvider -Name 'Nuget' -Force}
-if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
-Update-Module Evergreen
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force | Out-Null
+Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted  | Out-Null
+Install-Module Evergreen -Force | Import-Module Evergreen | Out-Null
 
 $Vendor = "SmartX"
 $Product = "ControlUp Agent"
