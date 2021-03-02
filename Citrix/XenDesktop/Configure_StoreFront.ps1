@@ -15,11 +15,6 @@ $XDC02 = $MyConfigFile.Settings.Citrix.XDC02
 $SF01 = $MyConfigFile.Settings.Citrix.SF01
 $SF02 = $MyConfigFile.Settings.Citrix.SF02
 
-$DatabaseUser = $MyConfigFile.Settings.Microsoft.DatabaseUser
-$DatabasePassword = $MyConfigFile.Settings.Microsoft.DatabasePassword
-$DatabasePassword = $DatabasePassword | ConvertTo-SecureString -asPlainText -Force
-$Creds = New-Object System.Management.Automation.PSCredential($DatabaseUser,$DatabasePassword)
-
 # Import the StoreFront SDK
 import-module "C:\Program Files\Citrix\Receiver StoreFront\Scripts\ImportModules.ps1"
  
@@ -58,7 +53,7 @@ $AuthPath = "/Citrix/Authentication"
 
 If (Test-Path "\\$SF01\C$\Windows\Temp\Passcode.ps1"){
   Write-Verbose "StoreFront Cluster Exists - Joining" -Verbose
-  Invoke-Command -ComputerName "$SF01" -Credential $Creds -ScriptBlock {Start-ScheduledTask -Taskname 'Create StoreFront Cluster Join Passcode'}
+  Invoke-Command -ComputerName "$SF01" -ScriptBlock {Start-ScheduledTask -Taskname 'Create StoreFront Cluster Join Passcode'}
   Start-Sleep -s 60
   $passcode = Get-Content "\\$SF01\C$\Windows\Temp\Passcode.txt"
   import-module "C:\Program Files\Citrix\Receiver StoreFront\Scripts\ImportModules.ps1"
@@ -66,7 +61,7 @@ If (Test-Path "\\$SF01\C$\Windows\Temp\Passcode.ps1"){
   Start-DSXdServerGroupMemberJoin -authorizerHostName "$SF01" -authorizerPasscode $Passcode
   Write-Verbose "Waiting for join action to complete" -Verbose
   Start-Sleep -s 300
-  Invoke-Command -ComputerName "$SF01" -Credential $Database_CredObject -ScriptBlock {
+  Invoke-Command -ComputerName "$SF01" -ScriptBlock {
     import-module "C:\Program Files\Citrix\Receiver StoreFront\Scripts\ImportModules.ps1"
     Start-Sleep -s 60
     Write-Verbose "Replicating StoreFront Cluster" -Verbose
@@ -157,7 +152,7 @@ If (Test-Path "\\$SF01\C$\Windows\Temp\Passcode.ps1"){
     Copy-Item -Path "$PSScriptRoot\Passcode.ps1" -Destination "C:\Windows\Temp\" -Recurse -Force
     $A = New-ScheduledTaskAction -Execute "powershell.exe" -Argument '-ExecutionPolicy Bypass -file C:\Windows\Temp\Passcode.ps1'
     $T = New-ScheduledTaskTrigger -Once -At (get-date).AddSeconds(-10); $t.EndBoundary = (get-date).AddSeconds(3600).ToString('s')
-    $S = New-ScheduledTaskSettingsSet -StartWhenAvailable -DeleteExpiredTaskAfter 00:00:30
+    $S = New-ScheduledTaskSettingsSet -StartWhenAvailable -DeleteExpiredTaskAfter 01:00:00
     Register-ScheduledTask -Force -user SYSTEM -TaskName "Create StoreFront Cluster Join Passcode" -Action $A -Trigger $T -Settings $S
 
 }
