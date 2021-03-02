@@ -38,6 +38,7 @@ Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
 
 Write-Verbose "Customization" -Verbose
+New-NetFirewallRule -DisplayName 'Automai' -Direction Inbound -Action Allow -Protocol TCP -LocalPort 9002
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
