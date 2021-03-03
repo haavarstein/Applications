@@ -23,7 +23,7 @@ Update-Module Evergreen
 $Vendor = "Microsoft"
 $Product = "Teams"
 $PackageName = "Teams_windows_x64"
-$Evergreen = Get-MicrosoftTeams | Where-Object {$_.Architecture -eq "x64" -and $_.Ring -eq "General"}
+$Evergreen = Get-MicrosoftTeams | Where-Object { $_.Architecture -eq "x64" -and $_.Ring -eq "Preview" }
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $InstallerType = "msi"
