@@ -13,9 +13,26 @@ Start-Transcript $LogPS
 
 $Domain = $env:USERDOMAIN
 $DomainFQDN = $env:USERDNSDOMAIN
+$LicenseServer = $MyConfigFile.Settings.Citrix.LicenseServer
 $SiteName = $MyConfigFile.Settings.Citrix.SiteName
 $WEMAdminGroup = $MyConfigFile.Settings.Citrix.WEMAdminGroup
+$WEMSvcAcc = $MyConfigFile.Settings.Citrix.WEMSvcAcc
 $IsSingleServer = $MyConfigFile.Settings.Citrix.XASingleServer
+
+$ElevatedUser = $WEMSvcAcc
+$PasswordFile = "\\dc-01\xa\Credentials\citrix-wem.txt"
+$KeyFile = "\\dc-01\xa\Credentials\citrix-wem.key"
+
+Write-Verbose "Getting Encrypted Password from KeyFile" -Verbose
+$SecurePassword = ((Get-Content $PasswordFile) | ConvertTo-SecureString -Key (Get-Content $KeyFile))
+$SecurePasswordInMemory = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($SecurePassword) 
+$PasswordAsString = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($SecurePasswordInMemory)
+[Runtime.InteropServices.Marshal]::ZeroFreeBSTR($SecurePasswordInMemory)
+
+$WEMSvcAccPwd = ConvertTo-SecureString $PasswordAsString -AsPlainText -Force
+$WEMSvcAccCred = New-Object System.Management.Automation.PSCredential($WEMSvcAcc, $WEMSvcAccPwd);
+$DBVuemUserPwd = $MyConfigFile.Settings.Citrix.DBVuemUserPwd
+$DBVuemUserCred = $DBVuemUserPwd | ConvertTo-SecureString -asPlainText -Force
 
 If ($IsSingleServer -eq "False") {
 $DatabaseServer = $MyConfigFile.Settings.Microsoft.DatabaseServer
@@ -39,11 +56,11 @@ If (Test-Path $DataFileUNCPath){
   Write-Verbose "Database already exists" -Verbose  
   }Else{
   Write-Verbose "Create New Database using Windows Authenticaion" -Verbose
-  New-WemDatabase -DatabaseServerInstance $DatabaseServer -DatabaseName $DatabaseName -DataFilePath $DataFilePath -LogFilePath $LogFilePath -DefaultAdministratorsGroup $WEMAdminGroup -PSDebugMode Enable
+  New-WemDatabase -DatabaseServerInstance $DatabaseServer -DatabaseName $DatabaseName -DataFilePath $DataFilePath -LogFilePath $LogFilePath -DefaultAdministratorsGroup $WEMAdminGroup -WindowsAccount $WEMSvcAcc -VuemUserSqlPassword $DBVuemUserCred -PSDebugMode Enable
 }
 
 Write-Verbose "Configure CWEM Service" -Verbose
-Set-WemInfrastructureServiceConfiguration -DatabaseServerInstance $DatabaseServer -DatabaseName $DatabaseName -EnableScheduledMaintenance Enable -PSDebugMode Enable -SendGoogleAnalytics Disable -UseCacheEvenIfOnline Disable -DebugMode Enable
+Set-WemInfrastructureServiceConfiguration -EnableInfrastructureServiceAccountCredential Enable -InfrastructureServiceAccountCredential $WEMSvcAccCred -DatabaseServerInstance $DatabaseServer -DatabaseName $DatabaseName -SetSqlUserSpecificPassword Enable -SqlUserSpecificPassword $DBVuemUserCred -EnableScheduledMaintenance Enable -PSDebugMode Enable -SendGoogleAnalytics Disable -UseCacheEvenIfOnline Disable -DebugMode Enable -LicenseServerName $LicenseServer
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
