@@ -35,7 +35,11 @@ Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
 If (!(Test-Path -Path $Source)) {Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source}
         
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
-(Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
+$t = Start-Process "$PackageName.$InstallerType" $UnattendedArgs -PassThru -ErrorAction Stop
+if($t -ne $null)
+{
+   Wait-Process -InputObject $t
+}
 
 Write-Verbose "Customization" -Verbose
 
