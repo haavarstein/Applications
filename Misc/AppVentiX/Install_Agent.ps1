@@ -7,31 +7,27 @@
 # Example 4 MSI (Always use " "):
 # $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 # (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
+# Example 5 MSI with space in file name
+# $UnattendedArgs = "/i `"$PackageName.$InstallerType`" ALLUSERS=1 /qn /liewa `"$LogApp`""
 
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
 $Vendor = "Misc"
-$Product = "AppVentiX Agent"
-$PackageName = "AppVentiX_Agent"
-$Version = "3.0.27"
+$Product = "AppVentiX"
+$PackageName = "AppVentiX Agent"
+$Version = "3.1"
 $InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 CONFIGURATIONSHARE=\\br-fs-01.xenappblog.com\xa\Packages /qn /liewa $LogApp"
-$URL = "http://xenapptraining.s3.amazonaws.com/Hydration/AppVentiX_Agent.msi"
+$UnattendedArgs = "/i `"$PackageName.$InstallerType`" ALLUSERS=1 CONFIGURATIONSHARE=\\br-fs-01.xenappblog.com\xa\Packages /qn /liewa `"$LogApp`""
 $ProgressPreference = 'SilentlyContinue'
 
 Start-Transcript $LogPS
 
-If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null}
-
 CD $Version
-
-Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
-If (!(Test-Path -Path $Source)) {Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source}
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
