@@ -49,6 +49,8 @@ if($t -ne $null)
    Wait-Process -InputObject $t
 }
 
+Start-Sleep -s 30
+
 Write-Verbose "Customization" -Verbose
 
 Write-Verbose "Stop logging" -Verbose
