@@ -583,7 +583,7 @@
 		<Vendor>Adobe Systems</Vendor>
 		<Product>AcrobatReaderDC</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-AdobeAcrobatReaderDC | Where-Object { $_.Language -eq "English" }</Evergreen>
+		<Evergreen>Get-AdobeAcrobatReaderDC | Where-Object { $_.Architecture -eq "x64" -and $_.Language -eq "English" }</Evergreen>
 		<DisplayName>Acrobat Reader DC</DisplayName>
 		<Description>Adobe Acrobat Reader DC software is the free, trusted global standard for viewing, printing, signing, sharing, and annotating PDFs. It's the only PDF viewer that can open and interact with all types of PDF content – including forms and multimedia.</Description>
 		<Installer>exe</Installer>
