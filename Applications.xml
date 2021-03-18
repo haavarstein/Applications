@@ -855,4 +855,23 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</WinAMP>
+	<MicrosoftWvdRemoteDesktop>
+		<Vendor>Microsoft</Vendor>
+		<Product>WvD Remote Desktop</Product>
+		<Architecture>x64</Architecture>
+		<Evergreen>Get-MicrosoftWvdRemoteDesktop | Where-Object { $_.Architecture -eq "$Architecture" }</Evergreen>
+		<DisplayName>Microsoft WvD Remote Desktop</DisplayName>
+		<Description>You can use the Remote Desktop client for Windows Desktop to access Windows apps and desktops remotely from a different Windows device.</Description>
+		<Installer>msi</Installer>
+		<Install>/i ALLUSERS=1 /qn</Install>
+		<Uninstall>/x</Uninstall>
+		<Path>C:\Program Files\Remote Desktop</Path>
+		<Enabled>True</Enabled>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</MicrosoftWvdRemoteDesktop>
 </Applications>
