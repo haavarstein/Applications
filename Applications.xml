@@ -878,7 +878,7 @@
 		<Vendor>Atlassian</Vendor>
 		<Product>Bitbucket</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-AtlassianBitbucket | Where-Object { $_.Type -eq "$Installer" }</Evergreen>
+		<Evergreen>Get-AtlassianBitbucket | Where-Object { $_.Type -eq "MSI" }</Evergreen>
 		<DisplayName>Atlassian Bitbucket</DisplayName>
 		<Description>Bitbucket is a Git-based source code repository hosting service owned by Atlassian. Bitbucket offers both commercial plans and free accounts with an unlimited number of private repositories.</Description>
 		<Installer>msi</Installer>
