@@ -396,7 +396,7 @@
 		<Install>/S /D=C:\Program Files\Fiddler</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\Fiddler</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
