@@ -571,7 +571,7 @@
 		<Install>/i ALLUSERS=1 /qn ADDLOCAL=ALL CREATEDESKTOPLINKE=0 REGISTER_ALL_SMO_TYPES=1 REMOVE=gm_o_Onlineupdate RebootYesNo=No</Install>
 		<Uninstall>/x</Uninstall>
 		<Path>C:\Program Files (x86)\LibreOffice</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
