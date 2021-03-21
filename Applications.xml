@@ -893,4 +893,24 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</Bitbucket>
+	<WinDirStat>
+		<Vendor>Bernhard Seifert</Vendor>
+		<Product>WinDirStat</Product>
+		<Architecture>x86</Architecture>
+		<Evergreen></Evergreen>
+		<DisplayName>WinDirStat</DisplayName>
+		<Description>WinDirStat is a free and open-source graphical disk usage analyzer for Microsoft Windows. It is notable for presenting a sub-tree view with disk use percentage alongside a usage-sorted list of file extensions that is interactively integrated with a colorful graphical display.</Description>
+		<Installer>exe</Installer>
+		<Install>/S</Install>
+		<Uninstall></Uninstall>
+		<Path>C:\Program Files (x86)\WinAMP</Path>
+		<Enabled>False</Enabled>
+		<WinGet>True</WinGet>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</WinDirStat>
 </Applications>
