@@ -181,7 +181,7 @@
 		<Install>/VERYSILENT /SUPPRESSMESSAGEBOXES /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS /NORESTART</Install>
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files\Greenshot</Path>
-		<Enabled>False</Enabled>
+		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -316,7 +316,7 @@
 		<Install>/VERYSILENT /NORESTART /RESTARTEXITCODE=3010 /SUPPRESSMSGBOXES /SP-</Install>
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files\GIMP 2</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<PMPC>False</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
