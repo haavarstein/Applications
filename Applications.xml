@@ -726,7 +726,7 @@
 		<Install>/verysilent</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\Audacity</Path>
-		<Enabled>False</Enabled>
+		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -894,7 +894,7 @@
 		</Assignments>
 	</Bitbucket>
 	<WinDirStat>
-		<Vendor>Bernhard Seifert</Vendor>
+		<Vendor>The WinDirStat Team</Vendor>
 		<Product>WinDirStat</Product>
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
