@@ -9,7 +9,7 @@
                 <VerticalResolution>768</VerticalResolution>
             </Display>
             <RunSynchronous>
-				<RunSynchronousCommand wcm:action="add">
+		<RunSynchronousCommand wcm:action="add">
                     <Description>Set Static IP</Description>
                     <Order>1</Order>
                     <Path>wscript.exe X:\Deploy\Scripts\SetStaticIP.vbs</Path>
