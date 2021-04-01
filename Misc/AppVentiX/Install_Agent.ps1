@@ -16,7 +16,7 @@ $StartDTM = (Get-Date)
 $Vendor = "Misc"
 $Product = "AppVentiX"
 $PackageName = "AppVentiX Agent"
-$Version = "3.1"
+$Version = "3.1.24"
 $InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
@@ -24,10 +24,16 @@ $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $UnattendedArgs = "/i `"$PackageName.$InstallerType`" ALLUSERS=1 CONFIGURATIONSHARE=\\br-fs-01.xenappblog.com\xa\Packages /qn /liewa `"$LogApp`""
 $ProgressPreference = 'SilentlyContinue'
+$URL = "http://xenapptraining.s3.amazonaws.com/Hydration/AppVentiX%20Agent.msi"
 
-Start-Transcript $LogPS
-
+Start-Transcript $LogPS | Out-Null
+ 
+If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null}
+ 
 CD $Version
+ 
+Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
+If (!(Test-Path -Path $Source)) {Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source}
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
