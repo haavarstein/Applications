@@ -16,7 +16,7 @@ $StartDTM = (Get-Date)
 $Vendor = "Misc"
 $Product = "AppVentiX Console"
 $PackageName = "AppVentiX Central View"
-$Version = "3.1"
+$Version = "3.1.24"
 $InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
@@ -26,10 +26,14 @@ $UnattendedArgs = "/i `"$PackageName.$InstallerType`" ALLUSERS=1 /qn /liewa `"$L
 $url = "http://xenapptraining.s3.amazonaws.com/Hydration/AppVentiX%20Central%20View.msi"
 $ProgressPreference = 'SilentlyContinue'
 
-Start-Transcript $LogPS
-
+Start-Transcript $LogPS | Out-Null
+ 
+If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null}
+ 
 CD $Version
-
+ 
+Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
+If (!(Test-Path -Path $Source)) {Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source}
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
