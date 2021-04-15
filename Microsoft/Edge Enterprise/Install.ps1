@@ -87,7 +87,7 @@ If ((Test-Path -Path HKLM:SYSTEM\CurrentControlSet\services\CtxUvi)) {
 
 Write-Verbose "Remove Shortcut from Public Desktop" -Verbose
 Remove-Item -Path "$env:PUBLIC\Desktop\Microsoft Edge.lnk"
-Remove-Item -Path “HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components{9459C573-B17A-45AE-9F64-1857B5D58CEE}” -Force
+Remove-Item -Path “HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{9459C573-B17A-45AE-9F64-1857B5D58CEE}” -Force
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
