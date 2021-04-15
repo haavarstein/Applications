@@ -7,8 +7,6 @@
 # Example 4 MSI (Always use " "):
 # $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 # (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
-# Example 5 MSI with space in file name
-# $UnattendedArgs = "/i `"$PackageName.$InstallerType`" ALLUSERS=1 /qn /liewa `"$LogApp`""
 
 Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
@@ -16,14 +14,14 @@ $StartDTM = (Get-Date)
 
 Write-Verbose "Installing Modules" -Verbose
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
-if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Install-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
+if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
 if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
 Update-Module Evergreen
 
 $Vendor = "Misc"
 $Product = "NotePadPlusPlus"
 $PackageName = "NotePadPlusPlus_x64"
-$Evergreen = Get-NotepadPlusPlus | Where-Object {$_.Architecture -eq "x64" -and $_.URI -like "*.exe" }
+$Evergreen = Get-EvergreenApp -Name $Product | Where-Object {$_.Architecture -eq "x64" -and $_.URI -like "*.exe" }
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $InstallerType = "exe"
