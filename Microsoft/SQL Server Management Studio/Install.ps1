@@ -13,12 +13,14 @@ Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
 Write-Verbose "Installing Modules" -Verbose
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
-Install-Module Evergreen -Force
+if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
+Update-Module Evergreen
 
 $Vendor = "Microsoft"
 $Product = "SQL Server Management Studio"
-$Evergreen = Get-MicrosoftSsms | Where-Object { $_.Language -eq "English" }
+$Evergreen = Get-EvergreenApp -Name MicrosoftSsms | Where-Object { $_.Language -eq "English" }
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $PackageName = "SSMS-Setup-ENU"
