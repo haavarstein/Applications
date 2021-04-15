@@ -21,7 +21,8 @@ Update-Module Evergreen
 $Vendor = "Microsoft"
 $Product = "Edge Enterprise x64"
 $PackageName = "MicrosoftEdgeEnterpriseX64"
-$Evergreen = Get-MicrosoftEdge | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Beta" -and $_.Platform -eq "Windows" }
+$Evergreen = Get-EvergreenApp -Name MicrosoftEdge | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "Stable" -and $_.Platform -eq "Windows" }
+$Evergreen = $Evergreen | Sort-Object -Property Version -Descending | Select-Object -First 1
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $InstallerType = "msi"
@@ -29,7 +30,7 @@ $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /norestart DONOTCREATETASKBARSHORTCUT=TRUE /qn /liewa $LogApp"
+$UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 REBOOT=ReallySupress /qn /liewa $LogApp"
 $prefurl = "https://github.com/haavarstein/Applications/blob/master/Microsoft/Edge%20Enterprise/master_preferences"
 $ProgressPreference = 'SilentlyContinue'
 
@@ -83,6 +84,10 @@ If ((Test-Path -Path HKLM:SYSTEM\CurrentControlSet\services\CtxUvi)) {
     # Add the msedge.exe value to existing values in UviProcessExcludes
     Set-ItemProperty -Path $RegPath -Name $RegName -Value "$CurrentValues$EdgeRegvalue;" | Out-Null
 }
+
+Write-Verbose "Remove Shortcut from Public Desktop" -Verbose
+Remove-Item -Path "$env:PUBLIC\Desktop\Microsoft Edge.lnk"
+Remove-Item -Path “HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components{9459C573-B17A-45AE-9F64-1857B5D58CEE}” -Force
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
