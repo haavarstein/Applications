@@ -21,7 +21,7 @@ Update-Module Evergreen
 $Vendor = "Google"
 $Product = "Chrome Enterprise"
 $PackageName = "googlechromestandaloneenterprise32"
-$Evergreen = Get-GoogleChrome | Where-Object { $_.Architecture -eq "x86" }
+$Evergreen = Get-EvergreenApp -Name GoogleChrome | Where-Object { $_.Architecture -eq "x86" }
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $InstallerType = "msi"
