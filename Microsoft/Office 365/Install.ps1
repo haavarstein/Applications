@@ -21,7 +21,7 @@ Update-Module Evergreen
 $Vendor = "Microsoft"
 $Product = "Office 365 x64"
 $PackageName = "setup"
-$Evergreen = Get-MicrosoftOffice | Where-Object {$_.Channel -eq "Monthly"}
+$Evergreen = Get-EvergreenApp -Name Microsoft365Apps | Where-Object {$_.Channel -eq "Monthly"}
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $InstallerType = "exe"
