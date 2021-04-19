@@ -22,7 +22,7 @@ Update-Module Evergreen
 $Vendor = "Misc"
 $Product = "Zoom"
 $PackageName = "ZoomInstallerFull"
-$Evergreen = Get-Zoom | Where-Object {$_.Platform -eq "Windows" -and $_.Type -eq "MSI"}
+$Evergreen = Get-EvergreenApp -Name Zoom | Where-Object {$_.Platform -eq "Windows" -and $_.Type -eq "MSI"}
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $InstallerType = "msi"
