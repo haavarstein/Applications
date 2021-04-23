@@ -3,7 +3,7 @@
 		<Vendor>NotepadPlusPlus Team</Vendor>
 		<Product>NotepadPlusPlus</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-NotepadPlusPlus | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name NotepadPlusPlus | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
 		<DisplayName>Notepad++</DisplayName>
 		<Description>Notepad++ is a text and source code editor for use with Microsoft Windows. It supports tabbed editing, which allows working with multiple open files in a single window. The project's name comes from the C increment operator. Notepad++ is distributed as free software.</Description>
 		<Installer>exe</Installer>
@@ -22,7 +22,7 @@
 		<Vendor>ShareX Team</Vendor>
 		<Product>ShareX</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen>Get-ShareX | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name ShareX | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
 		<DisplayName>ShareX</DisplayName>
 		<Description>ShareX is a free and open-source screenshot and screencast utility for Microsoft Windows. It is published under the GNU General Public License. The project's source code is hosted at the GitHub code-sharing and code development platform.</Description>
 		<Installer>exe</Installer>
@@ -41,7 +41,7 @@
 		<Vendor>Next Generation Software</Vendor>
 		<Product>mRemoteNG</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen>Get-mRemoteNG | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name mRemoteNG | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
 		<DisplayName>mRemoteNG</DisplayName>
 		<Description>mRemoteNG is a fork of mRemote: an open source, tabbed, multi-protocol, remote connections manager for Windows. mRemoteNG adds bug fixes and new features to mRemote. It allows you to view all of your remote connections in a simple yet powerful tabbed interface.</Description>
 		<Installer>msi</Installer>
@@ -60,7 +60,7 @@
 		<Vendor>Martin Prikyl</Vendor>
 		<Product>WinSCP</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen>Get-WinSCP | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name WinSCP | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.exe" }</Evergreen>
 		<DisplayName>WinSCP</DisplayName>
 		<Description>WinSCP is a free and open-source SFTP, FTP, WebDAV, Amazon S3 and SCP client for Microsoft Windows. Its main function is secure file transfer between a local and a remote computer. Beyond this, WinSCP offers basic file manager and file synchronization functionality.</Description>
 		<Installer>exe</Installer>
@@ -79,7 +79,7 @@
 		<Vendor>Tim Kosse</Vendor>
 		<Product>FileZilla</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen>Get-FileZilla</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name FileZilla</Evergreen>
 		<DisplayName>FileZilla FTP Client</DisplayName>
 		<Description>FileZilla is a free software, cross-platform FTP application, consisting of FileZilla Client and FileZilla Server. Client binaries are available for Windows, Linux, and macOS, server binaries are available for Windows only.</Description>
 		<Installer>exe</Installer>
@@ -98,7 +98,7 @@
 		<Vendor>7Zip</Vendor>
 		<Product>7Zip</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-7zip | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name 7zip | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
 		<DisplayName>7-Zip</DisplayName>
 		<Description>7-Zip is a free and open-source file archiver, a utility used to place groups of files within compressed containers known as "archives". It is developed by Igor Pavlov and was first released in 1999. 7-Zip uses its own 7z archive format, but can read and write several other archive formats.</Description>
 		<Installer>msi</Installer>
@@ -117,7 +117,7 @@
 		<Vendor>TeamViewer</Vendor>
 		<Product>TeamViewer</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-TeamViewer</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name TeamViewer</Evergreen>
 		<DisplayName>TeamViewer</DisplayName>
 		<Description>TeamViewer is a proprietary software application for remote control, desktop sharing, online meetings, web conferencing and file transfer between computers.</Description>
 		<Installer>exe</Installer>
@@ -136,7 +136,7 @@
 		<Vendor>Thingamahoochie Software</Vendor>
 		<Product>WinMerge</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-WinMerge | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*x64-Setup.exe" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name WinMerge | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*x64-Setup.exe" }</Evergreen>
 		<DisplayName>WinMerge</DisplayName>
 		<Description>WinMerge is a free software tool for data comparison and merging of text-like files. It is useful for determining what has changed between versions, and then merging changes between versions.</Description>
 		<Installer>exe</Installer>
@@ -155,7 +155,7 @@
 		<Vendor>VideoLAN</Vendor>
 		<Product>VLCPlayer</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-VideoLanVlcPlayer | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name VideoLanVlcPlayer | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*.msi" }</Evergreen>
 		<DisplayName>VLC Player</DisplayName>
 		<Description>VLC media player is a free and open-source, portable, cross-platform media player software, and streaming media server developed by the VideoLAN project. VLC is available for desktop operating systems, and mobile platforms, such as Android, iOS, iPadOS, Tizen, Windows 10 Mobile, and Windows Phone.</Description>
 		<Installer>msi</Installer>
@@ -174,7 +174,7 @@
 		<Vendor>GreenShot</Vendor>
 		<Product>GreenShot</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen>Get-GreenShot | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*RELEASE.exe" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name GreenShot | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*RELEASE.exe" }</Evergreen>
 		<DisplayName>GreenShot</DisplayName>
 		<Description>Greenshot is a free and open-source screenshot program for Microsoft Windows. It is developed by Thomas Braun, Jens Klingen and Robin Krom and is published under GNU General Public License, hosted by GitHub. Greenshot is also available for macOS, but as proprietary software through the App Store.</Description>
 		<Installer>exe</Installer>
@@ -193,7 +193,7 @@
 		<Vendor>iterate GmbH</Vendor>
 		<Product>Cyberduck</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen>Get-Cyberduck | Where-Object { $_.Channel -eq "Release" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name Cyberduck | Where-Object { $_.Channel -eq "Release" }</Evergreen>
 		<DisplayName>Cyberduck</DisplayName>
 		<Description>Cyberduck is an open-source client for FTP and SFTP, WebDAV, and cloud storage, available for macOS and Windows licensed under the GPL. Cyberduck is written in Java and C# using the Cocoa user interface framework on macOS and Windows Forms on Windows.</Description>
 		<Installer>exe</Installer>
@@ -212,7 +212,7 @@
 		<Vendor>Handbrake</Vendor>
 		<Product>Handbrake</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-Handbrake | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*Win_GUI.exe" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name Handbrake | Where-Object { $_.Architecture -eq "$Architecture" -and $_.URI -like "*Win_GUI.exe" }</Evergreen>
 		<DisplayName>Handbrake</DisplayName>
 		<Description>HandBrake is a free and open-source transcoder for digital video files, originally developed in 2003 by Eric Petit to make ripping a film from a DVD to a data storage device easier.</Description>
 		<Installer>exe</Installer>
@@ -231,7 +231,7 @@
 		<Vendor>JAM Software</Vendor>
 		<Product>TreeSizeFree</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen>Get-JamTreeSizeFree</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name JamTreeSizeFree</Evergreen>
 		<DisplayName>TreeSize Free</DisplayName>
 		<Description>TreeSize is a disk space analyzer written by JAM Software. TreeSize has native 32 and 64-bit support for all Windows versions and client/server versions currently supported by Microsoft.</Description>
 		<Installer>exe</Installer>
@@ -250,7 +250,7 @@
 		<Vendor>Mozilla</Vendor>
 		<Product>Firefox</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-MozillaFirefox | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "LATEST_FIREFOX_VERSION" -and $_.Language -eq "en-US" -and $_.Type -eq "exe" } | Select-Object -First 1</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name MozillaFirefox | Where-Object { $_.Architecture -eq "x64" -and $_.Channel -eq "LATEST_FIREFOX_VERSION" -and $_.Language -eq "en-US" -and $_.Type -eq "exe" } | Select-Object -First 1</Evergreen>
 		<DisplayName>Mozilla Firefox</DisplayName>
 		<Description>Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation and its subsidiary, the Mozilla Corporation. Firefox uses the Gecko layout engine to render web pages, which implements current and anticipated web standards.</Description>
 		<Installer>msi</Installer>
@@ -309,7 +309,7 @@
 		<Vendor>The Gimp Team</Vendor>
 		<Product>Gimp</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen>Get-Gimp</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name Gimp</Evergreen>
 		<DisplayName>Gimp</DisplayName>
 		<Description>GIMP is a free and open-source raster graphics editor used for image manipulation and image editing, free-form drawing, transcoding between different image file formats, and more specialized tasks. GIMP is released under GPLv3+ license and is available for Linux, macOS, and Microsoft Windows.</Description>
 		<Installer>exe</Installer>
@@ -429,7 +429,7 @@
 		<Vendor>Krzysztof Kowalczyk</Vendor>
 		<Product>SumatraPDF</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-SumatraPDFReader| Where-Object { $_.Architecture -eq "$Architecture" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name SumatraPDFReader| Where-Object { $_.Architecture -eq "$Architecture" }</Evergreen>
 		<DisplayName>SumatraPDF</DisplayName>
 		<Description>Sumatra PDF is a free and open-source document viewer that supports many document formats including: Portable Document Format, Microsoft Compiled HTML Help, DjVu, EPUB, FictionBook, MOBI, PRC, Open XML Paper Specification, and Comic Book Archive file. If Ghostscript is installed, it supports PostScript files.</Description>
 		<Installer>exe</Installer>
@@ -449,7 +449,7 @@
 		<Vendor>Telegram FZ-LLC</Vendor>
 		<Product>Telegram</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen>Get-TelegramDesktop</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name TelegramDesktop</Evergreen>
 		<DisplayName>Telegram</DisplayName>
 		<Description>Telegram is a freeware, cross-platform, cloud-based instant messaging, video calling, and VoIP service. It was initially launched for iOS on 14 August 2013 and Android in October 2013. The app servers are spread worldwide, wihle development is currently based in Dubai.</Description>
 		<Installer>exe</Installer>
@@ -469,7 +469,7 @@
 		<Vendor>Foxit Software</Vendor>
 		<Product>FoxitReader</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-FoxitReader | Where-Object { $_.Language -eq "English" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name FoxitReader | Where-Object { $_.Language -eq "English" }</Evergreen>
 		<DisplayName>Foxit Reader</DisplayName>
 		<Description>Foxit Reader is a multilingual freemium PDF tool that can create, view, edit, digitally sign, and print PDF files.</Description>
 		<Installer>exe</Installer>
@@ -488,7 +488,7 @@
 		<Vendor>Google</Vendor>
 		<Product>Chrome</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-GoogleChrome | Where-Object { $_.Architecture -eq "$Architecture" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name GoogleChrome | Where-Object { $_.Architecture -eq "$Architecture" }</Evergreen>
 		<DisplayName>Google Chrome</DisplayName>
 		<Description>Google Chrome is a cross-platform web browser developed by Google. It was first released in 2008 for Microsoft Windows, and was later ported to Linux, macOS, iOS, and Android where it is the default browser built into the OS.</Description>
 		<Installer>msi</Installer>
@@ -507,7 +507,7 @@
 		<Vendor>Scooter Software</Vendor>
 		<Product>Beyond Compare</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-ScooterBeyondCompare</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name ScooterBeyondCompare</Evergreen>
 		<DisplayName>Beyond Compare</DisplayName>
 		<Description>Beyond Compare is a data comparison utility. Aside from comparing files, the program is capable of doing side-by-side comparison of directories, FTP and SFTP directories, Dropbox directories, Amazon S3 directories, and archives. It is available for Windows, Mac OS, and Linux operating systems.</Description>
 		<Installer>exe</Installer>
@@ -564,7 +564,7 @@
 		<Vendor>The Document Foundation</Vendor>
 		<Product>LibreOffice</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-LibreOffice | Where-Object { $_.Architecture -eq "x86_64" -and  $_.Language -eq "Neutral" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name LibreOffice | Where-Object { $_.Architecture -eq "x86_64" -and  $_.Language -eq "Neutral" }</Evergreen>
 		<DisplayName>LibreOffice</DisplayName>
 		<Description>LibreOffice is a free and open-source office suite, a project of The Document Foundation. It was forked in 2010 from OpenOffice.org, which was an open-sourced version of the earlier StarOffice.</Description>
 		<Installer>msi</Installer>
@@ -583,7 +583,7 @@
 		<Vendor>Adobe Systems</Vendor>
 		<Product>AcrobatReaderDC</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-AdobeAcrobatReaderDC | Where-Object { $_.Architecture -eq "x64" -and $_.Language -eq "English" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name AdobeAcrobatReaderDC | Where-Object { $_.Architecture -eq "x64" -and $_.Language -eq "English" }</Evergreen>
 		<DisplayName>Acrobat Reader DC</DisplayName>
 		<Description>Adobe Acrobat Reader DC software is the free, trusted global standard for viewing, printing, signing, sharing, and annotating PDFs. It's the only PDF viewer that can open and interact with all types of PDF content – including forms and multimedia.</Description>
 		<Installer>exe</Installer>
@@ -602,7 +602,7 @@
 		<Vendor>ProjectLibre</Vendor>
 		<Product>ProjectLibre</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-ProjectLibre | Where-Object { $_.URI -like "*.exe" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name ProjectLibre | Where-Object { $_.URI -like "*.exe" }</Evergreen>
 		<DisplayName>ProjectLibre</DisplayName>
 		<Description>ProjectLibre is a project management software company with both a free open-source desktop and an upcoming Cloud version. ProjectLibre desktop is a free and open-source project management software system intended ultimately as a standalone replacement for Microsoft Project.</Description>
 		<Installer>exe</Installer>
@@ -680,7 +680,7 @@
 		<Vendor>Mozilla</Vendor>
 		<Product>Thunderbird</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-MozillaThunderbird | Where-Object { $_.Architecture -eq "x64" -and $_.Language -eq "en-US" -and $_.URI -like "*.msi" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name MozillaThunderbird | Where-Object { $_.Architecture -eq "x64" -and $_.Language -eq "en-US" -and $_.URI -like "*.msi" }</Evergreen>
 		<DisplayName>Thunderbird</DisplayName>
 		<Description>Mozilla Thunderbird is a free and open-source cross-platform email client, personal information manager, news client, RSS and chat client developed by the Mozilla Foundation. The project strategy was originally modeled after that of the Mozilla Firefox web browser.</Description>
 		<Installer>msi</Installer>
@@ -779,7 +779,7 @@
 		<Vendor>Bitwarden</Vendor>
 		<Product>Bitwarden</Product>
 		<Architecture>x86</Architecture>
-		<Evergreen>Get-BitwardenDesktop | Where-Object { $_.URI -like "*Bitwarden-Installer*.*" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name BitwardenDesktop | Where-Object { $_.URI -like "*Bitwarden-Installer*.*" }</Evergreen>
 		<DisplayName>Bitwarden</DisplayName>
 		<Description>Bitwarden is a free and open-source password management service that stores sensitive information such as website credentials in an encrypted vault. The Bitwarden platform offers a variety of client applications including a web interface, desktop applications, browser extensions, mobile apps, and a CLI.</Description>
 		<Installer>exe</Installer>
@@ -859,7 +859,7 @@
 		<Vendor>Microsoft</Vendor>
 		<Product>WvD Remote Desktop</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-MicrosoftWvdRemoteDesktop | Where-Object { $_.Architecture -eq "$Architecture" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name MicrosoftWvdRemoteDesktop | Where-Object { $_.Architecture -eq "$Architecture" }</Evergreen>
 		<DisplayName>Microsoft WvD Remote Desktop</DisplayName>
 		<Description>You can use the Remote Desktop client for Windows Desktop to access Windows apps and desktops remotely from a different Windows device.</Description>
 		<Installer>msi</Installer>
@@ -878,7 +878,7 @@
 		<Vendor>Atlassian</Vendor>
 		<Product>Bitbucket</Product>
 		<Architecture>x64</Architecture>
-		<Evergreen>Get-AtlassianBitbucket | Where-Object { $_.Type -eq "MSI" }</Evergreen>
+		<Evergreen>Get-EvergreenApp -Name AtlassianBitbucket | Where-Object { $_.Type -eq "MSI" }</Evergreen>
 		<DisplayName>Atlassian Bitbucket</DisplayName>
 		<Description>Bitbucket is a Git-based source code repository hosting service owned by Atlassian. Bitbucket offers both commercial plans and free accounts with an unlimited number of private repositories.</Description>
 		<Installer>msi</Installer>
