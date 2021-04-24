@@ -95,7 +95,7 @@ Install-Module Evergreen -Force | Import-Module Evergreen | Out-Null
 $Vendor = "VMware"
 $Product = "Tools"
 $PackageName = "setup64"
-$Evergreen = Get-VMWareTools | Where-Object {$_.Architecture -eq "x64"}
+$Evergreen = Get-EvergreenApp -Name VMWareTools | Where-Object {$_.Architecture -eq "x64"}
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $InstallerType = "exe"
