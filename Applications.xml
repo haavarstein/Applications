@@ -162,7 +162,7 @@
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
 		<Path>C:\Program Files (x86)\TeamViewer</Path>
-		<Enabled>False</Enabled>
+		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -200,7 +200,7 @@
 		<Install>/quiet</Install>
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files\Cyberduck</Path>
-		<Enabled>False</Enabled>
+		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -257,7 +257,7 @@
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/X</Uninstall>
 		<Path>C:\Program Files\Mozilla Firefox</Path>
-		<Enabled>False</Enabled>
+		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -476,7 +476,7 @@
 		<Install>/verysilent</Install>
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files\Foxit Reader</Path>
-		<Enabled>False</Enabled>
+		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -648,7 +648,7 @@
 		<Install></Install>
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files (x86)\BraveSoftware</Path>
-		<Enabled>False</Enabled>
+		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
