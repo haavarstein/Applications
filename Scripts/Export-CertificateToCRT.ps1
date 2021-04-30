@@ -75,7 +75,7 @@ Invoke-WebRequest -Uri $uri -OutFile "$PackageName"
 Expand-Archive -Path $PackageName -DestinationPath C:\Windows\Temp -Force
 
 Write-Verbose "Export Certificate to Various File Formats" -Verbose
-Export-CertificateToCRT -OpenSSLPath "$OpenSSLPath" -PFXPath "$PFXPath\XA\Certificates\Wildcard.pfx" -PFXPassword "P@ssw0rd" -ExportPassword "P@ssw0rd" -OutputPath "$PFXPath\XA\Certificates"
+Export-CertificateToCRT -OpenSSLPath "$OpenSSLPath" -PFXPath "$PFXPath\XA\Certificates\Wildcard.pfx" -PFXPassword "poshacme" -ExportPassword "poshacme" -OutputPath "$PFXPath\XA\Certificates"
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
