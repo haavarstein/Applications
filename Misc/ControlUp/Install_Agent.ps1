@@ -20,7 +20,7 @@ Install-Module Evergreen -Force | Import-Module Evergreen | Out-Null
 
 $Vendor = "SmartX"
 $Product = "ControlUp Agent"
-$Evergreen = Get-ControlUpAgent | Where-Object { $_.Framework -eq "64bit-.net45" -and $_.Architecture -eq "x64" } | Select-Object -First 1
+$Evergreen = Get-EvergreenApp -Name ControlUpAgent | Where-Object { $_.Framework -eq "64bit-.net45" -and $_.Architecture -eq "x64" }
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $PackageName = "CUPAgent"
