@@ -16,14 +16,14 @@ $StartDTM = (Get-Date)
 
 Write-Verbose "Installing Modules" -Verbose
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
-if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Find-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
+if (!(Test-Path -Path "C:\Program Files\PackageManagement\ProviderAssemblies\nuget")) {Install-PackageProvider -Name 'Nuget' -ForceBootstrap -IncludeDependencies}
 if (!(Get-Module -ListAvailable -Name Evergreen)) {Install-Module Evergreen -Force | Import-Module Evergreen}
 Update-Module Evergreen
 
 $Vendor = "Microsoft"
 $Product = "PowerShell Core"
 $PackageName = "PowerShell_x64"
-$Evergreen = Get-MicrosoftPowerShellCore | Where-Object { $_.Architecture -eq "x64" -and $_.URI -like "*.msi" }
+$Evergreen = Get-EvergreenApp MicrosoftPowerShell | Where-Object {$_.Platform -eq "Windows" -and $_.Architecture -eq "x64" -and $_.Release -eq "Stable"}
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $InstallerType = "msi"
