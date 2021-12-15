@@ -29,7 +29,7 @@
 		<Install>/Verysilent /Norun</Install>
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files\ShareX</Path>
-		<EnabledFalse</Enabled>
+		<Enabled>False</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
