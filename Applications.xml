@@ -29,7 +29,7 @@
 		<Install>/Verysilent /Norun</Install>
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files\ShareX</Path>
-		<Enabled>True</Enabled>
+		<EnabledFalse</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -219,7 +219,7 @@
 		<Install>/S</Install>
 		<Uninstall>uninst.exe</Uninstall>
 		<Path>C:\Program Files\Handbrake</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -804,8 +804,8 @@
 		<Description>Power BI is a business analytics service by Microsoft. It aims to provide interactive visualizations and business intelligence capabilities with an interface simple enough for end users to create their own reports and dashboards.</Description>
 		<Installer>exe</Installer>
 		<Install>-silent -norestart ACCEPT_EULA=1</Install>
-		<Uninstall></Uninstall>
-		<Path>C:\Program Files\PowerBI</Path>
+		<Uninstall>PBIDesktop.exe</Uninstall>
+		<Path>C:\Program Files\Microsoft Power BI Desktop\bin</Path>
 		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
