@@ -667,7 +667,7 @@
 		<Install>/install /silent /NoTaskbarShortcut /launchopera=0 /setdefaultbrowser=0 /allusers=1</Install>
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files (x86)\Opera</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -905,7 +905,7 @@
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files (x86)\WinAMP</Path>
 		<Enabled>True</Enabled>
-		<WinGet>True</WinGet>
+		<WinGet>False</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
