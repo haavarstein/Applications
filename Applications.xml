@@ -294,7 +294,7 @@
 		<Description>Paint.net is a freeware raster graphics editor program for Microsoft Windows, developed on the .NET Framework.</Description>
 		<Installer>exe</Installer>
 		<Install>/auto</Install>
-		<Uninstall>/X</Uninstall>
+		<Uninstall>paintdotnet.exe</Uninstall>
 		<Path>C:\Program Files\paint.net</Path>
 		<Enabled>True</Enabled>
 		<PMPC>True</PMPC>
