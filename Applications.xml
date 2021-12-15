@@ -29,7 +29,7 @@
 		<Install>/Verysilent /Norun</Install>
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files\ShareX</Path>
-		<Enabled>False</Enabled>
+		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -143,7 +143,7 @@
 		<Install>/VERYSILENT /SP- /NORESTART</Install>
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files\WinMerge</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -200,7 +200,7 @@
 		<Install>/quiet</Install>
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files\Cyberduck</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -257,7 +257,7 @@
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/X</Uninstall>
 		<Path>C:\Program Files\Mozilla Firefox</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -336,7 +336,7 @@
 		<Install>/S</Install>
 		<Uninstall>Mp3tagUninstall.exe</Uninstall>
 		<Path>C:\Program Files (x86)\Mp3tag</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -356,7 +356,7 @@
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/X</Uninstall>
 		<Path>C:\Program Files (x86)\PuTTY</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -436,7 +436,7 @@
 		<Install>-install -d "C:\Program Files\SumatraPDF" -s</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\SumatraPDF</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<WinGet>False</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -495,7 +495,7 @@
 		<Install>/i ALLUSERS=1 NOGOOGLEUPDATEPING=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
 		<Path>C:\Program Files\Google Chrome</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
