@@ -609,7 +609,7 @@
 		<Install>/VERYSILENT /NORESTART</Install>
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files\ProjectLibre</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -667,7 +667,7 @@
 		<Install>/install /silent /NoTaskbarShortcut /launchopera=0 /setdefaultbrowser=0 /allusers=1</Install>
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files (x86)\Opera</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -687,7 +687,7 @@
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
 		<Path>C:\Program Files\Thunderbird</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -726,7 +726,7 @@
 		<Install>/verysilent</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\Audacity</Path>
-		<Enabled>False</Enabled>
+		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -786,7 +786,7 @@
 		<Install>/S</Install>
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files\Bitwarden</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<WinGet>False</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -846,7 +846,7 @@
 		<Install>/S</Install>
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files (x86)\WinAMP</Path>
-		<Enabled>False</Enabled>
+		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -866,7 +866,7 @@
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
 		<Path>C:\Program Files\Remote Desktop</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -885,7 +885,7 @@
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
 		<Path>C:\Program Files\Remote Desktop</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
