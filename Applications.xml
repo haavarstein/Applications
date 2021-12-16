@@ -143,7 +143,7 @@
 		<Install>/VERYSILENT /SP- /NORESTART</Install>
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files\WinMerge</Path>
-		<Enabled>False</Enabled>
+		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -238,7 +238,7 @@
 		<Install>/verysilent</Install>
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files (x86)\JAM Software\TreeSize Free</Path>
-		<Enabled>False</Enabled>
+		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
