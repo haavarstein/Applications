@@ -844,7 +844,7 @@
 		<Description>WinAMP is a cross-platform encrypted messaging service developed by the WinAMP Foundation and WinAMP Messenger. It uses the Internet to send one-to-one and group messages, which can include files, voice notes, images and videos.</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
-		<Uninstall></Uninstall>
+		<Uninstall>fake_uninstall.exe</Uninstall>
 		<Path>C:\Program Files (x86)\WinAMP</Path>
 		<Enabled>False</Enabled>
 		<WinGet>True</WinGet>
@@ -904,7 +904,7 @@
 		<Install>/S</Install>
 		<Uninstall>fake_uninstall.exe</Uninstall>
 		<Path>C:\Program Files (x86)\WinAMP</Path>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
