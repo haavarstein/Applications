@@ -824,7 +824,7 @@
 		<Description>Signal is a cross-platform encrypted messaging service developed by the Signal Foundation and Signal Messenger. It uses the Internet to send one-to-one and group messages, which can include files, voice notes, images and videos.</Description>
 		<Installer>exe</Installer>
 		<Install>/S /D="C:\Program Files (x86)\Signal"</Install>
-		<Uninstall></Uninstall>
+		<Uninstall>fake_uninstall.exe</Uninstall>
 		<Path>C:\Program Files (x86)\Signal</Path>
 		<Enabled>True</Enabled>
 		<WinGet>False</WinGet>
@@ -902,7 +902,7 @@
 		<Description>WinDirStat is a free and open-source graphical disk usage analyzer for Microsoft Windows. It is notable for presenting a sub-tree view with disk use percentage alongside a usage-sorted list of file extensions that is interactively integrated with a colorful graphical display.</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
-		<Uninstall></Uninstall>
+		<Uninstall>fake_uninstall.exe</Uninstall>
 		<Path>C:\Program Files (x86)\WinAMP</Path>
 		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
