@@ -436,7 +436,7 @@
 		<Install>-install -d "C:\Program Files\SumatraPDF" -s</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\SumatraPDF</Path>
-		<Enabled>False</Enabled>
+		<Enabled>True</Enabled>
 		<WinGet>False</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -704,9 +704,9 @@
 		<Description>Apache OpenOffice is an open-source office productivity software suite. It is one of the successor projects of OpenOffice.org and the designated successor of IBM Lotus Symphony. It is a close cousin of LibreOffice and NeoOffice.</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
-		<Uninstall></Uninstall>
+		<Uninstall>fake_uninstall.exe</Uninstall>
 		<Path>C:\Program Files (x86)\OpenOffice 4</Path>
-		<Enabled>False</Enabled>
+		<EnabledTrue</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
