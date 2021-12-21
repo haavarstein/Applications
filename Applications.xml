@@ -824,7 +824,7 @@
 		<Description>Signal is a cross-platform encrypted messaging service developed by the Signal Foundation and Signal Messenger. It uses the Internet to send one-to-one and group messages, which can include files, voice notes, images and videos.</Description>
 		<Installer>exe</Installer>
 		<Install>/S /D="C:\Program Files (x86)\Signal"</Install>
-		<Uninstall>fake_uninstall.exe</Uninstall>
+		<Uninstall>Uninstall Signal.exe</Uninstall>
 		<Path>C:\Program Files (x86)\Signal</Path>
 		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
@@ -841,10 +841,10 @@
 		<Architecture>x86</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>WinAMP</DisplayName>
-		<Description>WinAMP is a cross-platform encrypted messaging service developed by the WinAMP Foundation and WinAMP Messenger. It uses the Internet to send one-to-one and group messages, which can include files, voice notes, images and videos.</Description>
+		<Description>Winamp is a media player for Microsoft Windows originally developed by Justin Frankel and Dmitry Boldyrev by their company Nullsoft, which they later sold to AOL in 1999 for $80 million.</Description>
 		<Installer>exe</Installer>
 		<Install>/S</Install>
-		<Uninstall>fake_uninstall.exe</Uninstall>
+		<Uninstall>UninstWA.exe</Uninstall>
 		<Path>C:\Program Files (x86)\WinAMP</Path>
 		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
