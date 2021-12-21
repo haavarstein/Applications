@@ -724,7 +724,7 @@
 		<Description>Audacity is a free and open-source digital audio editor and recording application software, available for Windows, macOS, Linux, and other Unix-like operating systems.</Description>
 		<Installer>exe</Installer>
 		<Install>/verysilent</Install>
-		<Uninstall>uninstall.exe</Uninstall>
+		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files\Audacity</Path>
 		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
