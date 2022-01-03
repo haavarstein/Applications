@@ -377,6 +377,7 @@
 		<Install>/S /quicklaunchicon=no</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files (x86)\Wireshark</Path>
+		<DetectionFile>Wireshark.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
