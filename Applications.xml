@@ -106,6 +106,7 @@
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
 		<Path>C:\Program Files\7-Zip</Path>
+		<DetectionFile>7zG.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -297,6 +298,7 @@
 		<Install>/auto</Install>
 		<Uninstall>paintdotnet.exe</Uninstall>
 		<Path>C:\Program Files\paint.net</Path>
+		<DetectionFile>paintdotnet.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
