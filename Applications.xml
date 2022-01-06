@@ -498,7 +498,7 @@
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 NOGOOGLEUPDATEPING=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
-		<Path>CC:\Program Files\Google\Chrome\Application</Path>
+		<Path>C:\Program Files\Google\Chrome\Application</Path>
 		<DetectionFile>Chrome.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
