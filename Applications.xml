@@ -831,6 +831,7 @@
 		<Install>/S /D="C:\Program Files (x86)\Signal"</Install>
 		<Uninstall>Uninstall Signal.exe</Uninstall>
 		<Path>C:\Program Files (x86)\Signal</Path>
+		<DetectionFile>Signal.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
