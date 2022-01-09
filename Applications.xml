@@ -961,7 +961,7 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</RASClient>
-	<Bloomberg Terminal>
+	<BloombergTerminal>
 		<Vendor>Bloomberg</Vendor>
 		<Product>Terminal</Product>
 		<Architecture>x64</Architecture>
@@ -983,5 +983,5 @@
 			<RequiredGroup>All Devices</RequiredGroup>
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
-	</Bloomberg Terminal>
+	</BloombergTerminal>
 </Applications>
