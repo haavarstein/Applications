@@ -951,6 +951,7 @@
 		<Uninstall></Uninstall>
 		<Path></Path>
 		<Enabled>True</Enabled>
+		<Private>True</Private>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
