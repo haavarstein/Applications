@@ -940,7 +940,7 @@
 	</ImageGlass>
 	<RASClient>
 		<Vendor>Parallels</Vendor>
-		<Product>Client</Product>
+		<Product>RAS Client</Product>
 		<Architecture>x64</Architecture>
 		<Evergreen></Evergreen>
 		<Version>18.3.22893</Version>
