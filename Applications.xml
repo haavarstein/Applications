@@ -972,9 +972,9 @@
 		<Description>Note: Please close Word and Outlook before installing this application. The Bloomberg Terminal is a computer software system provided by the financial data vendor Bloomberg L.P. that enables professionals in the financial service sector and other industries to access Bloomberg Professional Services through which users can monitor and analyze real-time financial market data and place trades on the electronic trading platform.</Description>
 		<Installer>exe</Installer>
 		<Install>/s maindir="C:\Program Files\blp"</Install>
-		<Uninstall></Uninstall>
-		<Path>C:\Program Files\blp\Wintrv\x64</Path>
-		<DetectionFile>bplus64.exe</DetectionFile>
+		<Uninstall>C:\ProgramData\{B53F404A-773B-45E2-88B4-64C99180D7BC}\sotrt.exe REMOVE=TRUE</Uninstall>
+		<Path>C:\Program Files\blp\Wintrv</Path>
+		<DetectionFile>wintrv.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<Private>True</Private>
 		<Categories>IT Admin Tools</Categories>
