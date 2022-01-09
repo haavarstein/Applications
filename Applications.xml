@@ -950,7 +950,8 @@
 		<Installer>msi</Installer>
 		<Install></Install>
 		<Uninstall></Uninstall>
-		<Path></Path>
+		<Path>C:\Program Files\Parallels\Client</Path>
+		<DetectionFile>TSClient.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<Private>True</Private>
 		<Categories>IT Admin Tools</Categories>
