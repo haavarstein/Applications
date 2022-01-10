@@ -984,4 +984,27 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</BloombergTerminal>
+	<PipeFitter>
+		<Vendor>Templagenics LLC</Vendor>
+		<Product>Digital Pipe Fitter</Product>
+		<Architecture>x64</Architecture>
+		<Evergreen></Evergreen>
+		<Version>1.9.2.0</Version>
+		<URL>http://xenapptraining.s3.amazonaws.com/Repo/Digital_Pipe_Fitter_1_92.msi</URL>
+		<DisplayName>Digital Pipe Fitter</DisplayName>
+		<Description>This software lets you print to any printer or export to an AutoCAD DXF file. Choose the type of joint you want, enter pipe sizes and desired dimensions, print a template on your printer, wrap the template around the pipe, and cut on the line. Digital Pipe Fitter even includes node joints for use in truss structures.</Description>
+		<Installer>msi</Installer>
+		<Install></Install>
+		<Uninstall></Uninstall>
+		<Path>CC:\Program Files (x86)\Digital Pipe Fitter</Path>
+		<DetectionFile>dpipefit.exe</DetectionFile>
+		<Enabled>True</Enabled>
+		<Private>True</Private>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</PipeFitter>
 </Applications>
