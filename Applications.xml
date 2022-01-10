@@ -966,7 +966,7 @@
 		<Product>Terminal</Product>
 		<Architecture>x64</Architecture>
 		<Evergreen></Evergreen>
-		<Version>3080.1.81.1</Version>
+		<Version>3080.1.80.1</Version>
 		<URL>https://bdn-ak-ssl.bloomberg.com/software/trv/sotr80_12_80.exe</URL>
 		<DisplayName>Bloomberg Terminal</DisplayName>
 		<Description>Note: Please close Word and Outlook before installing this application. The Bloomberg Terminal is a computer software system provided by the financial data vendor Bloomberg L.P. that enables professionals in the financial service sector and other industries to access Bloomberg Professional Services through which users can monitor and analyze real-time financial market data and place trades on the electronic trading platform.</Description>
