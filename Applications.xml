@@ -996,7 +996,7 @@
 		<Installer>msi</Installer>
 		<Install></Install>
 		<Uninstall></Uninstall>
-		<Path>CC:\Program Files (x86)\Digital Pipe Fitter</Path>
+		<Path>C:\Program Files (x86)\Digital Pipe Fitter</Path>
 		<DetectionFile>dpipefit.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<Private>True</Private>
@@ -1007,4 +1007,27 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</PipeFitter>
+	<CloudBerryExplorer>
+		<Vendor>CloudBerryLab</Vendor>
+		<Product>CloudBerry Explorer</Product>
+		<Architecture>x64</Architecture>
+		<Evergreen></Evergreen>
+		<Version>6.2.1</Version>
+		<URL>http://xenapptraining.s3.amazonaws.com/Repo/CBESetup.exe</URL>
+		<DisplayName>CloudBerry Explorer</DisplayName>
+		<Description>CloudBerry Explorer provides a user interface allowing to access, move and manage files across your local storage and the cloud storage of your choice. Cloud file management software by MSP360 is available in two versions: Freeware and PRO.</Description>
+		<Installer>exe</Installer>
+		<Install>/S</Install>
+		<Uninstall>C:\Program Files\CloudBerryLab\CloudBerry Explorer\uninst.exe</Uninstall>
+		<Path>C:\Program Files\CloudBerryLab\CloudBerry Explorer</Path>
+		<DetectionFile>CloudBerry Explorer.exe</DetectionFile>
+		<Enabled>True</Enabled>
+		<Private>True</Private>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</CloudBerryExplorer>
 </Applications>
