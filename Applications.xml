@@ -1032,7 +1032,7 @@
 	</CloudBerryExplorer>
 	<StreamDeck>
 		<Vendor>Elgato Systems GmbH</Vendor>
-		<Product>Stream Deck</Product>
+		<Product>StreamDeck</Product>
 		<Architecture>x64</Architecture>
 		<Evergreen></Evergreen>
 		<DisplayName>Stream Deck</DisplayName>
