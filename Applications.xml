@@ -49,6 +49,7 @@
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
 		<Path>C:\Program Files (x86)\mRemoteNG</Path>
+		<DetectionFile>mRemoteNG.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -68,6 +69,7 @@
 		<Install>/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-</Install>
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files (x86)\WinSCP</Path>
+		<DetectionFile>WinSCP.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -87,6 +89,7 @@
 		<Install>/S</Install>
 		<Uninstall>uninstall.exe</Uninstall>
 		<Path>C:\Program Files\FileZilla FTP Client</Path>
+		<DetectionFile>FileZilla.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -145,6 +148,7 @@
 		<Install>/VERYSILENT /SP- /NORESTART</Install>
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files\WinMerge</Path>
+		<DetectionFile>WinMerge.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -163,7 +167,8 @@
 		<Installer>msi</Installer>
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/x</Uninstall>
-		<Path>C:\Program Files (x86)\TeamViewer</Path>
+		<Path>C:\Program Files (x86)\VLCPlayer</Path>
+		<DetectionFile>VLCPlayer.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
