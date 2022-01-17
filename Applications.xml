@@ -245,6 +245,7 @@
 		<Install>/verysilent</Install>
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files (x86)\JAM Software\TreeSize Free</Path>
+		<DetectionFile>TreeSize.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -364,6 +365,7 @@
 		<Install>/i ALLUSERS=1 /qn</Install>
 		<Uninstall>/X</Uninstall>
 		<Path>C:\Program Files (x86)\PuTTY</Path>
+		<DetectionFile>Putty.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
@@ -736,6 +738,7 @@
 		<Install>/verysilent</Install>
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files\Audacity</Path>
+		<DetectionFile>Audacity.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
@@ -857,6 +860,7 @@
 		<Install>/S</Install>
 		<Uninstall>UninstWA.exe</Uninstall>
 		<Path>C:\Program Files (x86)\WinAMP</Path>
+		<DetectionFile>WinAmp.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
