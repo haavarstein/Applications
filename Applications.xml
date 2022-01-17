@@ -1030,4 +1030,25 @@
 			<PilotGroup>Intune IT Pilot</PilotGroup>
 		</Assignments>
 	</CloudBerryExplorer>
+	<StreamDeck>
+		<Vendor>Elgato Systems GmbH</Vendor>
+		<Product>Stream Deck</Product>
+		<Architecture>x64</Architecture>
+		<Evergreen></Evergreen>
+		<DisplayName>Stream Deck</DisplayName>
+		<Description>The Elgato Stream Deck is a customizable control pad for live-streaming that includes 15 LCD keys for switching scenes, launching media, and adjusting audio on the fly. You can trigger self-promotional tweets, chat commands, and a bunch of things you'd usually have to Alt-Tab to do.</Description>
+		<Installer>msi</Installer>
+		<Install></Install>
+		<Uninstall></Uninstall>
+		<Path>C:\Program Files\Elgato\StreamDeck</Path>
+		<DetectionFile>StreamDeck.exe</DetectionFile>
+		<Enabled>True</Enabled>
+		<WinGet>True</WinGet>
+		<Categories>IT Admin Tools</Categories>
+		<Assignments Customer="xenappblog">
+			<Group>All Users</Group>
+			<RequiredGroup>All Devices</RequiredGroup>
+			<PilotGroup>Intune IT Pilot</PilotGroup>
+		</Assignments>
+	</StreamDeck>
 </Applications>
