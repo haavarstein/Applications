@@ -1042,7 +1042,7 @@
 		<Uninstall></Uninstall>
 		<Path>C:\Program Files\Elgato\StreamDeck</Path>
 		<DetectionFile>StreamDeck.exe</DetectionFile>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
