@@ -740,7 +740,7 @@
 		<Path>C:\Program Files\Audacity</Path>
 		<DetectionFile>Audacity.exe</DetectionFile>
 		<Enabled>True</Enabled>
-		<WinGet>True</WinGet>
+		<WinGet>False</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
@@ -840,7 +840,7 @@
 		<Uninstall>Uninstall Signal.exe</Uninstall>
 		<Path>C:\Program Files (x86)\Signal</Path>
 		<DetectionFile>Signal.exe</DetectionFile>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -861,7 +861,7 @@
 		<Uninstall>UninstWA.exe</Uninstall>
 		<Path>C:\Program Files (x86)\WinAMP</Path>
 		<DetectionFile>WinAmp.exe</DetectionFile>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
