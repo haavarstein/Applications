@@ -739,8 +739,8 @@
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files\Audacity</Path>
 		<DetectionFile>Audacity.exe</DetectionFile>
-		<Enabled>True</Enabled>
-		<WinGet>False</WinGet>
+		<Enabled>False</Enabled>
+		<WinGet>True</WinGet>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
