@@ -245,7 +245,7 @@
 		<Install>/verysilent</Install>
 		<Uninstall>unins000.exe</Uninstall>
 		<Path>C:\Program Files (x86)\JAM Software\TreeSize Free</Path>
-		<DetectionFile>TreeSize.exe</DetectionFile>
+		<DetectionFile>TreeSizeFree.exe</DetectionFile>
 		<Enabled>True</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
