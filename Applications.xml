@@ -305,7 +305,7 @@
 		<Uninstall>paintdotnet.exe</Uninstall>
 		<Path>C:\Program Files\paint.net</Path>
 		<DetectionFile>paintdotnet.exe</DetectionFile>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<PMPC>True</PMPC>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
@@ -507,7 +507,7 @@
 		<Uninstall>/x</Uninstall>
 		<Path>C:\Program Files\Google\Chrome\Application</Path>
 		<DetectionFile>Chrome.exe</DetectionFile>
-		<Enabled>True</Enabled>
+		<Enabled>False</Enabled>
 		<Categories>IT Admin Tools</Categories>
 		<Assignments Customer="xenappblog">
 			<Group>All Users</Group>
