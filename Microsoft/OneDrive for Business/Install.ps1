@@ -20,7 +20,7 @@ Update-Module Evergreen
 $Vendor = "Microsoft"
 $Product = "OneDrive for Business"
 $PackageName = "OneDriveSetup"
-$Evergreen = Get-MicrosoftOneDrive | Where-Object { $_.Ring -eq "Enterprise" -and $_.URI -like "*.exe" } 
+$Evergreen = Get-EvergreenApp -Name MicrosoftOneDrive | Where-Object { $_.Ring -eq "Enterprise" -and $_.URI -like "*.exe" -and $_.Architecture -eq "AMD64" } 
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $InstallerType = "exe"
