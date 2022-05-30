@@ -27,12 +27,7 @@ $ProgressPreference = 'SilentlyContinue'
 Start-Transcript $LogPS
 
 Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
-If (!(Test-Path -Path $Source)) {
-    Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source
-         }
-        Else {
-            Write-Verbose "File exists. Skipping Download." -Verbose
-         }
+Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
