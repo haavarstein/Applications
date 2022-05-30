@@ -23,7 +23,7 @@ Update-Module Evergreen
 $Vendor = "Microsoft"
 $Product = "FSLogix Apps"
 $PackageName = "FSLogixAppsSetup"
-$Evergreen = Get-EvergreenApp -Name MicrosoftFSLogixApps | Where-Object { $_.Channel -eq "Preview" }
+$Evergreen = Get-EvergreenApp -Name MicrosoftFSLogixApps
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $DownloadType = "zip"
