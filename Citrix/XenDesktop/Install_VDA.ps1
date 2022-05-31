@@ -14,7 +14,7 @@ $LogPath = "${env:SystemRoot}" + "\Temp\"
 $ListofDDCs = $MyConfigFile.Settings.Citrix.ListofDDCs
 #$ListofDDCs = $env:ListofDDCs
 
-$UnattendedArgs = '/noreboot /noresume /quiet /components vda /controllers "'+$ListofDDCs+'" /mastermcsimage /install_mcsio_driver /enable_remote_assistance /enable_hdx_ports /enable_hdx_udp_ports /enable_real_time_transport /disableexperiencemetrics /includeadditional "Citrix User Profile Manager WMI Plugin" /exclude "Personal vDisk","Citrix Telemetry Service" /virtualmachine /logpath "C:\Windows\Temp"'
+$UnattendedArgs = '/noreboot /noresume /quiet /components vda /controllers "'+$ListofDDCs+'" /mastermcsimage /enable_remote_assistance /enable_hdx_ports /enable_hdx_udp_ports /enable_real_time_transport /disableexperiencemetrics /includeadditional "Citrix User Profile Manager WMI Plugin" /exclude "Personal vDisk","Citrix Telemetry Service" /virtualmachine /logpath "C:\Windows\Temp"'
 $Destination = "$Version\x64\XenDesktop Setup\"
 
 Start-Transcript $LogPS
