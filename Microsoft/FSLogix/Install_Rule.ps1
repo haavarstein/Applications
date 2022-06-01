@@ -22,7 +22,7 @@ Update-Module Evergreen
 $Vendor = "Microsoft"
 $Product = "FSLogix Rule Editor"
 $PackageName = "FSLogixAppsRuleEditorSetup"
-$Evergreen = Get-MicrosoftFSLogixApps
+$Evergreen = Get-EvergreenApp -Name MicrosoftFSLogixApps
 $Version = $Evergreen.Version
 $URL = $Evergreen.uri
 $DownloadType = "zip"
