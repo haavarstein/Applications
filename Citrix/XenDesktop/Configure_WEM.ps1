@@ -20,8 +20,8 @@ $WEMSvcAcc = $MyConfigFile.Settings.Citrix.WEMSvcAcc
 $IsSingleServer = $MyConfigFile.Settings.Citrix.XASingleServer
 
 $ElevatedUser = $WEMSvcAcc
-$PasswordFile = "\\dc-01\xa\Credentials\citrix-wem.txt"
-$KeyFile = "\\dc-01\xa\Credentials\citrix-wem.key"
+$PasswordFile = "$env:XA\Credentials\elevated.txt"
+$KeyFile = "$env:XA\Credentials\elevated.key"
 
 Write-Verbose "Getting Encrypted Password from KeyFile" -Verbose
 $SecurePassword = ((Get-Content $PasswordFile) | ConvertTo-SecureString -Key (Get-Content $KeyFile))
@@ -55,12 +55,12 @@ Import-Module "C:\Program Files (x86)\Norskale\Norskale Infrastructure Services\
 If (Test-Path $DataFileUNCPath){
   Write-Verbose "Database already exists" -Verbose  
   }Else{
-  Write-Verbose "Create New Database using Windows Authenticaion" -Verbose
+  Write-Verbose "Create New Database using Windows Authentication" -Verbose
   New-WemDatabase -DatabaseServerInstance $DatabaseServer -DatabaseName $DatabaseName -DataFilePath $DataFilePath -LogFilePath $LogFilePath -DefaultAdministratorsGroup $WEMAdminGroup -WindowsAccount $WEMSvcAcc -VuemUserSqlPassword $DBVuemUserCred -PSDebugMode Enable
 }
 
 Write-Verbose "Configure CWEM Service" -Verbose
-Set-WemInfrastructureServiceConfiguration -EnableInfrastructureServiceAccountCredential Enable -InfrastructureServiceAccountCredential $WEMSvcAccCred -DatabaseServerInstance $DatabaseServer -DatabaseName $DatabaseName -SetSqlUserSpecificPassword Enable -SqlUserSpecificPassword $DBVuemUserCred -EnableScheduledMaintenance Enable -PSDebugMode Enable -SendGoogleAnalytics Disable -UseCacheEvenIfOnline Disable -DebugMode Enable -LicenseServerName $LicenseServer
+Set-WemInfrastructureServiceConfiguration -EnableInfrastructureServiceAccountCredential Enable -InfrastructureServiceAccountCredential $WEMSvcAccCred -DatabaseServerInstance $DatabaseServer -DatabaseName $DatabaseName -EnableScheduledMaintenance Enable -PSDebugMode Enable -SendGoogleAnalytics Disable -UseCacheEvenIfOnline Disable -DebugMode Enable -LicenseServerName $LicenseServer # -SetSqlUserSpecificPassword Enable -SqlUserSpecificPassword $DBVuemUserCred
 
 Write-Verbose "Stop logging" -Verbose
 $EndDTM = (Get-Date)
