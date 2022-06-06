@@ -22,8 +22,8 @@ $UnattendedArgs = "Bginfo64-Win10.bgi /nolicprompt /silent /timer:0"
 $val = Get-ItemProperty -Path "hklm:software\microsoft\windows nt\currentversion\" -Name "InstallationType"
 $Path = "C:\Program Files\BGInfo"
 
-IWR -UseBasicParsing -Uri "https://download.sysinternals.com/files/BGInfo.zip" -OutFile BGInfo.zip
-Expand-Archive -Path BGInfo.zip -DestinationPath . -Force
+#IWR -UseBasicParsing -Uri "https://download.sysinternals.com/files/BGInfo.zip" -OutFile BGInfo.zip
+#Expand-Archive -Path BGInfo.zip -DestinationPath . -Force
 
 Start-Transcript $LogPS
 
