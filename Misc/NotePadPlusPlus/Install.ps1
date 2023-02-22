@@ -5,7 +5,7 @@
 # $UnattendedArgs='/qn'
 # (Start-Process "$PackageName.$InstallerType" $UnattendedArgs -Wait -Passthru).ExitCode
 # Example 4 MSI (Always use " "):
-# $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
+# $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 REBOOT=ReallySuppress /norestart /qn /L*V `"$LogApp`""
 # (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
 Clear-Host
