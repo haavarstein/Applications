@@ -23,7 +23,7 @@ $Version = $MyConfigFile.Settings.Citrix.Version
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$UnattendedArgs = '/quiet Cloud=1 /log C:\Windows\Temp\CWEM.log' # OnPrem 0 Cloud 1
+$UnattendedArgs = '/quiet Cloud=0 /log C:\Windows\Temp\CWEM.log' # OnPrem 0 Cloud 1
 
 Start-Transcript $LogPS
 
