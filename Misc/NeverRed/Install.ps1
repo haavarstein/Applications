@@ -24,7 +24,7 @@ $PackageName = "NeverRed"
 $URL = "https://codeload.github.com/Deyda/NeverRed/zip/refs/heads/master"
 $InstallerType = "zip"
 $Source = "$PackageName" + "." + "$InstallerType"
-$LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
+$LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
 $ProgressPreference = 'SilentlyContinue'
@@ -32,10 +32,10 @@ $UnattendedArgs = '/S'
 
 Start-Transcript $LogPS | Out-Null
 
-Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
+Write-Verbose "Downloading $Vendor $Product" -Verbose
 If (!(Test-Path -Path $Source)) {Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $Source}
         
-Write-Verbose "Extracting $Vendor $Product $Version" -Verbose
+Write-Verbose "Extracting $Vendor $Product" -Verbose
 Expand-Archive -Path $Source -DestinationPath C:\ -Force
 
 Write-Verbose "Customization" -Verbose
