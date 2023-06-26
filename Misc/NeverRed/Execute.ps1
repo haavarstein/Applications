@@ -4,7 +4,7 @@ $StartDTM = (Get-Date)
 
 $Vendor = "Misc"
 $Product = "NeverRed"
-$LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product PS Wrapper.log"
+$LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product Scheduled Task.log"
 
 Start-Transcript $LogPS | Out-Null
 
