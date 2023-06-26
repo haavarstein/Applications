@@ -16,7 +16,7 @@ Set-Service -Name $ServiceName -Startup Automatic
 Start-Service -Name $ServiceName
 
 Write-Verbose "Deleting FSLogix Rules" -Verbose
-Remove-Item -Path "C:\Program Files\FSLogix\Apps\Rules\*.*" -Force -Recurse
+Remove-Item -Path "C:\Program Files\FSLogix\Apps\Rules\*.*" -Force -Recurse -ErrorAction SilentlyContinue
 
 Write-Verbose "Gettings Available Updates from Microsoft" -Verbose
 Get-WindowsUpdate -NotCategory "Drivers" -MicrosoftUpdate -ComputerName localhost | Out-File C:\PSWindowsUpdate.log -Append
