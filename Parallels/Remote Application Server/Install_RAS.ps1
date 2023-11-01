@@ -8,6 +8,7 @@
 # $UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /qn /liewa $LogApp"
 # (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
 
+Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
 
@@ -16,29 +17,26 @@ $Product = "Remote Application Server"
 $PackageName = "RASInstaller"
 $InstallerType = "msi"
 $Source = "$PackageName" + "." + "$InstallerType"
-$Version = "Latest"
+$Version = "19.0.23207"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$UnattendedArgs = "/i $PackageName.$InstallerType ALLUSERS=1 /norestart /qn /liewa $LogApp"
+$UnattendedArgs = "/i $PackageName.$InstallerType ADDFWRULES=1 FWRULES_INTCP=30004 FWRULES_INUDP=30004 ALLUSERS=1 /norestart /qn /liewa $LogApp"
 $uri = "http://download.parallels.com/ras/latest/RASInstaller.msi"
 
 Start-Transcript $LogPS
 
-if( -Not (Test-Path -Path $Version ) )
-{
-    New-Item -ItemType directory -Path $Version
-}
+Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
+Invoke-WebRequest -Uri $uri -OutFile $Source 
+
+$ProductVersion = Get-AppLockerFileInformation -Path $Source | Select -ExpandProperty Publisher | select BinaryVersion
+$Version = $ProductVersion.BinaryVersion
+
+If (!(Test-Path -Path $Version)) {New-Item -ItemType directory -Path $Version | Out-Null}
+
+Move-Item $Source -Destination $Version -Force
 
 CD $Version
-
-Write-Verbose "Downloading $Vendor $Product $Version" -Verbose
-If (!(Test-Path -Path $Source)) {
-    Invoke-WebRequest -Uri $uri -OutFile $Source
-         }
-        Else {
-            Write-Verbose "File exists. Skipping Download." -Verbose
-         }
 
 Write-Verbose "Starting Installation of $Vendor $Product $Version" -Verbose
 (Start-Process msiexec.exe -ArgumentList $UnattendedArgs -Wait -Passthru).ExitCode
