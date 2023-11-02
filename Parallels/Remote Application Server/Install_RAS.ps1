@@ -20,7 +20,7 @@ $Source = "$PackageName" + "." + "$InstallerType"
 $LogPS = "${env:SystemRoot}" + "\Temp\$Vendor $Product $Version PS Wrapper.log"
 $LogApp = "${env:SystemRoot}" + "\Temp\$PackageName.log"
 $Destination = "${env:ChocoRepository}" + "\$Vendor\$Product\$Version\$packageName.$installerType"
-$UnattendedArgs = "/i $PackageName.$InstallerType ADDFWRULES=1 FWRULES_INTCP=30004 FWRULES_INUDP=30004 ALLUSERS=1 /norestart /qn /liewa $LogApp"
+$UnattendedArgs = "/i $PackageName.$InstallerType ADDFWRULES=1 ALLUSERS=1 /norestart /qn /liewa $LogApp"
 $uri = "http://download.parallels.com/ras/latest/RASInstaller.msi"
 
 Start-Transcript $LogPS
