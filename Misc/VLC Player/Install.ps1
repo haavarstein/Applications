@@ -47,6 +47,7 @@ Function Get-VlcPlayerUpdateWin {
 Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
 $StartDTM = (Get-Date)
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
 
 $Vendor = "Misc"
 $Product = "VLC Player"
