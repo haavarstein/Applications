@@ -10,6 +10,7 @@
 
 # 64-bit Unified App Installer
 # https://www.adobe.com/devnet-docs/acrobatetk/tools/VirtualizationGuide/singleinstaller.html
+# https://trials.adobe.com/AdobeProducts/APRO/Acrobat_HelpX/win32/Acrobat_DC_Web_x64_WWMUI.zip
 
 Clear-Host
 Write-Verbose "Setting Arguments" -Verbose
