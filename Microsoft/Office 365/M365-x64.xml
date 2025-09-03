@@ -1,0 +1,22 @@
+<Configuration>
+  <Add OfficeClientEdition="64" MigrateArch="TRUE" Channel="Current" >
+	<Product ID="O365ProPlusRetail">
+	  <Language ID="en-us" />
+      <ExcludeApp ID="SharePointDesigner" />
+      <ExcludeApp ID="OneDrive" />
+      <ExcludeApp ID="Groove" />
+	  <ExcludeApp ID="Lync" />
+	  <ExcludeApp ID="Bing" />
+    </Product>
+	<Product ID="VisioProRetail">
+      <Language ID="en-us" />
+    </Product>
+    <Product ID="ProjectProRetail">
+      <Language ID="en-us" />
+    </Product>
+  </Add>
+  <Property Name="FORCEAPPSHUTDOWN" Value="TRUE" />
+  <Property Name="PinIconsToTaskbar" Value="FALSE" />
+  <Display Level="FULL" AcceptEULA="TRUE" />
+  <Updates Enabled="TRUE" />
+</Configuration>
