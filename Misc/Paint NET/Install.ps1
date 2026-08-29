@@ -3,6 +3,7 @@
 Function Get-PaintDotNetURl {
     [cmdletbinding()]
     [outputType([string])]
+    [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
     $sourceUrl = "https://www.dotpdn.com/downloads/pdn.html"
     $raw = (wget -UseBasicParsing -Uri $sourceUrl)
     $multiline = $raw.content.split("`n").trim()
