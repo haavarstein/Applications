@@ -1,0 +1,19 @@
+<Configuration>
+  <Remove All="TRUE" />
+  <Add OfficeClientEdition="64" Channel="MonthlyEnterprise">
+    <Product ID="O365BusinessRetail">
+      <Language ID="en-us" />
+      <ExcludeApp ID="Groove" />
+      <ExcludeApp ID="Lync" />
+      <ExcludeApp ID="OneDrive" />
+      <ExcludeApp ID="Teams" />
+      <ExcludeApp ID="Bing" />
+    </Product>
+  </Add>
+  <Property Name="SharedComputerLicensing" Value="1" />
+  <Property Name="DeviceBasedLicensing" Value="0" />
+  <Property Name="SCLCacheOverride" Value="0" />
+  <Property Name="AUTOACTIVATE" Value="0" />
+  <Updates Enabled="FALSE" />
+  <Display Level="None" AcceptEULA="TRUE" />
+</Configuration>
